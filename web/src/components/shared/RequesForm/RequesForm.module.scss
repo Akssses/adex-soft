@@ -1,0 +1,231 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.98)
+  );
+  padding: 40px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 520px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.formContent {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a1a, #4a4a4a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  position: relative;
+  width: 100%;
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid rgba(0, 102, 255, 0.1);
+    border-radius: 12px;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    outline: none;
+    resize: none;
+
+    &::placeholder {
+      color: #999;
+    }
+
+    &:focus {
+      border-color: #0066ff;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+  }
+}
+
+.submitBtn {
+  background: linear-gradient(135deg, #0066ff, #00ccff);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 102, 255, 0.2);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .buttonText {
+    position: relative;
+    z-index: 1;
+  }
+
+  .icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .icon {
+    transform: translateX(4px) rotate(-45deg);
+  }
+
+  &.submitting {
+    background: #999;
+    pointer-events: none;
+  }
+
+  &.submitted {
+    background: #10b981;
+  }
+}
+
+.loadingSpinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #1a1a1a;
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    padding: 32px 24px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .inputGroup {
+    input,
+    textarea {
+      padding: 14px;
+      font-size: 14px;
+    }
+  }
+
+  .submitBtn {
+    font-size: 15px;
+    padding: 14px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 16px;
+  }
+
+  .modal {
+    padding: 24px 20px;
+  }
+
+  .closeBtn {
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+  }
+}

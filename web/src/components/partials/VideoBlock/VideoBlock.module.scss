@@ -1,0 +1,37 @@
+.videoBlock {
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .playerWrapper {
+    position: relative;
+    width: 100%;
+    /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(172, 172, 172, 0.1);
+  }
+
+  .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .title {
+      font-size: 24px;
+    }
+    .description {
+      font-size: 14px;
+    }
+  }
+}

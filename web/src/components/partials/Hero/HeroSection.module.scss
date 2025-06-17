@@ -1,0 +1,252 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+
+  .gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 0% 0%,
+        rgba(0, 102, 255, 0.15) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(0, 204, 255, 0.15) 0%,
+        transparent 50%
+      );
+    opacity: 0.8;
+  }
+
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  padding: 80px 0;
+  height: 100%;
+}
+
+.titleWrapper {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 80px;
+}
+
+.weare {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #0066ff;
+  background: linear-gradient(135deg, #0066ff, #00ccff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+
+  .highlight {
+    background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+}
+
+.subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  .mainButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover .arrow {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.stats {
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statItem {
+  text-align: center;
+
+  .number {
+    display: block;
+    font-size: 48px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #0066ff, #00ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+
+  .label {
+    font-size: 16px;
+    color: #666;
+  }
+}
+
+.stackBarSection {
+  position: relative;
+  width: 100%;
+  margin-top: auto;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 102, 255, 0.1) 25%,
+      rgba(0, 102, 255, 0.1) 75%,
+      transparent 100%
+    );
+  }
+}
+
+.cursor {
+  opacity: 1;
+  animation: blink 1s infinite;
+  color: #3b82f6;
+  -webkit-text-fill-color: #3b82f6;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .title {
+    font-size: 56px;
+  }
+
+  .stats {
+    gap: 40px;
+    padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .titleWrapper {
+    padding-top: 60px;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .content {
+    gap: 60px;
+    padding: 20px 0;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px;
+  }
+
+  .cta {
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .titleWrapper {
+    padding-top: 40px;
+  }
+
+  .content {
+    padding: 16px 0;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .weare {
+    font-size: 14px;
+  }
+
+  .statItem .number {
+    font-size: 36px;
+  }
+}

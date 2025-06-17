@@ -1,0 +1,221 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+
+  .progressBar {
+    flex: 1;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 12px;
+
+    .fill {
+      height: 100%;
+      background: #0066ff;
+      transition: width 0.3s ease;
+    }
+  }
+
+  .progressText {
+    font-weight: 600;
+    width: 40px;
+    text-align: right;
+  }
+}
+
+.body {
+  min-height: 280px;
+}
+
+.chooseType,
+.question {
+  text-align: center;
+
+  h2 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+}
+
+.summary {
+  text-align: left;
+
+  h2 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin: 8px 0;
+  }
+
+  ul {
+    list-style: disc;
+    margin: 10px 0 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dotted #000;
+      padding-bottom: 4px;
+    }
+  }
+}
+
+.types {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  button {
+    padding: 12px 20px;
+    border: 2px solid #007bff;
+    border-radius: 23px;
+    background: #fff;
+    cursor: pointer;
+
+    &.active {
+      background: #007bff;
+      color: #fff;
+    }
+  }
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  .card {
+    position: relative;
+    background: #f9f9f9;
+    border: 2px solid transparent;
+    border-radius: 23px;
+    padding: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+
+    p {
+      margin: 0;
+    }
+
+    span {
+      font-weight: 600;
+    }
+
+    .checkIcon {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &.selected {
+      background: #e6ffe8;
+      border-color: #00ff5e;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 20px;
+
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+
+    &:disabled {
+      background: #ccc;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .types,
+  .options {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+
+    .progressBar {
+      margin-right: 0;
+      margin-bottom: 8px;
+    }
+
+    .progressText {
+      text-align: left;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .chooseType,
+  .question,
+  .summary {
+    padding: 0 16px;
+  }
+
+  .types button,
+  .card {
+    padding: 10px;
+  }
+
+  .types,
+  .options {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .body {
+    min-height: auto;
+  }
+
+  .chooseType h2,
+  .question h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .summary h2 {
+    font-size: 24px;
+  }
+
+  .types,
+  .options {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .controls button {
+    flex: 1;
+    padding: 8px;
+  }
+}

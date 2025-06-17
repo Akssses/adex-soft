@@ -1,0 +1,90 @@
+.card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 400px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.source {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #161616;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.stars :global(svg) {
+  color: #4185ff;
+  width: 20px;
+  height: 20px;
+}
+
+.text {
+  font-size: 1rem;
+  color: #333333;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #161616;
+  margin-bottom: 10px;
+}
+
+.authorRole {
+  font-size: 0.875rem;
+  color: #4185ff;
+}
+
+.metricBox {
+  background: #4185ff;
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 120px;
+}
+
+.metricValue {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.metricLabel {
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
