@@ -11,7 +11,7 @@ export default function CaseCard({ title, description, tags, link, image }) {
 
       <div className={s.text_content}>
         <div className={s.tags}>
-          {tags.map((tag, idx) => (
+          {tags?.map((tag, idx) => (
             <span key={idx} className={s.tag}>
               {tag}
             </span>

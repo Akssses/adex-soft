@@ -3,11 +3,11 @@
 import React from "react";
 import Header from "@/components/layout/Header/Header";
 import BannerCTA from "@/components/layout/BannerCTA/BannerCTA";
-import BlogPostHeader from "@/components/partials/Blog/BlogPost/Header/Header";
-import BlogPostContent from "@/components/partials/Blog/BlogPost/Content/Content";
-import BlogPostSidebar from "@/components/partials/Blog/BlogPost/Sidebar/Sidebar";
+import BlogPostHeader from "@/app/blog/components/BlogPost/Header/Header";
+import BlogPostContent from "@/app/blog/components/BlogPost/Content/Content";
+import BlogPostSidebar from "@/app/blog/components/BlogPost/Sidebar/Sidebar";
 import s from "./page.module.scss";
-import SimilarPost from "@/components/partials/Blog/BlogPost/SimilarPost/SimilarPost";
+import SimilarPost from "@/app/blog/components/BlogPost/SimilarPost/SimilarPost";
 
 // Временные данные для демонстрации
 const post = {

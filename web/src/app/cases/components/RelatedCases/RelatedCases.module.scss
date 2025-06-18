@@ -1,0 +1,41 @@
+.relatedCases {
+  width: 100%;
+  background: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  background: rgba(0, 102, 255, 0.1);
+  border-radius: 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0066ff;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 102, 255, 0.2);
+  }
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

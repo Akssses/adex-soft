@@ -1,0 +1,17 @@
+.casePage {
+  min-height: 100vh;
+  padding-top: var(--header-height);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 60px 20px;
+    gap: 80px;
+  }
+}
