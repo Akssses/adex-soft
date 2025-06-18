@@ -1,0 +1,201 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, white);
+    z-index: 1;
+  }
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+
+  .gridPattern {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        rgba(0, 102, 255, 0.1) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(0, 102, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+  }
+
+  .glowEffect {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 102, 255, 0.15) 0%,
+      transparent 70%
+    );
+  }
+}
+
+.heroContent {
+  text-align: center;
+  max-width: 800px;
+  z-index: 2;
+  position: relative;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(0, 102, 255, 0.1);
+  border-radius: 20px;
+  color: #0066ff;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 102, 255, 0.2);
+}
+
+.title {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  .highlight {
+    background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.searchBar {
+  display: flex;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.inputWrapper {
+  flex: 1;
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 102, 255, 0.2);
+  transition: all 0.3s ease;
+
+  &:focus-within {
+    border-color: #0066ff;
+    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.1);
+  }
+
+  .searchIcon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 16px 16px 16px 48px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    border-radius: 16px;
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+}
+
+.searchButton {
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .searchBar {
+    flex-direction: column;
+  }
+
+  .searchButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 60vh;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .badge {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .inputWrapper input {
+    font-size: 14px;
+    padding: 14px 14px 14px 40px;
+  }
+
+  .searchIcon {
+    font-size: 18px;
+    left: 12px;
+  }
+}

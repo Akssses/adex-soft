@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import BannerCTA from "@/components/partials/BannerCTA/BannerCTA";
+import BannerCTA from "@/components/layout/BannerCTA/BannerCTA";
 import CaseSLider from "@/components/partials/CaseSlider/CaseSLider";
 import HeroSection from "@/components/partials/Hero/HeroSection";
 import ServicesList from "@/components/partials/ServicesList/ServicesList";
