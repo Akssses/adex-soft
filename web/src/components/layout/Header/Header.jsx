@@ -152,7 +152,7 @@ export default function Header() {
 
           <Link href={"/"} className={s.logoLink}>
             <h2 className={s.title}>
-              <img src="./assets/images/logo.png" alt="Logo" />
+              <img src="/assets/images/logo.png" alt="Logo" />
             </h2>
           </Link>
 

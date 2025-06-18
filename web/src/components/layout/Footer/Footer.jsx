@@ -47,7 +47,7 @@ export default function Footer() {
         <div className={s.brand}>
           <Link href="/" className={s.logoLink}>
             <img
-              src="./assets/images/logo.png"
+              src="/assets/images/logo.png"
               alt="ADEX Логотип"
               className={s.logo}
             />

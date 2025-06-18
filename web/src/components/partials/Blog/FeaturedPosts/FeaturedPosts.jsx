@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 import s from "./FeaturedPosts.module.scss";
+import BlogCard from "../BlogCard/BlogCard";
 
 const featuredPosts = [
   {
@@ -48,21 +49,7 @@ export default function FeaturedPosts() {
 
         <div className={s.grid}>
           {featuredPosts.map((post) => (
-            <Link href={`/blog/${post.id}`} key={post.id} className={s.card}>
-              <div className={`${s.imageWrapper} ${s[post.image]}`}>
-                <span className={s.category}>{post.category}</span>
-              </div>
-              <div className={s.content}>
-                <h3 className={s.postTitle}>{post.title}</h3>
-                <p className={s.excerpt}>{post.excerpt}</p>
-                <div className={s.meta}>
-                  <span className={s.readTime}>{post.readTime}</span>
-                  <span className={s.readMore}>
-                    Читать <FiArrowRight />
-                  </span>
-                </div>
-              </div>
-            </Link>
+            <BlogCard key={post.id} post={post} />
           ))}
         </div>
       </div>

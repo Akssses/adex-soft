@@ -1,0 +1,132 @@
+.content {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.paragraph {
+  margin-bottom: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 48px 0 24px;
+  color: #1a1a1a;
+  background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.quote {
+  margin: 32px 0;
+  padding: 24px 32px;
+  border-left: 4px solid #0066ff;
+  background: rgba(0, 102, 255, 0.05);
+  border-radius: 12px;
+  font-style: italic;
+  color: #1a1a1a;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.list {
+  margin: 24px 0;
+  padding-left: 24px;
+
+  .listItem {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 8px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -16px;
+      top: 12px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #0066ff;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.figure {
+  margin: 32px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  .image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .caption {
+    padding: 16px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.codeBlock {
+  margin: 32px 0;
+  padding: 24px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow-x: auto;
+
+  .code {
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #fff;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    font-size: 16px;
+  }
+
+  .heading {
+    font-size: 24px;
+    margin: 32px 0 20px;
+  }
+
+  .quote {
+    margin: 24px 0;
+    padding: 20px 24px;
+    font-size: 18px;
+  }
+
+  .figure {
+    margin: 24px 0;
+  }
+
+  .codeBlock {
+    margin: 24px 0;
+    padding: 16px;
+
+    .code {
+      font-size: 13px;
+    }
+  }
+}
