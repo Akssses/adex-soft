@@ -158,8 +158,12 @@ export default function Header() {
 
           <div className={s.nav_right}>
             <ul className={s.nav}>
-              <li>Блог</li>
-              <li>О нас</li>
+              <li>
+                <Link href="/blog">Блог</Link>
+              </li>
+              <li>
+                <Link href="/about">О нас</Link>
+              </li>
             </ul>
 
             <div className={s.langSwitcher} ref={langRef}>
@@ -207,8 +211,8 @@ export default function Header() {
           <div className={s.mobileMenu}>
             <nav>
               <Link href="/calc">Калькулятор</Link>
-              <a href="#">Блог</a>
-              <a href="#">О нас</a>
+              <Link href="/blog">Блог</Link>
+              <Link href="/about">О нас</Link>
             </nav>
           </div>
         )}

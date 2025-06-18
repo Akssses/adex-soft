@@ -1,0 +1,182 @@
+.team {
+  padding: 120px 0;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
+  .header {
+    margin-bottom: 80px;
+
+    .headerContent {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+
+      h2 {
+        font-size: 64px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        line-height: 1.1;
+
+        background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+
+        background-size: 300% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      p {
+        font-size: 20px;
+        color: rgba(0, 0, 0, 0.7);
+        line-height: 1.6;
+      }
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .member {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+
+    .imageContainer {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.3s ease;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.8) 100%
+        );
+      }
+    }
+
+    .info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      z-index: 2;
+
+      h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #fff;
+      }
+
+      .position {
+        display: block;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 8px;
+      }
+
+      .role {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 4px 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+    }
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .team {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .team {
+    padding: 80px 0;
+
+    .header {
+      margin-bottom: 60px;
+
+      .headerContent {
+        h2 {
+          font-size: 48px;
+        }
+      }
+    }
+
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .team {
+    padding: 60px 0;
+
+    .header {
+      margin-bottom: 40px;
+
+      .headerContent {
+        h2 {
+          font-size: 36px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .member {
+      .info {
+        padding: 20px;
+
+        h3 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

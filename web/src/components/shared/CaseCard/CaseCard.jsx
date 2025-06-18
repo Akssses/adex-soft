@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./CaseCard.module.scss";
+import { IoIosArrowForward } from "react-icons/io";
 
 export default function CaseCard({ title, description, tags, link, image }) {
   return (
@@ -26,7 +27,8 @@ export default function CaseCard({ title, description, tags, link, image }) {
           rel="noopener noreferrer"
           className={s.link}
         >
-          Смотреть проект &rarr;
+          <span>Смотреть проект</span>
+          <IoIosArrowForward />
         </a>
       </div>
     </div>

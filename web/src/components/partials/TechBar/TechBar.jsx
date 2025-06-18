@@ -178,8 +178,7 @@ export default function TechBar() {
   return (
     <section className={s.techSection}>
       <div className={s.heading}>
-        <h1>Технологии</h1>
-        <div className={s.subtext}>которые мы используем</div>
+        <div className={s.subtext}>Technologies used</div>
       </div>
       <div className={s.container} ref={containerRef}>
         {stackData.map((tech, index) => (
