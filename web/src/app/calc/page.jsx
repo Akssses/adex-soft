@@ -23,6 +23,8 @@ import NFTMetaverseCalc from "@/components/shared/CostBlocks/NFTMetaverseCalc";
 import Link from "next/link";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { RiTelegram2Fill } from "react-icons/ri";
+import Header from "@/components/layout/Header/Header";
+import BannerCTA from "@/components/layout/BannerCTA/BannerCTA";
 
 const SERVICES = [
   {
@@ -95,57 +97,61 @@ export default function ProjectCalcPage() {
   };
 
   return (
-    <main className="container">
-      <section className={s.calc_container}>
-        <div className={s.calc_block}>
-          {!selectedService ? (
-            <>
-              <h2>Выберите направление:</h2>
-              <div className={s.services}>
-                {SERVICES.map((service, index) => (
-                  <div
-                    key={index}
-                    className={s.serviceCard}
-                    style={{ backgroundColor: service.color }}
-                    onClick={() =>
-                      service.component && setSelectedService(service)
-                    }
-                  >
-                    <service.icon size={28} />
-                    <span>{service.name}</span>
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : (
-            <>
-              <button className={s.backBtn} onClick={handleBack}>
-                ← Назад к списку услуг
+    <div>
+      <Header />
+      <main className="container">
+        <section className={s.calc_container}>
+          <div className={s.calc_block}>
+            {!selectedService ? (
+              <>
+                <h2>Выберите направление:</h2>
+                <div className={s.services}>
+                  {SERVICES.map((service, index) => (
+                    <div
+                      key={index}
+                      className={s.serviceCard}
+                      style={{ backgroundColor: service.color }}
+                      onClick={() =>
+                        service.component && setSelectedService(service)
+                      }
+                    >
+                      <service.icon size={28} />
+                      <span>{service.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <button className={s.backBtn} onClick={handleBack}>
+                  ← Назад к списку услуг
+                </button>
+                <selectedService.component />
+              </>
+            )}
+          </div>
+          <div className={s.total}>
+            <div className={s.summa}>
+              <h2>Итоговая стоимость:</h2>
+              <span>${total}</span>
+            </div>
+            <Link href={"https://t.me/adex_soft"}>
+              <button className={s.contact}>
+                <RiTelegram2Fill size={25} />
+                Связаться с нами
               </button>
-              <selectedService.component />
-            </>
-          )}
-        </div>
-        <div className={s.total}>
-          <div className={s.summa}>
-            <h2>Итоговая стоимость:</h2>
-            <span>${total}</span>
+            </Link>
+            <div className={s.warning}>
+              <RiErrorWarningLine color="red" size={30} />
+              <p>
+                Реальная стоимость может отличаться от расчётной и зависит от
+                множества факторов.
+              </p>
+            </div>
           </div>
-          <Link href={"https://t.me/adex_soft"}>
-            <button className={s.contact}>
-              <RiTelegram2Fill size={25} />
-              Связаться с нами
-            </button>
-          </Link>
-          <div className={s.warning}>
-            <RiErrorWarningLine color="red" size={30} />
-            <p>
-              Реальная стоимость может отличаться от расчётной и зависит от
-              множества факторов.
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+      <BannerCTA />
+    </div>
   );
 }

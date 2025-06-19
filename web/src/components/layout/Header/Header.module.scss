@@ -259,11 +259,14 @@
   position: fixed;
   top: 70px;
   left: 0;
-  width: 100%;
-  background: white;
+  width: calc(100% - 32px);
+  margin: 0 16px;
+  margin-top: 20px;
   padding: 20px;
+  background: white;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   animation: slideDown 0.3s ease;
+  border-radius: 20px;
 
   nav {
     display: flex;

@@ -126,7 +126,10 @@ export default function Home() {
           }
         >
           {sections.map(({ component: Component, id }, index) => (
-            <div key={id} className={s.section}>
+            <div
+              key={id}
+              className={`${s.section} ${id === "cases" ? s.casesSection : ""}`}
+            >
               <Component />
             </div>
           ))}
