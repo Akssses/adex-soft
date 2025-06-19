@@ -127,7 +127,8 @@
 
 @media (max-width: 768px) {
   .principles {
-    padding: 60px 0;
+    padding-top: 60px;
+    padding-bottom: 0;
 
     .sectionHeader {
       margin-bottom: 40px;
@@ -139,6 +140,7 @@
 
     .principlesGrid {
       grid-template-columns: 1fr !important;
+      padding: 0;
     }
   }
 }

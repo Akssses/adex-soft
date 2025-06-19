@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -47,8 +47,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 80px;
-  padding: 80px 0;
+  gap: 60px;
+  padding: 40px 0;
   height: 100%;
 }
 
@@ -56,7 +56,7 @@
   text-align: center;
   max-width: 900px;
   margin: 0 auto;
-  padding-top: 80px;
+  padding-top: 40px;
 }
 
 .weare {
@@ -101,9 +101,11 @@
   justify-content: center;
 
   .mainButton {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
+    white-space: nowrap;
 
     .arrow {
       transition: transform 0.3s ease;
@@ -120,8 +122,6 @@
   gap: 80px;
   justify-content: center;
   padding: 40px;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -185,68 +185,156 @@
 }
 
 @media (max-width: 1024px) {
+  .hero {
+    min-height: 100vh;
+    height: auto;
+    padding: 40px 0;
+    justify-content: flex-start;
+  }
+
+  .content {
+    padding: 20px 0;
+    gap: 40px;
+    justify-content: flex-start;
+  }
+
+  .titleWrapper {
+    padding-top: 20px;
+    max-width: 700px;
+  }
+
   .title {
-    font-size: 56px;
+    font-size: 52px;
+    br {
+      display: none;
+    }
+  }
+
+  .subtitle {
+    font-size: 17px;
+    margin-bottom: 32px;
+    max-width: 500px;
   }
 
   .stats {
     gap: 40px;
     padding: 32px;
   }
+
+  .stackBarSection {
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 32px 0;
+  }
+
+  .content {
+    padding: 16px 0;
+    gap: 32px;
+  }
+
   .titleWrapper {
-    padding-top: 60px;
+    padding-top: 160px;
+    margin-top: 100px;
   }
 
   .title {
-    font-size: 42px;
+    font-size: 36px;
+    margin-bottom: 16px;
   }
 
   .subtitle {
     font-size: 16px;
-  }
-
-  .content {
-    gap: 60px;
-    padding: 20px 0;
+    margin-bottom: 24px;
+    max-width: 400px;
   }
 
   .stats {
-    flex-direction: column;
-    gap: 32px;
-    padding: 24px;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .statItem {
+    .number {
+      font-size: 32px;
+      margin-bottom: 4px;
+    }
+    .label {
+      font-size: 14px;
+    }
   }
 
   .cta {
     flex-direction: column;
+    align-items: center;
     width: 100%;
+    gap: 12px;
 
     button {
       width: 100%;
+      padding: 14px 24px;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mainButton {
+      gap: 8px;
     }
   }
 }
 
 @media (max-width: 480px) {
-  .titleWrapper {
-    padding-top: 40px;
+  .hero {
+    padding: 24px 0;
   }
 
   .content {
-    padding: 16px 0;
+    padding: 12px 0;
+    gap: 24px;
   }
 
-  .title {
-    font-size: 32px;
+  .titleWrapper {
+    padding-top: 12px;
   }
 
   .weare {
     font-size: 14px;
+    margin-bottom: 16px;
   }
 
-  .statItem .number {
-    font-size: 36px;
+  .title {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+
+  .stats {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .statItem {
+    .number {
+      font-size: 28px;
+    }
+    .label {
+      font-size: 13px;
+    }
+  }
+
+  .cta button {
+    padding: 12px 20px;
+    font-size: 14px;
   }
 }

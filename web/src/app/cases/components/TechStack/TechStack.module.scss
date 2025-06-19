@@ -94,15 +94,3 @@
     font-size: 14px;
   }
 }
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 28px;
-    margin-bottom: 32px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-}

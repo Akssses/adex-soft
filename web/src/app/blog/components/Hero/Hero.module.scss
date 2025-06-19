@@ -155,7 +155,8 @@
 
 @media (max-width: 768px) {
   .hero {
-    height: 70vh;
+    min-height: 100vh;
+    padding: 0 20px;
   }
 
   .title {
@@ -172,30 +173,5 @@
 
   .searchButton {
     width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    height: 60vh;
-  }
-
-  .title {
-    font-size: 28px;
-  }
-
-  .badge {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-
-  .inputWrapper input {
-    font-size: 14px;
-    padding: 14px 14px 14px 40px;
-  }
-
-  .searchIcon {
-    font-size: 18px;
-    left: 12px;
   }
 }

@@ -12,6 +12,7 @@ import s from "./page.module.scss";
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState(0);
+  const [isFullPageEnabled, setIsFullPageEnabled] = useState(true);
   const isScrollingRef = useRef(false);
   const containerRef = useRef(null);
 
@@ -24,7 +25,13 @@ export default function Home() {
   ];
 
   const scrollToSection = (index) => {
-    if (isScrollingRef.current || index < 0 || index >= sections.length) return;
+    if (
+      !isFullPageEnabled ||
+      isScrollingRef.current ||
+      index < 0 ||
+      index >= sections.length
+    )
+      return;
 
     isScrollingRef.current = true;
     setCurrentSection(index);
@@ -35,7 +42,23 @@ export default function Home() {
   };
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    const checkScreenSize = () => {
+      const isLargeScreen = window.innerWidth >= 1024;
+      setIsFullPageEnabled(isLargeScreen);
+      document.body.style.overflow = isLargeScreen ? "hidden" : "auto";
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => {
+      document.body.style.overflow = "auto";
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isFullPageEnabled) return;
 
     const handleWheel = (e) => {
       e.preventDefault();
@@ -78,21 +101,29 @@ export default function Home() {
     }
 
     return () => {
-      document.body.style.overflow = "auto";
       if (container) {
         container.removeEventListener("wheel", handleWheel);
         window.removeEventListener("keydown", handleKeyDown);
       }
     };
-  }, [currentSection, sections.length]);
+  }, [currentSection, sections.length, isFullPageEnabled]);
 
   return (
     <>
       <Header />
-      <div ref={containerRef} className={s.homeContainer}>
+      <div
+        ref={containerRef}
+        className={`${s.homeContainer} ${
+          !isFullPageEnabled ? s.scrollable : ""
+        }`}
+      >
         <div
           className={s.sectionsWrapper}
-          style={{ transform: `translateY(-${currentSection * 100}vh)` }}
+          style={
+            isFullPageEnabled
+              ? { transform: `translateY(-${currentSection * 100}vh)` }
+              : {}
+          }
         >
           {sections.map(({ component: Component, id }, index) => (
             <div key={id} className={s.section}>
@@ -101,16 +132,18 @@ export default function Home() {
           ))}
         </div>
 
-        <div className={s.pagination}>
-          {sections.map((_, index) => (
-            <button
-              key={index}
-              className={s.dot}
-              data-active={index === currentSection}
-              onClick={() => scrollToSection(index)}
-            />
-          ))}
-        </div>
+        {isFullPageEnabled && (
+          <div className={s.pagination}>
+            {sections.map((_, index) => (
+              <button
+                key={index}
+                className={s.dot}
+                data-active={index === currentSection}
+                onClick={() => scrollToSection(index)}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

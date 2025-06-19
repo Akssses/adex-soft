@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FiArrowUpRight } from "react-icons/fi";
@@ -22,7 +21,6 @@ export default function CaseHero({
   const [slideWidth, setSlideWidth] = useState(0);
   const [maxOffset, setMaxOffset] = useState(0);
 
-  // Демо-массив изображений проекта
   const projectImages = [
     {
       src: "https://images.unsplash.com/photo-1642427749670-f20e2e76ed8c?w=800&auto=format",
@@ -46,7 +44,6 @@ export default function CaseHero({
     },
   ];
 
-  // Группируем изображения по 2 для создания слайдов
   const slides = projectImages.reduce((acc, _, index) => {
     if (index % 2 === 0) {
       acc.push(projectImages.slice(index, index + 2));
@@ -98,12 +95,10 @@ export default function CaseHero({
                 {slideGroup.map((image, imageIndex) => (
                   <div key={imageIndex} className={s.card}>
                     <div className={s.cardImage}>
-                      <Image
+                      <img
                         src={image.src}
                         alt={image.alt}
-                        fill
                         className={s.slideImage}
-                        priority={slideIndex === 0}
                       />
                     </div>
                   </div>

@@ -17,19 +17,21 @@
   overflow: visible;
   max-width: 1300px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .sliderTrack {
   display: flex;
   height: 100%;
-  gap: 20px;
+  gap: 40px;
+  padding: 20px 0;
 }
 
 .slide {
   position: relative;
   height: 100%;
   display: flex;
-  gap: 20px;
+  gap: 40px;
 }
 
 .card {
@@ -43,8 +45,7 @@
   background: #fff;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  width: 600px;
-  height: 400px;
+  width: 500px;
   will-change: transform;
 
   &:hover {
@@ -60,13 +61,17 @@
 .cardImage {
   position: relative;
   width: 100%;
-  height: 0;
   padding-bottom: 66.67%;
   overflow: hidden;
   background: #f5f5f5;
 }
 
 .slideImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -82,7 +87,7 @@
 
 .sliderControls {
   position: absolute;
-  bottom: -70px;
+  bottom: 40px;
   right: 40px;
   display: flex;
   gap: 16px;
@@ -529,52 +534,59 @@
   }
 }
 
+@media (max-width: 1400px) {
+  .sliderWrapper {
+    padding: 60px 32px;
+  }
+
+  .card {
+    width: 450px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card {
+    width: 400px;
+  }
+
+  .sliderControls {
+    bottom: 32px;
+    right: 32px;
+  }
+}
+
 @media (max-width: 1024px) {
   .sliderWrapper {
-    padding: 60px 24px;
+    padding: 0px 24px;
   }
 
   .slide {
-    flex-direction: column;
     gap: 24px;
   }
 
   .card {
-    width: 100%;
+    width: calc(100vw - 48px);
+    max-width: 500px;
   }
 
-  .title {
-    font-size: 48px;
+  .sliderTrack {
+    gap: 24px;
   }
 
-  .meta {
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .actions {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .projectLink,
-  .cta {
-    width: 100%;
-    justify-content: center;
+  .sliderButton {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    margin-top: 80px;
+    margin-top: 0px;
   }
 
   .sliderWrapper {
-    padding: 40px 20px;
-  }
-
-  .content {
-    padding: 60px 20px;
+    padding: 32px 20px;
   }
 
   .title {
@@ -593,14 +605,6 @@
 }
 
 @media (max-width: 640px) {
-  .hero {
-    margin-top: 60px;
-  }
-
-  .content {
-    padding: 40px 20px;
-  }
-
   .title {
     font-size: 32px;
     margin-bottom: 16px;
@@ -615,8 +619,9 @@
   }
 
   .sliderControls {
-    bottom: 20px;
-    right: 20px;
+    bottom: 24px;
+    right: 24px;
+    gap: 12px;
   }
 
   .sliderButton {
@@ -628,5 +633,31 @@
   .cardCaption {
     padding: 0 24px 24px;
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sliderWrapper {
+    padding: 20px 12px;
+  }
+
+  .card {
+    width: calc(100vw - 24px);
+  }
+
+  .sliderTrack {
+    gap: 12px;
+  }
+
+  .sliderControls {
+    bottom: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+
+  .sliderButton {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
   }
 }

@@ -60,6 +60,16 @@
   .header .title {
     font-size: 48px;
   }
+
+  .case_section {
+    height: 100%;
+    margin-top: 0px;
+  }
+
+  .sliderWrapper {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 }
 
 @media (max-width: 768px) {

@@ -6,6 +6,14 @@
   bottom: var(--footer-height);
   overflow: hidden;
   z-index: 1;
+
+  &.scrollable {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    top: 0;
+    bottom: 0;
+  }
 }
 
 .sectionsWrapper {
@@ -13,6 +21,12 @@
   height: calc(100vh - var(--header-height) - var(--footer-height));
   transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
   will-change: transform;
+
+  .scrollable & {
+    height: auto;
+    transform: none !important;
+    transition: none;
+  }
 }
 
 .section {
@@ -20,6 +34,13 @@
   height: calc(100vh - var(--header-height) - var(--footer-height));
   width: 100%;
   overflow: hidden;
+
+  .scrollable & {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    padding-top: var(--header-height);
+  }
 }
 
 .pagination {
@@ -60,19 +81,29 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .homeContainer {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    top: 0;
+    bottom: 0;
+  }
+
+  .sectionsWrapper {
+    height: auto;
+    transform: none !important;
+    transition: none;
+  }
+
+  .section {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    padding-top: var(--header-height);
+  }
+
   .pagination {
-    right: 20px;
-    padding: 12px;
-
-    .dot {
-      width: 6px;
-      height: 6px;
-
-      &[data-active="true"] {
-        width: 10px;
-        height: 10px;
-      }
-    }
+    display: none;
   }
 }
