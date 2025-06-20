@@ -100,8 +100,6 @@ export default function Footer() {
       <div className={`${s.bottom} container`}>
         <p>© {new Date().getFullYear()} ADEX. Все права защищены.</p>
         <div className={s.bottomLinks}>
-          <Link href="/sitemap">Карта сайта</Link>
-          <span className={s.dot}>•</span>
           <Link href="/contact">support@adex.soft</Link>
         </div>
       </div>

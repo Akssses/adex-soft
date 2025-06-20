@@ -76,8 +76,8 @@ export default function HeroSection() {
   return (
     <section className={s.hero}>
       <div className={s.background}>
-        <div className={s.gradient} />
-        <div className={s.grid} />
+        <div className={s.gridPattern} />
+        <div className={s.glowEffect} />
       </div>
 
       <motion.div
@@ -138,9 +138,9 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      <div className={s.stackBarSection}>
+      {/* <div className={s.stackBarSection}>
         <StackBar />
-      </div>
+      </div> */}
     </section>
   );
 }

@@ -59,81 +59,70 @@ const projects = [
 ];
 
 export default function CaseSlider() {
-  const containerRef = useRef(null);
-  const trackRef = useRef(null);
-  const [offset, setOffset] = useState(0);
-  const [slideWidth, setSlideWidth] = useState(0);
-  const [maxOffset, setMaxOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [cardsPerPage, setCardsPerPage] = useState(3);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const calculateSizes = () => {
-      if (containerRef.current && trackRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
-        const firstCard = trackRef.current.children[0];
-        if (firstCard) {
-          const cardRect = firstCard.getBoundingClientRect();
-          const style = window.getComputedStyle(firstCard);
-          const marginRight = parseFloat(style.marginRight);
-          const totalSlide = cardRect.width + marginRight;
-          setSlideWidth(totalSlide);
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 1024);
 
-          const children = Array.from(trackRef.current.children);
-          const totalTrackWidth = children.reduce((sum, child) => {
-            const rect = child.getBoundingClientRect();
-            const mr = parseFloat(window.getComputedStyle(child).marginRight);
-            return sum + rect.width + mr;
-          }, 0);
-
-          setMaxOffset(Math.max(totalTrackWidth - containerWidth, 0));
-          setOffset((prev) =>
-            Math.min(prev, Math.max(totalTrackWidth - containerWidth, 0))
-          );
-        }
+      if (width <= 768) {
+        setCardsPerPage(1);
+      } else if (width <= 1024) {
+        setCardsPerPage(2);
+      } else {
+        setCardsPerPage(3);
       }
+
+      // Reset to first page when layout changes
+      setCurrentPage(0);
     };
 
-    calculateSizes();
-    window.addEventListener("resize", calculateSizes);
-    return () => window.removeEventListener("resize", calculateSizes);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handlePrev = () => setOffset((prev) => Math.max(prev - slideWidth, 0));
-  const handleNext = () =>
-    setOffset((prev) => Math.min(prev + slideWidth, maxOffset));
+  const totalPages = Math.ceil(projects.length / cardsPerPage);
+  const startIndex = currentPage * cardsPerPage;
+  const visibleProjects = projects.slice(startIndex, startIndex + cardsPerPage);
 
-  return (
-    <div className="container">
-      <div className={s.case_section}>
-        <header className={s.header}>
-          <h1 className={s.title}>
-            Наши кейсы <br /> говорят сами за себя
-          </h1>
-        </header>
+  const handlePrev = () => {
+    setCurrentPage((prev) => Math.max(0, prev - 1));
+  };
 
-        <div ref={containerRef} className={s.sliderWrapper}>
-          <div
-            ref={trackRef}
-            className={s.case_slider_container}
-            style={{
-              transform: `translateX(-${offset}px)`,
-              transition: "transform 0.5s ease",
-            }}
-          >
-            {projects.map((proj, idx) => (
-              <CaseCard key={idx} {...proj} />
-            ))}
-          </div>
+  const handleNext = () => {
+    setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1));
+  };
+
+  const content = (
+    <div className={s.case_section}>
+      <header className={s.header}>
+        <h1 className={s.title}>
+          Наши кейсы <br /> говорят сами за себя
+        </h1>
+      </header>
+
+      <div className={s.sliderWrapper}>
+        <div className={s.case_slider_container}>
+          {visibleProjects.map((proj, idx) => (
+            <CaseCard key={`${currentPage}-${idx}`} {...proj} />
+          ))}
         </div>
+      </div>
 
-        <div className={s.slider_buttons}>
-          <button onClick={handlePrev}>
-            <IoIosArrowBack />
-          </button>
-          <button onClick={handleNext}>
-            <IoIosArrowForward />
-          </button>
-        </div>
+      <div className={s.slider_buttons}>
+        <button onClick={handlePrev} disabled={currentPage === 0}>
+          <IoIosArrowBack />
+        </button>
+        <button onClick={handleNext} disabled={currentPage === totalPages - 1}>
+          <IoIosArrowForward />
+        </button>
       </div>
     </div>
   );
+
+  return isMobile ? content : <div className="container">{content}</div>;
 }
