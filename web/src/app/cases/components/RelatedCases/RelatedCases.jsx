@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import s from "./RelatedCases.module.scss";
 import CaseCard from "@/components/shared/CaseCard/CaseCard";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -58,44 +58,56 @@ const projects = [
   },
 ];
 
+function getLayoutConfig(width) {
+  if (width <= 768) return { cardsPerPage: 1, isMobile: true };
+  if (width <= 1024) return { cardsPerPage: 2, isMobile: true };
+  return { cardsPerPage: 3, isMobile: false };
+}
+
 export default function RelatedCases() {
   const [currentPage, setCurrentPage] = useState(0);
-  const [cardsPerPage, setCardsPerPage] = useState(3);
-  const [isMobile, setIsMobile] = useState(false);
+  const [layout, setLayout] = useState({ cardsPerPage: 3, isMobile: false });
+  const resizeTimeoutRef = useRef(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setIsMobile(width <= 1024);
+    // Set initial layout
+    setLayout(getLayoutConfig(window.innerWidth));
 
-      if (width <= 768) {
-        setCardsPerPage(1);
-      } else if (width <= 1024) {
-        setCardsPerPage(2);
-      } else {
-        setCardsPerPage(3);
+    function handleResize() {
+      if (resizeTimeoutRef.current) {
+        window.cancelAnimationFrame(resizeTimeoutRef.current);
       }
 
-      // Reset to first page when layout changes
-      setCurrentPage(0);
-    };
+      resizeTimeoutRef.current = window.requestAnimationFrame(() => {
+        const newLayout = getLayoutConfig(window.innerWidth);
+        setLayout(newLayout);
+        setCurrentPage(0);
+      });
+    }
 
-    handleResize();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (resizeTimeoutRef.current) {
+        window.cancelAnimationFrame(resizeTimeoutRef.current);
+      }
+    };
   }, []);
 
-  const totalPages = Math.ceil(projects.length / cardsPerPage);
-  const startIndex = currentPage * cardsPerPage;
-  const visibleProjects = projects.slice(startIndex, startIndex + cardsPerPage);
+  const totalPages = Math.ceil(projects.length / layout.cardsPerPage);
+  const startIndex = currentPage * layout.cardsPerPage;
+  const visibleProjects = projects.slice(
+    startIndex,
+    startIndex + layout.cardsPerPage
+  );
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setCurrentPage((prev) => Math.max(0, prev - 1));
-  };
+  }, []);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1));
-  };
+  }, [totalPages]);
 
   const content = (
     <div className={s.case_section}>
@@ -122,5 +134,5 @@ export default function RelatedCases() {
     </div>
   );
 
-  return isMobile ? content : <div className="container">{content}</div>;
+  return layout.isMobile ? content : <div className="container">{content}</div>;
 }
