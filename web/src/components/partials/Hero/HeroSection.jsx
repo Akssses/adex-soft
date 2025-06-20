@@ -6,6 +6,7 @@ import Button from "@/components/shared/Button/Button";
 import StackBar from "../StackBar/StackBar";
 import { motion } from "framer-motion";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import Link from "next/link";
 
 const stats = [
   { number: "50+", label: "Успешных проектов" },
@@ -108,7 +109,9 @@ export default function HeroSection() {
                 Начать проект
                 <HiOutlineArrowNarrowRight className={s.arrow} />
               </Button>
-              <Button variant="secondary">Узнать больше</Button>
+              <Link href="/about">
+                <Button variant="secondary">Узнать больше</Button>
+              </Link>
             </div>
           </motion.div>
 

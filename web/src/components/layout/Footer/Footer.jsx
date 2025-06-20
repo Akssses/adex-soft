@@ -2,14 +2,7 @@
 
 import React, { useState } from "react";
 import s from "./Footer.module.scss";
-import {
-  FaLinkedin,
-  FaInstagram,
-  FaTelegram,
-  FaYoutube,
-  FaGithub,
-  FaDiscord,
-} from "react-icons/fa";
+import { FaInstagram, FaTelegram, FaYoutube } from "react-icons/fa";
 import Link from "next/link";
 
 const SERVICES = [
@@ -26,19 +19,15 @@ const SERVICES = [
 const COMPANY = [
   { label: "О нас", href: "/about" },
   { label: "Блог", href: "/blog" },
-  { label: "Карьера", href: "/careers" },
   { label: "Контакты", href: "/contact" },
 ];
 
 const LEGAL = [
   { label: "Политика конфиденциальности", href: "/privacy" },
   { label: "Условия использования", href: "/terms" },
-  { label: "Политика cookies", href: "/cookies" },
 ];
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-
   return (
     <footer className={s.footer}>
       <div className={s.footerGlow} />
@@ -113,9 +102,7 @@ export default function Footer() {
         <div className={s.bottomLinks}>
           <Link href="/sitemap">Карта сайта</Link>
           <span className={s.dot}>•</span>
-          <Link href="/contact">Контакты</Link>
-          <span className={s.dot}>•</span>
-          <span className={s.credit}>Сделано с любовью в Кыргызстане 🇰🇬</span>
+          <Link href="/contact">support@adex.soft</Link>
         </div>
       </div>
     </footer>

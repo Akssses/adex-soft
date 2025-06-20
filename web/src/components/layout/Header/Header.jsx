@@ -166,7 +166,7 @@ export default function Header() {
               </li>
             </ul>
 
-            <div className={s.langSwitcher} ref={langRef}>
+            {/* <div className={s.langSwitcher} ref={langRef}>
               <button
                 className={s.langButton}
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
@@ -194,7 +194,7 @@ export default function Header() {
                   </button>
                 </div>
               )}
-            </div>
+            </div> */}
 
             <button className={s.ctaButton} onClick={() => setShowModal(true)}>
               <span>Начать проект</span>
