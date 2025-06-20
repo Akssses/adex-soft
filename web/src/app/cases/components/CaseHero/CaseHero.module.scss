@@ -17,21 +17,14 @@
   overflow: visible;
   max-width: 1300px;
   margin: 0 auto;
-  overflow: hidden;
+  padding: 20px;
 }
 
 .sliderTrack {
-  display: flex;
-  height: 100%;
-  gap: 40px;
-  padding: 20px 0;
-}
-
-.slide {
-  position: relative;
-  height: 100%;
-  display: flex;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 20px;
 }
 
 .card {
@@ -45,7 +38,6 @@
   background: #fff;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  width: 500px;
   will-change: transform;
 
   &:hover {
@@ -118,6 +110,17 @@
 
   &:active {
     transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    &:hover {
+      background: #fff;
+      color: #000;
+      border-color: rgba(0, 0, 0, 0.08);
+      transform: none;
+    }
   }
 }
 
@@ -536,17 +539,24 @@
 
 @media (max-width: 1400px) {
   .sliderWrapper {
-    padding: 60px 32px;
+    max-width: 100%;
+    padding: 20px;
   }
 
-  .card {
-    width: 450px;
+  .sliderTrack {
+    gap: 20px;
   }
 }
 
 @media (max-width: 1200px) {
-  .card {
-    width: 400px;
+  .hero {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .sliderTrack {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 
   .sliderControls {
@@ -556,21 +566,25 @@
 }
 
 @media (max-width: 1024px) {
+  .hero {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
   .sliderWrapper {
-    padding: 0px 24px;
-  }
-
-  .slide {
-    gap: 24px;
-  }
-
-  .card {
-    width: calc(100vw - 48px);
-    max-width: 500px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 16px;
   }
 
   .sliderTrack {
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 16px;
   }
 
   .sliderButton {
@@ -582,25 +596,36 @@
 
 @media (max-width: 768px) {
   .hero {
-    margin-top: 0px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 
   .sliderWrapper {
-    padding: 32px 20px;
+    padding: 12px;
+    margin-top: 50px;
   }
 
-  .title {
-    font-size: 40px;
+  .sliderTrack {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    padding: 12px;
   }
 
-  .subtitle {
-    font-size: 18px;
+  .sliderControls {
+    bottom: 24px;
+    right: 24px;
+    gap: 12px;
   }
 
   .sliderButton {
-    width: 48px;
-    height: 48px;
-    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .cardCaption {
+    padding: 0 24px 24px;
+    font-size: 1rem;
   }
 }
 
@@ -608,6 +633,10 @@
   .title {
     font-size: 32px;
     margin-bottom: 16px;
+  }
+
+  .content {
+    margin-top: 50px;
   }
 
   .subtitle {
@@ -637,16 +666,18 @@
 }
 
 @media (max-width: 480px) {
-  .sliderWrapper {
-    padding: 20px 12px;
+  .hero {
+    margin-top: 32px;
+    margin-bottom: 32px;
   }
 
-  .card {
-    width: calc(100vw - 24px);
+  .sliderWrapper {
+    padding: 8px;
   }
 
   .sliderTrack {
     gap: 12px;
+    padding: 8px;
   }
 
   .sliderControls {

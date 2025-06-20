@@ -11,7 +11,6 @@ import {
   FaCoins,
   FaRobot,
   FaCube,
-  FaGlobe,
 } from "react-icons/fa";
 import { MdMenu, MdClose } from "react-icons/md";
 import RequesForm from "@/components/shared/RequesForm/RequesForm";

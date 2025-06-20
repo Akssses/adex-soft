@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useRef, useState, useEffect } from "react";
 import s from "./RelatedCases.module.scss";
 import CaseCard from "@/components/shared/CaseCard/CaseCard";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const projects = [
   {
@@ -29,34 +28,99 @@ const projects = [
       "Играй в шахматы с друзьями, участвуй в турнирах и зарабатывай chesscoin!",
     tags: ["Telegram Mini App", "Web3", "Crypto"],
     link: "https://t.me/ChesscoinRobot",
-    image: "/assets/images/chesscoin.png",
+    image: "./assets/images/chesscoin.png",
+  },
+  {
+    title: "Armitron",
+    description:
+      "Редизайн и улучшение пользовательского опыта интернет-магазина Armitron",
+    tags: ["eCommerce", "Watch Brand", "UX"],
+    link: "https://www.armitron.com/",
+    image:
+      "https://adchitects.co/_next/image?url=https%3A%2F%2Fadchitects-www-strapi.s3.us-west-1.wasabisys.com%2FArmitron-miniature-1%25402x-min_Armitron_miniature_1_2x_min_055556d3f1.jpg&w=1080&q=70",
+  },
+  {
+    title: "Gravity Team",
+    description:
+      "Современный сайт для глобального провайдера крипто-ликвидности",
+    tags: ["Crypto", "Web3", "Corporate"],
+    link: "https://gravityteam.co/",
+    image:
+      "https://adchitects.co/_next/image?url=https%3A%2F%2Fadchitects-www-strapi.s3.us-west-1.wasabisys.com%2F05-image%25402x_05_image_2x_d82f92c98f.png&w=3840&q=75",
+  },
+  {
+    title: "CatchUp",
+    description:
+      "CatchUp — ваш помощник для удобного бронирования встреч прямо в Telegram",
+    tags: ["Telegram mini app", "Bots"],
+    link: "https://t.me/catch_app_bot",
+    image: "./assets/images/cutchup.png",
   },
 ];
 
-export default function RelatedCases({ cases }) {
-  return (
-    <section className={s.relatedCases}>
-      <div className={s.content}>
-        <div className={s.header}>
-          <h2 className={s.title}>Похожие проекты</h2>
-          <Link href="/cases" className={s.viewAll}>
-            Посмотреть все
-          </Link>
-        </div>
+export default function RelatedCases() {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [cardsPerPage, setCardsPerPage] = useState(3);
+  const [isMobile, setIsMobile] = useState(false);
 
-        <div className={s.grid}>
-          {projects.map((project) => (
-            <CaseCard
-              key={project.title}
-              title={project.title}
-              description={project.description}
-              tags={project.tags}
-              link={project.link}
-              image={project.image}
-            />
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 1024);
+
+      if (width <= 768) {
+        setCardsPerPage(1);
+      } else if (width <= 1024) {
+        setCardsPerPage(2);
+      } else {
+        setCardsPerPage(3);
+      }
+
+      // Reset to first page when layout changes
+      setCurrentPage(0);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const totalPages = Math.ceil(projects.length / cardsPerPage);
+  const startIndex = currentPage * cardsPerPage;
+  const visibleProjects = projects.slice(startIndex, startIndex + cardsPerPage);
+
+  const handlePrev = () => {
+    setCurrentPage((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1));
+  };
+
+  const content = (
+    <div className={s.case_section}>
+      <header className={s.header}>
+        <h1 className={s.title}>Похожие проекты</h1>
+      </header>
+
+      <div className={s.sliderWrapper}>
+        <div className={s.case_slider_container}>
+          {visibleProjects.map((proj, idx) => (
+            <CaseCard key={`${currentPage}-${idx}`} {...proj} />
           ))}
         </div>
       </div>
-    </section>
+
+      <div className={s.slider_buttons}>
+        <button onClick={handlePrev} disabled={currentPage === 0}>
+          <IoIosArrowBack />
+        </button>
+        <button onClick={handleNext} disabled={currentPage === totalPages - 1}>
+          <IoIosArrowForward />
+        </button>
+      </div>
+    </div>
   );
+
+  return isMobile ? content : <div className="container">{content}</div>;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FiArrowUpRight } from "react-icons/fi";
@@ -15,11 +15,8 @@ export default function CaseHero({
   projectUrl = "#",
   stages,
 }) {
-  const containerRef = useRef(null);
-  const trackRef = useRef(null);
-  const [offset, setOffset] = useState(0);
-  const [slideWidth, setSlideWidth] = useState(0);
-  const [maxOffset, setMaxOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [cardsPerPage, setCardsPerPage] = useState(3);
 
   const projectImages = [
     {
@@ -44,74 +41,73 @@ export default function CaseHero({
     },
   ];
 
-  const slides = projectImages.reduce((acc, _, index) => {
-    if (index % 2 === 0) {
-      acc.push(projectImages.slice(index, index + 2));
-    }
-    return acc;
-  }, []);
-
   useEffect(() => {
-    const calculateSizes = () => {
-      if (containerRef.current && trackRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
-        const firstSlide = trackRef.current.children[0];
-        if (firstSlide) {
-          const slideRect = firstSlide.getBoundingClientRect();
-          const style = window.getComputedStyle(firstSlide);
-          const marginRight = parseFloat(style.marginRight);
-          const totalSlide = slideRect.width + marginRight;
-          setSlideWidth(totalSlide);
+    const handleResize = () => {
+      const width = window.innerWidth;
 
-          const totalTrackWidth = slides.length * totalSlide;
-          setMaxOffset(Math.max(totalTrackWidth - containerWidth, 0));
-        }
+      if (width <= 768) {
+        setCardsPerPage(1);
+      } else if (width <= 1200) {
+        setCardsPerPage(2);
+      } else {
+        setCardsPerPage(3);
       }
+
+      // Reset to first page when layout changes
+      setCurrentPage(0);
     };
 
-    calculateSizes();
-    window.addEventListener("resize", calculateSizes);
-    return () => window.removeEventListener("resize", calculateSizes);
-  }, [slides.length]);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  const handlePrev = () => setOffset((prev) => Math.max(prev - slideWidth, 0));
-  const handleNext = () =>
-    setOffset((prev) => Math.min(prev + slideWidth, maxOffset));
+  const totalPages = Math.ceil(projectImages.length / cardsPerPage);
+  const startIndex = currentPage * cardsPerPage;
+  const visibleImages = projectImages.slice(
+    startIndex,
+    startIndex + cardsPerPage
+  );
+
+  const handlePrev = () => {
+    setCurrentPage((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1));
+  };
 
   return (
     <section className={s.hero}>
       <div className={s.slider}>
-        <div ref={containerRef} className={s.sliderWrapper}>
-          <div
-            ref={trackRef}
-            className={s.sliderTrack}
-            style={{
-              transform: `translateX(-${offset}px)`,
-              transition: "transform 0.5s ease",
-            }}
-          >
-            {slides.map((slideGroup, slideIndex) => (
-              <div key={slideIndex} className={s.slide}>
-                {slideGroup.map((image, imageIndex) => (
-                  <div key={imageIndex} className={s.card}>
-                    <div className={s.cardImage}>
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        className={s.slideImage}
-                      />
-                    </div>
-                  </div>
-                ))}
+        <div className={s.sliderWrapper}>
+          <div className={s.sliderTrack}>
+            {visibleImages.map((image, idx) => (
+              <div key={`${currentPage}-${idx}`} className={s.card}>
+                <div className={s.cardImage}>
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className={s.slideImage}
+                  />
+                </div>
               </div>
             ))}
           </div>
         </div>
         <div className={s.sliderControls}>
-          <button onClick={handlePrev} className={s.sliderButton}>
+          <button
+            onClick={handlePrev}
+            className={s.sliderButton}
+            disabled={currentPage === 0}
+          >
             <IoIosArrowBack />
           </button>
-          <button onClick={handleNext} className={s.sliderButton}>
+          <button
+            onClick={handleNext}
+            className={s.sliderButton}
+            disabled={currentPage === totalPages - 1}
+          >
             <IoIosArrowForward />
           </button>
         </div>
