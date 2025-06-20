@@ -8,6 +8,11 @@
   justify-content: center;
   z-index: 1000;
   padding: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: none !important;
 }
 
 .modal {
@@ -24,6 +29,8 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .formContent {

@@ -7,7 +7,6 @@ import HeroSection from "@/components/partials/Hero/HeroSection";
 import ServicesList from "@/components/partials/ServicesList/ServicesList";
 import TechBar from "@/components/partials/TechBar/TechBar";
 import Header from "@/components/layout/Header/Header";
-import Footer from "@/components/layout/Footer/Footer";
 import s from "./page.module.scss";
 
 export default function Home() {

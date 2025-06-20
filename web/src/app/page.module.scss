@@ -21,6 +21,8 @@
   height: calc(100vh - var(--header-height) - var(--footer-height));
   transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
   will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 
   .scrollable & {
     height: auto;
@@ -106,6 +108,28 @@
       min-height: auto;
       height: auto;
     }
+  }
+
+  .pagination {
+    display: none;
+  }
+}
+
+body.modal-open {
+  overflow: hidden;
+
+  .sectionsWrapper {
+    transform: none !important;
+    transition: none !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  .homeContainer {
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    transform: none !important;
   }
 
   .pagination {

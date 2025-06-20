@@ -90,10 +90,12 @@ function ServiceCard({ title, items, icon: Icon, onMouseMove, isHovered }) {
       className={`${s.card} ${isHovered ? s.nearHover : ""}`}
       onMouseMove={handleMouseMove}
     >
-      <div className={s.iconWrapper}>
-        <Icon className={s.icon} />
+      <div className={s.cardHeader}>
+        <div className={s.iconWrapper}>
+          <Icon className={s.icon} />
+        </div>
+        <h3 className={s.cardTitle}>{title}</h3>
       </div>
-      <h3 className={s.cardTitle}>{title}</h3>
       {items.length > 0 && (
         <div className={s.subServices}>
           {items.map((i) => (
