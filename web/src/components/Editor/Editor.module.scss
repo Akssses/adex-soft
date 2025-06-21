@@ -1,0 +1,56 @@
+@import "@/styles/variables.scss";
+
+.editor {
+  border: 1px solid $gray-200;
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+.menuBar {
+  padding: 8px;
+  border-bottom: 1px solid $gray-200;
+  background: $gray-50;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+
+  button {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: $radius-lg;
+    background: none;
+    color: $gray-600;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background: $white;
+      border-color: $gray-200;
+      color: $primary;
+    }
+
+    &.isActive {
+      background: rgba($primary, 0.1);
+      color: $primary;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.content {
+  padding: 16px;
+  min-height: 400px;
+}
+
+.proseMirror {
+  outline: none;
+  min-height: 400px;
+}
