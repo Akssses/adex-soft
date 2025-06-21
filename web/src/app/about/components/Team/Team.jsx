@@ -5,59 +5,51 @@ import s from "./Team.module.scss";
 
 const teamMembers = [
   {
-    name: "Александр Ким",
-    position: "CEO & Founder",
-    image:
-      "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80",
-    role: "Leadership",
+    name: "Aktan J.",
+    position: "Fullstack Developer",
+    image: "/assets/images/team/aktan.jpg",
+    role: "Engineering",
   },
   {
-    name: "Мария Ли",
-    position: "Lead Designer",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80",
+    name: "Damir M.",
+    position: "DevOps Engineer",
+    image: "/assets/images/team/damir.png",
+    role: "Engineering",
+  },
+  {
+    name: "Akbar K.",
+    position: "Project Manager & Team Lead",
+    image: "/assets/images/team/akbar.jpeg",
+    role: "Management",
+  },
+  {
+    name: "Aibek A.",
+    position: "Fullstack Developer",
+    image: "/assets/images/team/aibek.jpg",
+    role: "Web2/Web3",
+  },
+  {
+    name: "Meimuna D.",
+    position: "Marketing Lead",
+    image: "/assets/images/team/meka.jpeg",
+    role: "Marketing",
+  },
+  {
+    name: "Mirbek D.",
+    position: "Backend Developer",
+    image: "/assets/images/team/mirba.jpeg",
+    role: "Backend",
+  },
+  {
+    name: "Rosie H.",
+    position: "Design Lead",
+    image: "/assets/images/team/rosy.jpeg",
     role: "Design",
   },
   {
-    name: "Дмитрий Пак",
-    position: "Tech Lead",
-    image:
-      "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=800&q=80",
-    role: "Engineering",
-  },
-  {
-    name: "Анна Чен",
-    position: "Product Manager",
-    image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80",
-    role: "Product",
-  },
-  {
-    name: "Игорь Ли",
-    position: "Innovation Lead",
-    image:
-      "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=800&q=80",
-    role: "Research",
-  },
-  {
-    name: "Елена Ким",
-    position: "Backend Lead",
-    image:
-      "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=800&q=80",
-    role: "Engineering",
-  },
-  {
-    name: "Михаил Цой",
-    position: "DevOps Engineer",
-    image:
-      "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=800&q=80",
-    role: "Engineering",
-  },
-  {
-    name: "София Пак",
+    name: "Roma F.",
     position: "Security Lead",
-    image:
-      "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=800&q=80",
+    image: "/assets/images/team/roma.png",
     role: "Security",
   },
 ];
