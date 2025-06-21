@@ -105,10 +105,12 @@ export default function HeroSection() {
             </p>
 
             <div className={s.cta}>
-              <Button variant="primary" className={s.mainButton}>
-                Начать проект
-                <HiOutlineArrowNarrowRight className={s.arrow} />
-              </Button>
+              <Link href="https://t.me/adex_soft_manager" target="_blank">
+                <Button variant="primary" className={s.mainButton}>
+                  Связаться с нами
+                  <HiOutlineArrowNarrowRight className={s.arrow} />
+                </Button>
+              </Link>
               <Link href="/about">
                 <Button variant="secondary">Узнать больше</Button>
               </Link>

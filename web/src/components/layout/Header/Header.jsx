@@ -11,6 +11,7 @@ import {
   FaCoins,
   FaRobot,
   FaCube,
+  FaTelegram,
 } from "react-icons/fa";
 import { MdMenu, MdClose } from "react-icons/md";
 import RequesForm from "@/components/shared/RequesForm/RequesForm";
@@ -157,13 +158,22 @@ export default function Header() {
 
           <div className={s.nav_right}>
             <ul className={s.nav}>
-              <li>
+              {/* <li>
                 <Link href="/blog">Блог</Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/about">О нас</Link>
               </li>
             </ul>
+
+            <a
+              href="https://t.me/adex_soft_manager"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={s.telegramLink}
+            >
+              <FaTelegram size={24} />
+            </a>
 
             {/* <div className={s.langSwitcher} ref={langRef}>
               <button
@@ -210,7 +220,7 @@ export default function Header() {
           <div className={s.mobileMenu}>
             <nav>
               <Link href="/calc">Калькулятор</Link>
-              <Link href="/blog">Блог</Link>
+              {/* <Link href="/blog">Блог</Link> */}
               <Link href="/about">О нас</Link>
             </nav>
           </div>

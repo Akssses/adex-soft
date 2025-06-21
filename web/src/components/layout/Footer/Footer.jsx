@@ -18,7 +18,8 @@ const SERVICES = [
 
 const COMPANY = [
   { label: "О нас", href: "/about" },
-  { label: "Блог", href: "/blog" },
+  { label: "Калькулятор", href: "/calc" },
+  // { label: "Блог", href: "/blog" },
   { label: "Контакты", href: "/contact" },
 ];
 
@@ -45,13 +46,28 @@ export default function Footer() {
             Ваш партнер в развитии web3-приложений полного цикла
           </p>
           <div className={s.social}>
-            <Link href="#" aria-label="Instagram" className={s.socialLink}>
+            <Link
+              href="https://www.instagram.com/adex.soft.co/"
+              aria-label="Instagram"
+              className={s.socialLink}
+              target="_blank"
+            >
               <FaInstagram />
             </Link>
-            <Link href="#" aria-label="Telegram" className={s.socialLink}>
+            <Link
+              href="https://t.me/adex_soft_manager"
+              aria-label="Telegram"
+              className={s.socialLink}
+              target="_blank"
+            >
               <FaTelegram />
             </Link>
-            <Link href="#" aria-label="YouTube" className={s.socialLink}>
+            <Link
+              href="https://www.youtube.com/@adex.soft.co"
+              aria-label="YouTube"
+              className={s.socialLink}
+              target="_blank"
+            >
               <FaYoutube />
             </Link>
           </div>

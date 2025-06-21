@@ -130,6 +130,47 @@
   }
 }
 
+.telegramLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0066ff;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(0, 102, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  svg {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    color: #fff;
+    transform: translateY(-2px);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
 .langSwitcher {
   position: relative;
 }
@@ -314,7 +355,7 @@
 
 @media (max-width: 895px) {
   .nav_right {
-    gap: 10px;
+    gap: 16px;
     .nav {
       display: none;
     }
@@ -351,6 +392,14 @@
 
     .globeIcon {
       font-size: 14px;
+    }
+  }
+
+  .telegramLink {
+    padding: 6px;
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 }

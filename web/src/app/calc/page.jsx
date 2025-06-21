@@ -135,7 +135,11 @@ export default function ProjectCalcPage() {
               <h2>Итоговая стоимость:</h2>
               <span>${total}</span>
             </div>
-            <Link href={"https://t.me/adex_soft"}>
+            <Link
+              href={"https://t.me/adex_soft_manager"}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <button className={s.contact}>
                 <RiTelegram2Fill size={25} />
                 Связаться с нами
