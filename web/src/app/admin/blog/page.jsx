@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { FiPlus, FiEdit2, FiTrash2, FiEye } from "react-icons/fi";
 import s from "./page.module.scss";
+import Link from "next/link";
 
 const posts = [
   {
@@ -44,10 +45,12 @@ export default function BlogAdminPage() {
     <div className={s.blogAdmin}>
       <div className={s.header}>
         <h1 className={s.title}>Управление блогом</h1>
-        <button className={s.createButton}>
-          <FiPlus />
-          <span>Создать пост</span>
-        </button>
+        <Link href="/admin/blog/create">
+          <button className={s.createButton}>
+            <FiPlus />
+            <span>Создать пост</span>
+          </button>
+        </Link>
       </div>
 
       <div className={s.filters}>

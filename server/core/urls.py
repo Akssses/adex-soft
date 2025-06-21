@@ -18,17 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework.routers import DefaultRouter
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
-from blog.views import CategoryViewSet, TagViewSet, PostViewSet
-
-# API Router
-router = DefaultRouter()
-router.register(r'categories', CategoryViewSet)
-router.register(r'tags', TagViewSet)
-router.register(r'posts', PostViewSet)
 
 # Swagger Schema
 schema_view = get_schema_view(
@@ -42,14 +34,15 @@ schema_view = get_schema_view(
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
+    authentication_classes=(),  # Отключаем стандартную аутентификацию
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     
     # API URLs
-    path('api/v1/', include(router.urls)),
-    path('api/auth/', include('rest_framework.urls')),
+    path('api/v1/', include('blog.urls')),
+    path('api/v1/auth/', include('auth_api.urls')),
     
     # Swagger URLs
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),

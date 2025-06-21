@@ -2,6 +2,11 @@
   font-size: 18px;
   line-height: 1.8;
   color: #333;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 40px;
+  border: 1px solid rgba(0, 102, 255, 0.1);
 }
 
 .paragraph {
@@ -64,28 +69,6 @@
   }
 }
 
-.figure {
-  margin: 32px 0;
-  border-radius: 16px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-
-  .image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .caption {
-    padding: 16px;
-    text-align: center;
-    color: #666;
-    font-size: 14px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
-}
-
 .codeBlock {
   margin: 32px 0;
   padding: 24px;
@@ -115,10 +98,6 @@
     margin: 24px 0;
     padding: 20px 24px;
     font-size: 18px;
-  }
-
-  .figure {
-    margin: 24px 0;
   }
 
   .codeBlock {

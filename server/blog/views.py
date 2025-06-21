@@ -88,7 +88,7 @@ class PostViewSet(viewsets.ModelViewSet):
     @action(detail=False)
     def featured(self, request):
         featured_posts = Post.objects.filter(featured=True)
-        serializer = self.get_serializer(featured_posts, many=True)
+        serializer = PostListSerializer(featured_posts, many=True)
         return Response(serializer.data)
     
     @action(detail=False)

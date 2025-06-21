@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from django.utils.html import strip_tags
 
 
 class Category(models.Model):
@@ -66,6 +67,7 @@ class Post(models.Model):
         verbose_name='Теги',
         blank=True
     )
+    excerpt = models.TextField('Краткое описание', blank=True)
     content = models.TextField('Содержание')
     image = models.ImageField(
         'Изображение',

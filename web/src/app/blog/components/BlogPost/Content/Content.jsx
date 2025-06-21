@@ -34,15 +34,6 @@ export default function BlogPostContent({ content }) {
             ))}
           </ul>
         );
-      case "image":
-        return (
-          <figure key={index} className={s.figure}>
-            <img src={item.src} alt={item.alt} className={s.image} />
-            {item.caption && (
-              <figcaption className={s.caption}>{item.caption}</figcaption>
-            )}
-          </figure>
-        );
       case "code":
         return (
           <pre key={index} className={s.codeBlock}>

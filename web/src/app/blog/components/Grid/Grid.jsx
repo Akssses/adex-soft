@@ -1,103 +1,104 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FiArrowRight, FiCalendar } from "react-icons/fi";
 import s from "./Grid.module.scss";
 import BlogCard from "../BlogCard/BlogCard";
-
-const categories = ["Все", "Blockchain", "DeFi", "NFT", "Web3", "Криптовалюты"];
-
-const posts = [
-  {
-    id: 1,
-    title: "Как работает блокчейн: простое объяснение сложной технологии",
-    excerpt: "Разбираем основные принципы работы блокчейна на простых примерах",
-    category: "Blockchain",
-    date: "15 марта 2024",
-    image: "blockchain-banner",
-  },
-  {
-    id: 2,
-    title: "Staking vs Farming: что выбрать?",
-    excerpt:
-      "Сравнение двух популярных способов пассивного дохода в криптовалюте",
-    category: "DeFi",
-    date: "12 марта 2024",
-    image: "defi-banner-2",
-  },
-  {
-    id: 3,
-    title: "Топ-5 NFT маркетплейсов 2024 года",
-    excerpt: "Обзор лучших площадок для покупки и продажи NFT",
-    category: "NFT",
-    date: "10 марта 2024",
-    image: "nft-banner-2",
-  },
-  {
-    id: 4,
-    title: "Безопасность в Web3: основные правила",
-    excerpt: "Как защитить свои активы в децентрализованном интернете",
-    category: "Web3",
-    date: "8 марта 2024",
-    image: "web3-banner-2",
-  },
-  {
-    id: 5,
-    title: "Анализ криптовалютного рынка",
-    excerpt: "Текущие тренды и прогнозы развития крипторынка",
-    category: "Криптовалюты",
-    date: "5 марта 2024",
-    image: "crypto-banner",
-  },
-  {
-    id: 6,
-    title: "Smart-контракты: руководство для начинающих",
-    excerpt: "Что такое смарт-контракты и как они работают",
-    category: "Blockchain",
-    date: "3 марта 2024",
-    image: "smart-contracts-banner",
-  },
-];
+import { getPosts, getCategories } from "@/app/api/blog";
 
 export default function BlogGrid() {
-  const [activeCategory, setActiveCategory] = useState("Все");
+  const [posts, setPosts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 6;
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const filteredPosts =
-    activeCategory === "Все"
-      ? posts
-      : posts.filter((post) => post.category === activeCategory);
+  // Загрузка категорий
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const data = await getCategories();
+        // Проверяем, является ли ответ объектом с пагинацией
+        setCategories(Array.isArray(data) ? data : data.results || []);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+    loadCategories();
+  }, []);
 
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-  const currentPosts = filteredPosts.slice(
-    (currentPage - 1) * postsPerPage,
-    currentPage * postsPerPage
-  );
+  // Загрузка постов
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        setLoading(true);
+        const data = await getPosts(currentPage, activeCategory);
+        setPosts(data.results || []);
+        setTotalPages(Math.ceil((data.count || 0) / 10)); // 10 - размер страницы с бэкенда
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadPosts();
+  }, [currentPage, activeCategory]);
+
+  if (loading && !posts.length) {
+    return (
+      <section className={s.blogGrid}>
+        <div className="container">
+          <div className={s.loading}>Загрузка статей...</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={s.blogGrid}>
+        <div className="container">
+          <div className={s.error}>Ошибка: {error}</div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={s.blogGrid}>
       <div className="container">
         <div className={s.categories}>
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={`${s.categoryButton} ${
-                activeCategory === category ? s.active : ""
-              }`}
-              onClick={() => {
-                setActiveCategory(category);
-                setCurrentPage(1);
-              }}
-            >
-              {category}
-            </button>
-          ))}
+          <button
+            className={`${s.categoryButton} ${!activeCategory ? s.active : ""}`}
+            onClick={() => {
+              setActiveCategory(null);
+              setCurrentPage(1);
+            }}
+          >
+            Все
+          </button>
+          {Array.isArray(categories) &&
+            categories.map((category) => (
+              <button
+                key={category.id}
+                className={`${s.categoryButton} ${
+                  activeCategory === category.slug ? s.active : ""
+                }`}
+                onClick={() => {
+                  setActiveCategory(category.slug);
+                  setCurrentPage(1);
+                }}
+              >
+                {category.name}
+              </button>
+            ))}
         </div>
 
         <div className={s.grid}>
-          {currentPosts.map((post) => (
+          {posts.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
         </div>

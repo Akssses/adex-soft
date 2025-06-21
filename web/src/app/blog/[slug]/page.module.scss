@@ -1,0 +1,244 @@
+.blogPost {
+  min-height: 100vh;
+  padding-top: var(--header-height);
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+}
+
+.content {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 40px;
+  border: 1px solid rgba(0, 102, 255, 0.1);
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.error h2 {
+  color: #ff4444;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 20px;
+  }
+
+  .content {
+    padding: 24px;
+  }
+}
+
+.post {
+  padding: 40px 0;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #0066ff;
+  }
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.category {
+  padding: 6px 12px;
+  background: rgba(0, 102, 255, 0.1);
+  color: #0066ff;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.info {
+  display: flex;
+  gap: 16px;
+  color: #666;
+  font-size: 14px;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+.cover {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 40px 0 20px;
+    color: #1a1a1a;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 32px 0 16px;
+    color: #1a1a1a;
+  }
+
+  p {
+    margin-bottom: 24px;
+  }
+
+  ul,
+  ol {
+    margin: 24px 0;
+    padding-left: 24px;
+
+    li {
+      margin-bottom: 12px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 32px 0;
+  }
+
+  pre {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 12px;
+    overflow-x: auto;
+    margin: 32px 0;
+    font-size: 14px;
+  }
+
+  blockquote {
+    border-left: 4px solid #0066ff;
+    padding-left: 20px;
+    margin: 32px 0;
+    font-style: italic;
+    color: #666;
+  }
+}
+
+.tags {
+  margin-top: 40px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 6px 12px;
+  background: #f5f5f5;
+  color: #666;
+  border-radius: 20px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #0066ff;
+    color: white;
+  }
+}
+
+// DeFi баннер
+.defi-banner {
+  background: linear-gradient(135deg, #6366f1 0%, #2563eb 100%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 50%
+    );
+  }
+}
+
+// NFT баннер
+.nft-banner {
+  background: linear-gradient(135deg, #f472b6 0%, #db2777 100%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 50%
+    );
+  }
+}
+
+// Web3 баннер
+.web3-banner {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      circle at 50% 80%,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 50%
+    );
+  }
+}
