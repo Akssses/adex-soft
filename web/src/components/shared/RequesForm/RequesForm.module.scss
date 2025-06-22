@@ -518,6 +518,27 @@
   overflow: hidden;
   z-index: 100;
   padding: 8px 0;
+  max-height: 280px;
+  overflow-y: auto;
+
+  /* Стилизация скроллбара */
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 102, 255, 0.2);
+    border-radius: 4px;
+
+    &:hover {
+      background-color: rgba(0, 102, 255, 0.3);
+    }
+  }
+
+  /* Для Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 102, 255, 0.2) transparent;
 }
 
 .option {
