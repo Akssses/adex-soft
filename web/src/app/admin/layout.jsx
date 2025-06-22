@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import AdminSidebar from "./components/Sidebar/Sidebar";
-import AdminHeader from "./components/Header/Header";
+import AdminSidebar from "./components/AdminSidebar/AdminSidebar";
+import AdminHeader from "./components/AdminHeader/AdminHeader";
 import AdminGuard from "@/app/admin/components/AdminGuard/AdminGuard";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

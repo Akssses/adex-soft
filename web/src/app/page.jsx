@@ -7,7 +7,7 @@ import HeroSection from "@/components/partials/Hero/HeroSection";
 import ServicesList from "@/components/partials/ServicesList/ServicesList";
 import TechBar from "@/components/partials/TechBar/TechBar";
 import Header from "@/components/layout/Header/Header";
-import s from "./page.module.scss";
+import s from "@/styles/HomePage.module.scss";
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState(0);

@@ -9,13 +9,15 @@ import {
   FiUsers,
   FiSettings,
   FiLogOut,
+  FiBriefcase,
 } from "react-icons/fi";
 import { useAdminAuth } from "@/services/useAdminAuth";
-import s from "./Sidebar.module.scss";
+import s from "./AdminSidebar.module.scss";
 
 const menuItems = [
   { icon: FiHome, label: "Главная", href: "/admin" },
   { icon: FiFileText, label: "Блог", href: "/admin/blog" },
+  { icon: FiBriefcase, label: "Кейсы", href: "/admin/cases" },
   { icon: FiUsers, label: "Команда", href: "/admin/team" },
   { icon: FiSettings, label: "Настройки", href: "/admin/settings" },
 ];
@@ -32,7 +34,7 @@ export default function AdminSidebar() {
     <aside className={s.sidebar}>
       <div className={s.logo}>
         <Link href="/">
-          <img src="/assets/images/logo.png" alt="ADEX SOFT LOGO" />
+          <img src="/assets/images/admin-logo.png" alt="ADEX SOFT LOGO" />
         </Link>
       </div>
 

@@ -33,7 +33,7 @@ export const useAdminAuth = () => {
       localStorage.setItem("refreshToken", data.refresh);
 
       notify.success("Успешный вход в систему");
-      router.push("/admin/blog");
+      router.push("/admin");
       return data;
     } catch (err) {
       setError("Неверный логин или пароль");

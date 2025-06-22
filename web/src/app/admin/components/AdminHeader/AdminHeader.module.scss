@@ -1,0 +1,113 @@
+@import "@/styles/variables.scss";
+
+.header {
+  height: 80px;
+  padding: 0 32px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 102, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 280px;
+  z-index: 30;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+
+  .separator {
+    color: #999;
+  }
+
+  .currentPage {
+    color: #0066ff;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.createButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #0066ff, #00ccff);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 102, 255, 0.2);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+    left: 0;
+  }
+
+  .pageTitle {
+    font-size: 20px;
+  }
+
+  .breadcrumbs {
+    font-size: 12px;
+  }
+
+  .createButton {
+    padding: 10px 16px;
+
+    span {
+      display: none;
+    }
+
+    svg {
+      margin: 0;
+    }
+  }
+}
