@@ -10,6 +10,7 @@ import {
   FiSettings,
   FiLogOut,
 } from "react-icons/fi";
+import { useAdminAuth } from "@/services/useAdminAuth";
 import s from "./Sidebar.module.scss";
 
 const menuItems = [
@@ -21,6 +22,11 @@ const menuItems = [
 
 export default function AdminSidebar() {
   const pathname = usePathname();
+  const { logout } = useAdminAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <aside className={s.sidebar}>
@@ -48,7 +54,7 @@ export default function AdminSidebar() {
         })}
       </nav>
 
-      <button className={s.logoutButton}>
+      <button className={s.logoutButton} onClick={handleLogout}>
         <FiLogOut className={s.icon} />
         <span>Выйти</span>
       </button>

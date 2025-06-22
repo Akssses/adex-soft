@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import styles from "./login.module.scss";
+import { useState, useEffect } from "react";
+import { useAdminAuth } from "@/services/useAdminAuth";
+import styles from "./page.module.scss";
 import { FaLock, FaUser } from "react-icons/fa";
 
 export default function AdminLogin() {
@@ -10,33 +10,26 @@ export default function AdminLogin() {
     username: "",
     password: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const router = useRouter();
+  const { login, isLoading, error: authError, checkAuth } = useAdminAuth();
+
+  useEffect(() => {
+    // Проверяем авторизацию при загрузке страницы
+    const checkAuthentication = async () => {
+      const isAuthenticated = await checkAuth();
+      if (isAuthenticated) {
+        window.location.href = "/admin/blog";
+      }
+    };
+    checkAuthentication();
+  }, [checkAuth]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError("");
-
     try {
-      const response = await fetch("/api/admin/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentials),
-      });
-
-      if (!response.ok) {
-        throw new Error("Invalid credentials");
-      }
-
-      router.push("/admin/dashboard");
+      await login(credentials.username, credentials.password);
     } catch (err) {
-      setError("Неверный логин или пароль");
-    } finally {
-      setIsLoading(false);
+      // Ошибка уже обрабатывается в хуке useAdminAuth
+      console.error("Login failed:", err);
     }
   };
 
@@ -87,7 +80,7 @@ export default function AdminLogin() {
             </div>
           </div>
 
-          {error && <div className={styles.error}>{error}</div>}
+          {authError && <div className={styles.error}>{authError}</div>}
 
           <button
             type="submit"

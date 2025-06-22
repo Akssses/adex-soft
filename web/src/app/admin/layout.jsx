@@ -3,16 +3,22 @@
 import React from "react";
 import AdminSidebar from "./components/Sidebar/Sidebar";
 import AdminHeader from "./components/Header/Header";
+import AdminGuard from "@/app/admin/components/AdminGuard/AdminGuard";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import s from "./layout.module.scss";
 
 export default function AdminLayout({ children }) {
   return (
-    <div className={s.adminLayout}>
-      <AdminSidebar />
-      <div className={s.mainContent}>
-        <AdminHeader />
-        <main className={s.content}>{children}</main>
+    <AdminGuard>
+      <div className={s.adminLayout}>
+        <AdminSidebar />
+        <div className={s.mainContent}>
+          <AdminHeader />
+          <main className={s.content}>{children}</main>
+        </div>
+        <ToastContainer />
       </div>
-    </div>
+    </AdminGuard>
   );
 }
