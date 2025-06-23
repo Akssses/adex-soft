@@ -13,6 +13,7 @@ const getPageTitle = (pathname) => {
     "/admin/cases": "Управление кейсами",
     "/admin/team": "Управление командой",
     "/admin/settings": "Настройки",
+    "/admin/cases/create": "Создание кейса",
   };
 
   return titles[pathname] || "Админ-панель";

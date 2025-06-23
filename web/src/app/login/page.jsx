@@ -17,7 +17,7 @@ export default function AdminLogin() {
     const checkAuthentication = async () => {
       const isAuthenticated = await checkAuth();
       if (isAuthenticated) {
-        window.location.href = "/admin/blog";
+        window.location.href = "/admin";
       }
     };
     checkAuthentication();

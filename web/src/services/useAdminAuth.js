@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { notify } from "@/utils/toast";
+import Cookies from "js-cookie";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -28,9 +29,10 @@ export const useAdminAuth = () => {
         throw new Error(data.detail || "Ошибка авторизации");
       }
 
-      // Сохраняем токены
+      // Сохраняем токены в localStorage и cookies
       localStorage.setItem("accessToken", data.access);
       localStorage.setItem("refreshToken", data.refresh);
+      Cookies.set("adminToken", data.access, { expires: 1 }); // expires in 1 day
 
       notify.success("Успешный вход в систему");
       router.push("/admin");
@@ -47,6 +49,7 @@ export const useAdminAuth = () => {
   const logout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
+    Cookies.remove("adminToken");
     notify.info("Вы вышли из системы");
     router.push("/login");
   };
@@ -71,6 +74,7 @@ export const useAdminAuth = () => {
       }
 
       localStorage.setItem("accessToken", data.access);
+      Cookies.set("adminToken", data.access, { expires: 1 }); // Обновляем токен и в cookies
       return data.access;
     } catch (err) {
       logout();

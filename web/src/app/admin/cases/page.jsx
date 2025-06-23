@@ -1,53 +1,60 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import s from "./page.module.scss";
 import CaseCard from "./components/CaseCard/CaseCard";
 import CaseFilters from "./components/CaseFilters/CaseFilters";
-
-// Демо данные
-const cases = [
-  {
-    id: 1,
-    title: "Разработка NFT Маркетплейса",
-    description:
-      "Создание современной платформы для торговли NFT с поддержкой мультичейн и инновационной системой рейтинга.",
-    category: "Blockchain",
-    status: "published",
-    date: "15 марта 2024",
-    views: 1234,
-    featured: true,
-    image: "/assets/images/cases/nft.jpg",
-    tags: ["NFT", "Web3", "React"],
-  },
-  {
-    id: 2,
-    title: "DeFi Протокол Lending",
-    description:
-      "Разработка децентрализованной платформы кредитования с уникальным механизмом обеспечения и смарт-контрактами.",
-    category: "DeFi",
-    status: "archived",
-    date: "12 марта 2024",
-    views: 856,
-    featured: false,
-    image: "/assets/images/cases/defi.jpg",
-    tags: ["DeFi", "Solidity", "TypeScript"],
-  },
-];
+import { casesService } from "@/services/casesService";
+import { notify } from "@/utils/toast";
 
 export default function CasesAdminPage() {
+  const [cases, setCases] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
 
-  const handleArchive = (id) => {
-    // Логика архивации
-    console.log("Archive case:", id);
+  useEffect(() => {
+    loadCases();
+  }, []);
+
+  const loadCases = async () => {
+    try {
+      setLoading(true);
+      const response = await casesService.getAllCases();
+      setCases(response.results || []);
+    } catch (error) {
+      notify.error("Ошибка при загрузке кейсов");
+      console.error("Error loading cases:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleDelete = (id) => {
-    // Логика удаления
-    console.log("Delete case:", id);
+  const handleArchive = async (id) => {
+    try {
+      await casesService.updateCase(id, { status: "archived" });
+      notify.success("Кейс успешно архивирован");
+      loadCases();
+    } catch (error) {
+      notify.error("Ошибка при архивации кейса");
+      console.error("Error archiving case:", error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Вы уверены, что хотите удалить этот кейс?")) {
+      return;
+    }
+
+    try {
+      await casesService.deleteCase(id);
+      notify.success("Кейс успешно удален");
+      loadCases();
+    } catch (error) {
+      notify.error("Ошибка при удалении кейса");
+      console.error("Error deleting case:", error);
+    }
   };
 
   const filteredCases = cases.filter((item) => {
@@ -55,19 +62,16 @@ export default function CasesAdminPage() {
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory =
-      !selectedCategory || item.category === selectedCategory;
+      !selectedCategory ||
+      item.tags.some((tag) => tag.name === selectedCategory);
     const matchesStatus = !selectedStatus || item.status === selectedStatus;
 
     return matchesSearch && matchesCategory && matchesStatus;
   });
 
-  // Дополнительная статистика
-  const totalViews = cases.reduce((sum, item) => sum + (item.views || 0), 0);
-  const publishedCasesCount = cases.filter(
-    (item) => item.status === "published"
-  ).length;
-  const averageViews =
-    publishedCasesCount > 0 ? Math.round(totalViews / publishedCasesCount) : 0;
+  if (loading) {
+    return <div className={s.loading}>Загрузка...</div>;
+  }
 
   return (
     <div className={s.casesAdmin}>
