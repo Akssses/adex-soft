@@ -13,7 +13,6 @@ import s from "@/styles/AboutPage.module.scss";
 export default function AboutPage() {
   return (
     <>
-      <Header />
       <main className={s.aboutPage}>
         <AboutHero />
         <Achievements />

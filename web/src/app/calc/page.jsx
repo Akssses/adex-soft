@@ -98,7 +98,6 @@ export default function ProjectCalcPage() {
 
   return (
     <div>
-      <Header />
       <main className="container">
         <section className={s.calc_container}>
           <div className={s.calc_block}>

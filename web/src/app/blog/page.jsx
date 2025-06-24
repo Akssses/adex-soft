@@ -55,7 +55,6 @@ export default function BlogPage() {
 
   return (
     <>
-      <Header />
       <main className={s.blogPage}>
         <BlogHero />
         <FeaturedPosts posts={featuredPosts} loading={loading} />

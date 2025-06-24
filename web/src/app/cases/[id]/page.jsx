@@ -55,7 +55,6 @@ const caseStudy = {
 export default function CaseDetailPage({ params }) {
   return (
     <>
-      <Header />
       <main className={s.casePage}>
         <CaseHero {...caseStudy.hero} stages={caseStudy.process.stages} />
         <div className={`${s.content} container`}>

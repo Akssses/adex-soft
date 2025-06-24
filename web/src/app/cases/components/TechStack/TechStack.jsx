@@ -2,7 +2,7 @@
 
 import React from "react";
 import s from "./TechStack.module.scss";
-import techStack from "./techStack";
+import techStack from "@/lib/stackData";
 
 export default function CaseTechStack() {
   return (
