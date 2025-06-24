@@ -1,8 +1,9 @@
 import React from "react";
 import s from "./CaseCard.module.scss";
 import { IoIosArrowForward } from "react-icons/io";
+import Link from "next/link";
 
-export default function CaseCard({ title, description, tags, link, image }) {
+export default function CaseCard({ id, title, description, tags, image }) {
   return (
     <div className={s.card}>
       <div className={s.imageWrapper}>
@@ -21,16 +22,17 @@ export default function CaseCard({ title, description, tags, link, image }) {
         <h3 className={s.title}>{title}</h3>
         <p className={s.description}>{description}</p>
 
-        <a
-          href={link}
+        <Link
+          href={`/cases/${id}`}
           target="_blank"
           rel="noopener noreferrer"
           className={s.link}
         >
           <span>Смотреть проект</span>
           <IoIosArrowForward />
-        </a>
+        </Link>
       </div>
     </div>
   );
+  s;
 }

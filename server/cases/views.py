@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework.permissions import AllowAny, IsAdminUser
 from django.db.models import Q
 import json
 from .models import Case, Tag, Service, Stack
@@ -17,7 +18,18 @@ from .serializers import (
 
 class CaseViewSet(viewsets.ModelViewSet):
     queryset = Case.objects.all()
+    permission_classes = [AllowAny]  # Default permission for all actions
     
+    def get_permissions(self):
+        """
+        Instantiates and returns the list of permissions that this view requires.
+        """
+        if self.action in ['create', 'update', 'partial_update', 'destroy']:
+            permission_classes = [IsAdminUser]
+        else:
+            permission_classes = [AllowAny]
+        return [permission() for permission in permission_classes]
+
     def get_serializer_class(self):
         if self.action in ['create', 'update', 'partial_update']:
             return CaseCreateSerializer
@@ -109,11 +121,14 @@ class CaseViewSet(viewsets.ModelViewSet):
 class TagViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
+    permission_classes = [AllowAny]
 
 class ServiceViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
+    permission_classes = [AllowAny]
 
 class StackViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Stack.objects.all()
     serializer_class = StackSerializer
+    permission_classes = [AllowAny]

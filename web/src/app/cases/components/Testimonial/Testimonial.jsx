@@ -4,7 +4,9 @@ import React from "react";
 import Image from "next/image";
 import s from "./Testimonial.module.scss";
 
-export default function CaseTestimonial({ quote, author }) {
+export default function CaseTestimonial({ text, author, position, avatar }) {
+  if (!text || !author) return null;
+
   return (
     <section className={s.testimonial}>
       <div className={s.content}>
@@ -22,21 +24,19 @@ export default function CaseTestimonial({ quote, author }) {
               fill="currentColor"
             />
           </svg>
-          <p className={s.quoteText}>
-            The ADEX team executed our vision perfectly. Fast, clear, and sharp!
-          </p>
+          <p className={s.quoteText}>{text}</p>
         </div>
 
         <div className={s.author}>
           <div className={s.avatar}>
             <img
-              src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=800&q=80"
-              alt=""
+              src={avatar || "/assets/images/placeholder-avatar.png"}
+              alt={author}
             />
           </div>
           <div className={s.authorInfo}>
-            <div className={s.name}>Akbar Kudaibergenov</div>
-            <div className={s.position}>ADEX Group Founder</div>
+            <div className={s.name}>{author}</div>
+            {position && <div className={s.position}>{position}</div>}
           </div>
         </div>
       </div>

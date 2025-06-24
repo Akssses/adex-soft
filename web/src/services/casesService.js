@@ -10,8 +10,22 @@ const casesApi = axios.create({
   },
 });
 
-// Добавляем интерцептор для автоматического добавления токена
+// Добавляем интерцептор для автоматического добавления токена только для админских операций
 casesApi.interceptors.request.use((config) => {
+  // Список публичных эндпоинтов, которые не требуют авторизации
+  const publicEndpoints = ["/published/", "/tags/", "/services/", "/stacks/"];
+
+  // Проверяем, является ли URL деталями кейса (например, /123/)
+  const isDetailPage = /^\/\d+\/$/.test(config.url);
+
+  // Если это публичный эндпоинт или страница деталей, не добавляем токен
+  if (
+    publicEndpoints.some((endpoint) => config.url.endsWith(endpoint)) ||
+    isDetailPage
+  ) {
+    return config;
+  }
+
   const token = Cookies.get("adminToken");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;

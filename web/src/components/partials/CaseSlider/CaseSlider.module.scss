@@ -76,6 +76,17 @@
   }
 }
 
+.loading,
+.empty {
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
 @media (max-width: 1400px) {
   .case_slider_container {
     gap: 20px;

@@ -1,5 +1,6 @@
 .testimonial {
   width: 100%;
+  margin-top: 100px;
 }
 
 .content {
@@ -67,6 +68,11 @@
 }
 
 @media (max-width: 768px) {
+  .testimonial {
+    margin: 50px 0px;
+    padding: 0 20px;
+  }
+
   .content {
     padding: 32px;
   }

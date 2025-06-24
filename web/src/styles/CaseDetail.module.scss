@@ -1,10 +1,38 @@
 .casePage {
   min-height: 100vh;
-  padding-top: var(--header-height);
+  padding-top: 80px;
 }
 
-.content {
+.loading,
+.error,
+.notFound {
+  min-height: 60vh;
   display: flex;
-  flex-direction: column;
-  gap: 120px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.error {
+  color: var(--error);
+}
+
+@media (max-width: 768px) {
+  .casePage {
+    padding-top: 60px;
+  }
+
+  .content {
+    padding: 60px 0;
+  }
+
+  .loading,
+  .error,
+  .notFound {
+    padding: 80px 16px;
+    min-height: 40vh;
+  }
 }
