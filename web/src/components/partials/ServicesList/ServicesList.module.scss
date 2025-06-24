@@ -3,7 +3,6 @@
   flex-direction: column;
   height: 90vh;
   position: relative;
-  margin-top: 100px;
 }
 
 .header {
@@ -246,7 +245,6 @@
   .servicesList {
     height: auto;
     min-height: 100vh;
-    margin-top: 80px;
   }
 
   .grid4 {
@@ -289,10 +287,6 @@
 }
 
 @media (max-width: 768px) {
-  .servicesList {
-    margin-top: 60px;
-  }
-
   .header {
     margin-bottom: 40px;
 
@@ -341,10 +335,6 @@
 }
 
 @media (max-width: 480px) {
-  .servicesList {
-    margin-top: 40px;
-  }
-
   .header {
     margin-bottom: 32px;
 
