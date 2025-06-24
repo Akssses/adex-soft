@@ -36,12 +36,11 @@
   overflow: hidden;
   background: #fff;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  will-change: transform;
+  transition: 0.3s;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
   }
 }
 

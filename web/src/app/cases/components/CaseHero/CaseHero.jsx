@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { FiArrowUpRight } from "react-icons/fi";
 import s from "./CaseHero.module.scss";
 
 export default function CaseHero({
@@ -11,7 +9,6 @@ export default function CaseHero({
   subtitle,
   tags = [],
   services = [],
-  stacks = [],
   projectUrl = "#",
   images = [],
   stages = [],
@@ -51,8 +48,6 @@ export default function CaseHero({
   const handleNext = () => {
     setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1));
   };
-
-  console.log("CaseHero props:", { tags }); // Debugging log
 
   return (
     <section className={s.hero}>

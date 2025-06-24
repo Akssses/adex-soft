@@ -15,21 +15,19 @@ casesApi.interceptors.request.use((config) => {
   // Список публичных эндпоинтов, которые не требуют авторизации
   const publicEndpoints = ["/published/", "/tags/", "/services/", "/stacks/"];
 
-  // Проверяем, является ли URL деталями кейса (например, /123/)
-  const isDetailPage = /^\/\d+\/$/.test(config.url);
+  // Проверяем метод запроса
+  const isAdminAction = ["POST", "PATCH", "PUT", "DELETE"].includes(
+    config.method.toUpperCase()
+  );
 
-  // Если это публичный эндпоинт или страница деталей, не добавляем токен
-  if (
-    publicEndpoints.some((endpoint) => config.url.endsWith(endpoint)) ||
-    isDetailPage
-  ) {
-    return config;
+  // Если это админское действие, добавляем токен
+  if (isAdminAction) {
+    const token = Cookies.get("adminToken");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
   }
 
-  const token = Cookies.get("adminToken");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
   return config;
 });
 
