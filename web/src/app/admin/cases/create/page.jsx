@@ -18,22 +18,20 @@ export default function CreateCasePage() {
     services: [],
     projectUrl: "",
     tags: [],
-    status: "draft",
+    status: "published",
     images: [],
     stacks: [],
     reviewText: "",
     clientName: "",
     clientPosition: "",
     clientAvatar: null,
-    process: {
-      stages: [
-        {
-          title: "",
-          duration: "",
-          description: "",
-        },
-      ],
-    },
+    stages: [
+      {
+        title: "",
+        duration: "",
+        description: "",
+      },
+    ],
   });
 
   const [dragActive, setDragActive] = useState(false);
@@ -83,33 +81,41 @@ export default function CreateCasePage() {
   const handleAddStage = () => {
     setFormData((prev) => ({
       ...prev,
-      process: {
-        stages: [
-          ...prev.process.stages,
-          { title: "", duration: "", description: "" },
-        ],
-      },
+      stages: [
+        ...prev.stages,
+        {
+          title: "",
+          duration: "",
+          description: "",
+        },
+      ],
     }));
   };
 
   const handleRemoveStage = (index) => {
     setFormData((prev) => ({
       ...prev,
-      process: {
-        stages: prev.process.stages.filter((_, i) => i !== index),
-      },
+      stages: prev.stages.filter((_, i) => i !== index),
     }));
   };
 
   const handleStageChange = (index, field, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      process: {
-        stages: prev.process.stages.map((stage, i) =>
-          i === index ? { ...stage, [field]: value } : stage
-        ),
-      },
-    }));
+    console.log(`Changing stage ${index}, field: ${field}, value: ${value}`);
+    setFormData((prev) => {
+      const newStages = prev.stages.map((stage, i) =>
+        i === index
+          ? {
+              ...stage,
+              [field]: value,
+            }
+          : stage
+      );
+      console.log("Updated stages:", newStages);
+      return {
+        ...prev,
+        stages: newStages,
+      };
+    });
   };
 
   const handleDrag = (e) => {
@@ -185,8 +191,41 @@ export default function CreateCasePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      await casesService.createCase(formData);
+      console.log("Raw formData stages:", formData.stages);
+
+      // Validate stages
+      const validStages = formData.stages.filter(
+        (stage) =>
+          stage &&
+          typeof stage === "object" &&
+          stage.title?.trim() &&
+          stage.duration?.trim() &&
+          stage.description?.trim()
+      );
+
+      console.log("Valid stages after filter:", validStages);
+
+      if (validStages.length === 0) {
+        toast.error("Добавьте хотя бы один этап разработки");
+        return;
+      }
+
+      // Create a copy of formData with validated stages
+      const submitData = {
+        ...formData,
+        stages: validStages.map((stage, index) => ({
+          title: stage.title.trim(),
+          duration: stage.duration.trim(),
+          description: stage.description.trim(),
+          order: index,
+        })),
+      };
+
+      console.log("Final submitData stages:", submitData.stages);
+
+      await casesService.createCase(submitData);
       toast.success("Кейс успешно создан");
       router.push("/admin/cases");
     } catch (error) {

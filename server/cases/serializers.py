@@ -74,6 +74,48 @@ class CaseCreateSerializer(serializers.ModelSerializer):
             'images', 'stages', 'tags', 'services', 'stacks'
         ]
 
+    def validate_stages(self, value):
+        """
+        Validate stages data
+        """
+        if not value:
+            raise serializers.ValidationError("At least one stage is required")
+        
+        for stage in value:
+            if not all(key in stage for key in ['title', 'duration', 'description']):
+                raise serializers.ValidationError("Each stage must have title, duration and description")
+            if not all(stage[key].strip() for key in ['title', 'duration', 'description']):
+                raise serializers.ValidationError("Stage fields cannot be empty")
+        
+        return value
+
+    def to_internal_value(self, data):
+        """
+        Convert the raw input data into Python datatypes.
+        Handle the special case of stages data format.
+        """
+        # Get a mutable copy of the QueryDict
+        data = data.copy()
+
+        # Extract stages data from the request
+        stages = []
+        i = 0
+        while f'stages[{i}]title' in data:
+            stage = {
+                'title': data.pop(f'stages[{i}]title')[0],
+                'duration': data.pop(f'stages[{i}]duration')[0],
+                'description': data.pop(f'stages[{i}]description')[0],
+                'order': int(data.pop(f'stages[{i}]order')[0])
+            }
+            stages.append(stage)
+            i += 1
+
+        # Add stages back to the data
+        if stages:
+            data['stages'] = stages
+
+        return super().to_internal_value(data)
+
     def create(self, validated_data):
         images_data = validated_data.pop('images', [])
         stages_data = validated_data.pop('stages', [])
@@ -89,8 +131,8 @@ class CaseCreateSerializer(serializers.ModelSerializer):
             CaseImage.objects.create(case=case, image=image, order=index)
 
         # Create stages
-        for index, stage_data in enumerate(stages_data):
-            ProcessStage.objects.create(case=case, order=index, **stage_data)
+        for stage_data in stages_data:
+            ProcessStage.objects.create(case=case, **stage_data)
 
         # Add tags
         for tag_name in tags_data:
@@ -110,47 +152,33 @@ class CaseCreateSerializer(serializers.ModelSerializer):
         return case
 
     def update(self, instance, validated_data):
-        images_data = validated_data.pop('images', None)
-        stages_data = validated_data.pop('stages', None)
-        tags_data = validated_data.pop('tags', None)
-        services_data = validated_data.pop('services', None)
-        stacks_data = validated_data.pop('stacks', None)
+        # Handle tags
+        tags_data = validated_data.pop('tags', [])
+        tags = [Tag.objects.get_or_create(name=tag_name)[0] for tag_name in tags_data]
+        instance.tags.set(tags)
 
-        # Update basic fields
+        # Handle services
+        services_data = validated_data.pop('services', [])
+        services = [Service.objects.get_or_create(name=service_name)[0] for service_name in services_data]
+        instance.services.set(services)
+
+        # Handle stacks
+        stacks_data = validated_data.pop('stacks', [])
+        stacks = [Stack.objects.get_or_create(name=stack_name)[0] for stack_name in stacks_data]
+        instance.stacks.set(stacks)
+
+        # Handle stages
+        stages_data = validated_data.pop('stages', [])
+        instance.stages.all().delete()  # Remove existing stages
+        for index, stage_data in enumerate(stages_data):
+            # Remove order from stage_data if it exists
+            if 'order' in stage_data:
+                stage_data.pop('order')
+            ProcessStage.objects.create(case=instance, order=index, **stage_data)
+
+        # Update other fields
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
         instance.save()
-
-        if images_data is not None:
-            # Remove old images
-            instance.images.all().delete()
-            # Create new images
-            for index, image in enumerate(images_data):
-                CaseImage.objects.create(case=instance, image=image, order=index)
-
-        if stages_data is not None:
-            # Remove old stages
-            instance.stages.all().delete()
-            # Create new stages
-            for index, stage_data in enumerate(stages_data):
-                ProcessStage.objects.create(case=instance, order=index, **stage_data)
-
-        if tags_data is not None:
-            instance.tags.clear()
-            for tag_name in tags_data:
-                tag, _ = Tag.objects.get_or_create(name=tag_name)
-                instance.tags.add(tag)
-
-        if services_data is not None:
-            instance.services.clear()
-            for service_name in services_data:
-                service, _ = Service.objects.get_or_create(name=service_name)
-                instance.services.add(service)
-
-        if stacks_data is not None:
-            instance.stacks.clear()
-            for stack_name in stacks_data:
-                stack, _ = Stack.objects.get_or_create(name=stack_name)
-                instance.stacks.add(stack)
 
         return instance 

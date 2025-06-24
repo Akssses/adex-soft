@@ -49,34 +49,40 @@ export const casesService = {
   },
 
   async createCase(data) {
+    console.log("Service received data:", data);
+    console.log("Service received stages:", data.stages);
+
+    // Create FormData for files
     const formData = new FormData();
 
-    // Add basic fields
-    formData.append("title", data.title);
-    formData.append("description", data.description);
-    formData.append("project_url", data.projectUrl || "");
-    formData.append("status", "published"); // Default to published
+    // Add non-file fields as JSON string
+    const jsonData = {
+      title: data.title,
+      description: data.description,
+      project_url: data.projectUrl || "",
+      status: "published",
+      review_text: data.reviewText || "",
+      client_name: data.clientName || "",
+      client_position: data.clientPosition || "",
+      tags: data.tags || [],
+      services: data.services || [],
+      stacks: data.stacks || [],
+      stages: data.stages.map((stage, index) => ({
+        title: stage.title,
+        duration: stage.duration,
+        description: stage.description,
+        order: index,
+      })),
+    };
 
-    // Add review fields
-    formData.append("review_text", data.reviewText || "");
-    formData.append("client_name", data.clientName || "");
-    formData.append("client_position", data.clientPosition || "");
+    // Add the JSON data as a single field
+    formData.append("data", JSON.stringify(jsonData));
+
+    // Add files separately
     if (data.clientAvatar?.file) {
       formData.append("client_avatar", data.clientAvatar.file);
     }
 
-    // Add arrays
-    if (data.tags?.length) {
-      data.tags.forEach((tag) => formData.append("tags", tag));
-    }
-    if (data.services?.length) {
-      data.services.forEach((service) => formData.append("services", service));
-    }
-    if (data.stacks?.length) {
-      data.stacks.forEach((stack) => formData.append("stacks", stack));
-    }
-
-    // Add images
     if (data.images?.length) {
       data.images.forEach((image) => {
         if (image.file) {
@@ -85,45 +91,52 @@ export const casesService = {
       });
     }
 
-    // Add stages if they exist
-    if (data.stages?.length) {
-      formData.append("stages", JSON.stringify(data.stages));
+    // Log FormData contents
+    console.log("FormData entries:");
+    for (let [key, value] of formData.entries()) {
+      console.log(key, ":", value);
     }
 
     const response = await casesApi.post("/", formData);
+    console.log("API response:", response.data);
     return response.data;
   },
 
   async updateCase(id, data) {
+    console.log("Service received update data:", data);
+    console.log("Service received update stages:", data.stages);
+
+    // Create FormData for files
     const formData = new FormData();
 
-    // Add basic fields if they exist
-    if (data.title) formData.append("title", data.title);
-    if (data.description) formData.append("description", data.description);
-    if (data.projectUrl) formData.append("project_url", data.projectUrl);
-    if (data.status) formData.append("status", data.status);
+    // Add non-file fields as JSON string
+    const jsonData = {
+      title: data.title,
+      description: data.description,
+      project_url: data.projectUrl || "",
+      status: data.status,
+      review_text: data.reviewText || "",
+      client_name: data.clientName || "",
+      client_position: data.clientPosition || "",
+      tags: data.tags || [],
+      services: data.services || [],
+      stacks: data.stacks || [],
+      stages: data.stages.map((stage, index) => ({
+        title: stage.title,
+        duration: stage.duration,
+        description: stage.description,
+        order: index,
+      })),
+    };
 
-    // Add review fields if they exist
-    if (data.reviewText) formData.append("review_text", data.reviewText);
-    if (data.clientName) formData.append("client_name", data.clientName);
-    if (data.clientPosition)
-      formData.append("client_position", data.clientPosition);
+    // Add the JSON data as a single field
+    formData.append("data", JSON.stringify(jsonData));
+
+    // Add files separately
     if (data.clientAvatar?.file) {
       formData.append("client_avatar", data.clientAvatar.file);
     }
 
-    // Add arrays if they exist
-    if (data.tags?.length) {
-      data.tags.forEach((tag) => formData.append("tags", tag));
-    }
-    if (data.services?.length) {
-      data.services.forEach((service) => formData.append("services", service));
-    }
-    if (data.stacks?.length) {
-      data.stacks.forEach((stack) => formData.append("stacks", stack));
-    }
-
-    // Add images if they exist
     if (data.images?.length) {
       data.images.forEach((image) => {
         if (image.file) {
@@ -132,12 +145,14 @@ export const casesService = {
       });
     }
 
-    // Add stages if they exist
-    if (data.stages?.length) {
-      formData.append("stages", JSON.stringify(data.stages));
+    // Log FormData contents
+    console.log("FormData entries for update:");
+    for (let [key, value] of formData.entries()) {
+      console.log(key, ":", value);
     }
 
     const response = await casesApi.patch(`/${id}/`, formData);
+    console.log("API update response:", response.data);
     return response.data;
   },
 

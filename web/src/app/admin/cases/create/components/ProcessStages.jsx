@@ -8,8 +8,8 @@ export default function ProcessStages({
   handleAddStage,
   handleRemoveStage,
 }) {
-  // Handle both nested and root-level stages
-  const stages = formData.process?.stages || formData.stages || [];
+  // Use stages directly without filtering
+  const stages = formData.stages || [];
 
   return (
     <div className={s.formSection}>
@@ -35,7 +35,7 @@ export default function ProcessStages({
                   <input
                     type="text"
                     placeholder="Название этапа"
-                    value={stage.title}
+                    value={stage.title || ""}
                     onChange={(e) =>
                       handleStageChange(index, "title", e.target.value)
                     }
@@ -46,7 +46,7 @@ export default function ProcessStages({
                   <input
                     type="text"
                     placeholder="Длительность"
-                    value={stage.duration}
+                    value={stage.duration || ""}
                     onChange={(e) =>
                       handleStageChange(index, "duration", e.target.value)
                     }
@@ -57,7 +57,7 @@ export default function ProcessStages({
               <div className={s.formGroup}>
                 <textarea
                   placeholder="Описание этапа"
-                  value={stage.description}
+                  value={stage.description || ""}
                   onChange={(e) =>
                     handleStageChange(index, "description", e.target.value)
                   }
@@ -70,7 +70,7 @@ export default function ProcessStages({
         ))}
         <button
           type="button"
-          onClick={handleAddStage}
+          onClick={() => handleAddStage()}
           className={s.addStageButton}
         >
           <FiPlus />
