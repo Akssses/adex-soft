@@ -32,11 +32,12 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
     "localhost",
-    "localhost:3000",
     "127.0.0.1",
     "13.60.12.96",
     "adex.soft.co",
     "www.adex.soft.co",
+    "apiadexsoft.com",
+    "www.apiadexsoft.com",
 ]
 
 
