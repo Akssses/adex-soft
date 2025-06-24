@@ -1,5 +1,8 @@
+"use client";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import { usePathname } from "next/navigation";
 import "./globals.scss";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
@@ -32,21 +35,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "ADEX SOFT",
-  description:
-    "ADEX — агентство по разработке Web3 и блокчейн-решений. Мы помогаем стартапам и бизнесу развиваться с помощью dApp, смарт-контрактов, DeFi-платформ и NFT-решений. Начните свой проект с ADEX уже сегодня!",
-};
-
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+  const isAdminPage = pathname?.startsWith("/admin");
+  const isLoginPage = pathname === "/login";
+  const shouldShowHeaderFooter = !isAdminPage && !isLoginPage;
+
   return (
     <html lang="ru">
       <body
         className={`${gilroy.variable} ${geistSans.variable} ${geistMono.variable}`}
       >
-        <Header />
+        {shouldShowHeaderFooter && <Header />}
         {children}
-        <Footer />
+        {shouldShowHeaderFooter && <Footer />}
       </body>
     </html>
   );

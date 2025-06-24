@@ -8,7 +8,6 @@ import Footer from "@/components/layout/Footer/Footer";
 export default function TermsOfService() {
   return (
     <>
-      <Header />
       <main className={s.termsPage}>
         <div className="container">
           <article className={s.content}>
@@ -202,7 +201,6 @@ export default function TermsOfService() {
           </article>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

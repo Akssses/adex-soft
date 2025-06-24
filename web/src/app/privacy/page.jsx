@@ -8,7 +8,6 @@ import Footer from "@/components/layout/Footer/Footer";
 export default function PrivacyPolicy() {
   return (
     <>
-      <Header />
       <main className={s.privacyPage}>
         <div className="container">
           <article className={s.content}>
@@ -243,7 +242,6 @@ export default function PrivacyPolicy() {
           </article>
         </div>
       </main>
-      <Footer />
     </>
   );
 }
