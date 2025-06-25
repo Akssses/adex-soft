@@ -156,10 +156,12 @@ class CaseCreateSerializer(serializers.ModelSerializer):
         images_data = validated_data.pop('images', [])
         if images_data:
             # Delete existing images
-            instance.images.all().delete()
+            CaseImage.objects.filter(case=instance).delete()
             # Create new images
-            for index, image in enumerate(images_data):
-                CaseImage.objects.create(case=instance, image=image, order=index)
+            CaseImage.objects.bulk_create([
+                CaseImage(case=instance, image=image, order=index)
+                for index, image in enumerate(images_data)
+            ])
 
         # Handle tags
         tags_data = validated_data.pop('tags', [])
@@ -178,12 +180,20 @@ class CaseCreateSerializer(serializers.ModelSerializer):
 
         # Handle stages
         stages_data = validated_data.pop('stages', [])
-        instance.stages.all().delete()  # Remove existing stages
-        for index, stage_data in enumerate(stages_data):
-            # Remove order from stage_data if it exists
-            if 'order' in stage_data:
-                stage_data.pop('order')
-            ProcessStage.objects.create(case=instance, order=index, **stage_data)
+        if stages_data:
+            # Delete existing stages
+            ProcessStage.objects.filter(case=instance).delete()
+            # Create new stages
+            ProcessStage.objects.bulk_create([
+                ProcessStage(
+                    case=instance,
+                    title=stage.get('title'),
+                    duration=stage.get('duration'),
+                    description=stage.get('description'),
+                    order=index
+                )
+                for index, stage in enumerate(stages_data)
+            ])
 
         # Update other fields
         for attr, value in validated_data.items():

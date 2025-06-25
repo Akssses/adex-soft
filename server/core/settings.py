@@ -40,6 +40,15 @@ ALLOWED_HOSTS = [
     "www.apiadexsoft.com",
 ]
 
+# Maximum size of the entire request body (100MB)
+DATA_UPLOAD_MAX_MEMORY_SIZE = 104857600
+
+# Maximum size for a single file upload (50MB)
+FILE_UPLOAD_MAX_MEMORY_SIZE = 52428800
+
+# Maximum number of files that can be uploaded at once
+DATA_UPLOAD_MAX_NUMBER_FILES = 20
+
 
 # Application definition
 
