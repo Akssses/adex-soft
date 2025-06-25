@@ -152,9 +152,31 @@ class CaseCreateSerializer(serializers.ModelSerializer):
         return case
 
     def update(self, instance, validated_data):
+        # First, update basic fields
+        for attr, value in validated_data.items():
+            if attr not in ['images', 'stages', 'tags', 'services', 'stacks']:
+                setattr(instance, attr, value)
+        instance.save()
+
+        # Now handle related fields
+        if 'tags' in validated_data:
+            tags_data = validated_data.pop('tags')
+            tags = [Tag.objects.get_or_create(name=tag_name)[0] for tag_name in tags_data]
+            instance.tags.set(tags)
+
+        if 'services' in validated_data:
+            services_data = validated_data.pop('services')
+            services = [Service.objects.get_or_create(name=service_name)[0] for service_name in services_data]
+            instance.services.set(services)
+
+        if 'stacks' in validated_data:
+            stacks_data = validated_data.pop('stacks')
+            stacks = [Stack.objects.get_or_create(name=stack_name)[0] for stack_name in stacks_data]
+            instance.stacks.set(stacks)
+
         # Handle images
-        images_data = validated_data.pop('images', [])
-        if images_data:
+        if 'images' in validated_data:
+            images_data = validated_data.pop('images')
             # Delete existing images
             CaseImage.objects.filter(case=instance).delete()
             # Create new images one by one
@@ -165,24 +187,9 @@ class CaseCreateSerializer(serializers.ModelSerializer):
                     order=index
                 )
 
-        # Handle tags
-        tags_data = validated_data.pop('tags', [])
-        tags = [Tag.objects.get_or_create(name=tag_name)[0] for tag_name in tags_data]
-        instance.tags.set(tags)
-
-        # Handle services
-        services_data = validated_data.pop('services', [])
-        services = [Service.objects.get_or_create(name=service_name)[0] for service_name in services_data]
-        instance.services.set(services)
-
-        # Handle stacks
-        stacks_data = validated_data.pop('stacks', [])
-        stacks = [Stack.objects.get_or_create(name=stack_name)[0] for stack_name in stacks_data]
-        instance.stacks.set(stacks)
-
         # Handle stages
-        stages_data = validated_data.pop('stages', [])
-        if stages_data:
+        if 'stages' in validated_data:
+            stages_data = validated_data.pop('stages')
             # Delete existing stages
             ProcessStage.objects.filter(case=instance).delete()
             # Create new stages
@@ -194,10 +201,5 @@ class CaseCreateSerializer(serializers.ModelSerializer):
                     description=stage.get('description'),
                     order=index
                 )
-
-        # Update other fields
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
-        instance.save()
 
         return instance 
