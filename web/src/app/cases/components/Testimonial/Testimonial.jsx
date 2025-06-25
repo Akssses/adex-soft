@@ -1,11 +1,19 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import s from "./Testimonial.module.scss";
 
 export default function CaseTestimonial({ text, author, position, avatar }) {
   if (!text || !author) return null;
+
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+  };
 
   return (
     <section className={s.testimonial}>
@@ -28,11 +36,14 @@ export default function CaseTestimonial({ text, author, position, avatar }) {
         </div>
 
         <div className={s.author}>
-          <div className={s.avatar}>
-            <img
-              src={avatar || "/assets/images/placeholder-avatar.png"}
-              alt={author}
-            />
+          <div className={`${s.avatar} ${!avatar ? s.noAvatar : ""}`}>
+            {avatar ? (
+              <img src={avatar} alt={author} />
+            ) : (
+              <div className={s.initialsAvatar}>
+                <div className={s.initials}>{getInitials(author)}</div>
+              </div>
+            )}
           </div>
           <div className={s.authorInfo}>
             <div className={s.name}>{author}</div>
