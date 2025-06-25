@@ -193,7 +193,73 @@ export default function EditCasePage({ params }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await casesService.updateCase(id, formData);
+      // Validate required fields
+      if (!formData.title.trim()) {
+        notify.error("Название проекта обязательно для заполнения");
+        return;
+      }
+
+      if (!formData.description.trim()) {
+        notify.error("Описание проекта обязательно для заполнения");
+        return;
+      }
+
+      if (formData.tags.length === 0) {
+        notify.error("Добавьте хотя бы один тег");
+        return;
+      }
+
+      if (formData.services.length === 0) {
+        notify.error("Добавьте хотя бы одну услугу");
+        return;
+      }
+
+      if (formData.stacks.length === 0) {
+        notify.error("Добавьте хотя бы один стек технологий");
+        return;
+      }
+
+      // Validate stages
+      const validStages = formData.stages.filter(
+        (stage) =>
+          stage &&
+          typeof stage === "object" &&
+          stage.title?.trim() &&
+          stage.duration?.trim() &&
+          stage.description?.trim()
+      );
+
+      if (validStages.length === 0) {
+        notify.error("Добавьте хотя бы один этап разработки");
+        return;
+      }
+
+      // Validate review fields if any review data is present
+      if (formData.reviewText.trim()) {
+        if (!formData.clientName.trim()) {
+          notify.error("При наличии отзыва необходимо указать имя клиента");
+          return;
+        }
+        if (!formData.clientPosition.trim()) {
+          notify.error(
+            "При наличии отзыва необходимо указать должность клиента"
+          );
+          return;
+        }
+      }
+
+      // Create a copy of formData with validated stages
+      const submitData = {
+        ...formData,
+        stages: validStages.map((stage, index) => ({
+          title: stage.title.trim(),
+          duration: stage.duration.trim(),
+          description: stage.description.trim(),
+          order: index,
+        })),
+      };
+
+      await casesService.updateCase(id, submitData);
       notify.success("Кейс успешно обновлен");
       router.push("/admin/cases");
     } catch (error) {

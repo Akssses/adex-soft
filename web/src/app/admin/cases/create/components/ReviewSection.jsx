@@ -49,7 +49,7 @@ export default function ReviewSection({
       </div>
 
       <div className={s.formGroup}>
-        <label>Фото клиента</label>
+        <label>Фото клиента (необязательно)</label>
         <div className={s.avatarUpload}>
           <input
             type="file"
@@ -82,6 +82,9 @@ export default function ReviewSection({
             </div>
           )}
         </div>
+        <small className={s.helperText}>
+          Фотография клиента не обязательна для заполнения
+        </small>
       </div>
     </div>
   );

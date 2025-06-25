@@ -142,7 +142,7 @@ export default function BasicInfo({
       />
 
       <div className={s.formGroup}>
-        <label htmlFor="projectUrl">URL проекта</label>
+        <label htmlFor="projectUrl">URL проекта (необязательно)</label>
         <input
           type="url"
           id="projectUrl"

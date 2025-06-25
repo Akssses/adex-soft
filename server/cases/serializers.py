@@ -49,22 +49,24 @@ class CaseCreateSerializer(serializers.ModelSerializer):
         write_only=True,
         required=False
     )
-    stages = ProcessStageSerializer(many=True, required=False)
+    stages = ProcessStageSerializer(many=True, required=True)
     tags = serializers.ListField(
         child=serializers.CharField(),
         write_only=True,
-        required=False
+        required=True
     )
     services = serializers.ListField(
         child=serializers.CharField(),
         write_only=True,
-        required=False
+        required=True
     )
     stacks = serializers.ListField(
         child=serializers.CharField(),
         write_only=True,
-        required=False
+        required=True
     )
+    project_url = serializers.URLField(required=False, allow_blank=True)
+    client_avatar = serializers.ImageField(required=False, allow_null=True)
 
     class Meta:
         model = Case
@@ -73,6 +75,25 @@ class CaseCreateSerializer(serializers.ModelSerializer):
             'review_text', 'client_name', 'client_position', 'client_avatar',
             'images', 'stages', 'tags', 'services', 'stacks'
         ]
+
+    def validate(self, data):
+        """
+        Custom validation for the case
+        """
+        # Validate required fields
+        required_fields = ['title', 'description', 'status']
+        for field in required_fields:
+            if not data.get(field):
+                raise serializers.ValidationError(f"{field} is required")
+
+        # If there's a review, validate review fields
+        if data.get('review_text'):
+            if not data.get('client_name'):
+                raise serializers.ValidationError("client_name is required when review_text is provided")
+            if not data.get('client_position'):
+                raise serializers.ValidationError("client_position is required when review_text is provided")
+
+        return data
 
     def validate_stages(self, value):
         """

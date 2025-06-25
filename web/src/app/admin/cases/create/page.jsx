@@ -193,7 +193,31 @@ export default function CreateCasePage() {
     e.preventDefault();
 
     try {
-      console.log("Raw formData stages:", formData.stages);
+      // Validate required fields
+      if (!formData.title.trim()) {
+        toast.error("Название проекта обязательно для заполнения");
+        return;
+      }
+
+      if (!formData.description.trim()) {
+        toast.error("Описание проекта обязательно для заполнения");
+        return;
+      }
+
+      if (formData.tags.length === 0) {
+        toast.error("Добавьте хотя бы один тег");
+        return;
+      }
+
+      if (formData.services.length === 0) {
+        toast.error("Добавьте хотя бы одну услугу");
+        return;
+      }
+
+      if (formData.stacks.length === 0) {
+        toast.error("Добавьте хотя бы один стек технологий");
+        return;
+      }
 
       // Validate stages
       const validStages = formData.stages.filter(
@@ -205,11 +229,23 @@ export default function CreateCasePage() {
           stage.description?.trim()
       );
 
-      console.log("Valid stages after filter:", validStages);
-
       if (validStages.length === 0) {
         toast.error("Добавьте хотя бы один этап разработки");
         return;
+      }
+
+      // Validate review fields if any review data is present
+      if (formData.reviewText.trim()) {
+        if (!formData.clientName.trim()) {
+          toast.error("При наличии отзыва необходимо указать имя клиента");
+          return;
+        }
+        if (!formData.clientPosition.trim()) {
+          toast.error(
+            "При наличии отзыва необходимо указать должность клиента"
+          );
+          return;
+        }
       }
 
       // Create a copy of formData with validated stages
@@ -222,8 +258,6 @@ export default function CreateCasePage() {
           order: index,
         })),
       };
-
-      console.log("Final submitData stages:", submitData.stages);
 
       await casesService.createCase(submitData);
       toast.success("Кейс успешно создан");
