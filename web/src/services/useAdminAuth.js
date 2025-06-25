@@ -3,7 +3,8 @@ import { useRouter } from "next/navigation";
 import { notify } from "@/utils/toast";
 import Cookies from "js-cookie";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "https://apiadexsoft.com/api/v1";
 
 export const useAdminAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
