@@ -152,6 +152,15 @@ class CaseCreateSerializer(serializers.ModelSerializer):
         return case
 
     def update(self, instance, validated_data):
+        # Handle images
+        images_data = validated_data.pop('images', [])
+        if images_data:
+            # Delete existing images
+            instance.images.all().delete()
+            # Create new images
+            for index, image in enumerate(images_data):
+                CaseImage.objects.create(case=instance, image=image, order=index)
+
         # Handle tags
         tags_data = validated_data.pop('tags', [])
         tags = [Tag.objects.get_or_create(name=tag_name)[0] for tag_name in tags_data]
