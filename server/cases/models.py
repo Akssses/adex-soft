@@ -1,11 +1,15 @@
 from django.db import models
 from django.utils.text import slugify
 import os
+import uuid
 
 def case_image_path(instance, filename):
     """Generate file path for case images"""
     ext = filename.split('.')[-1]
-    filename = f"{slugify(instance.case.title)}_{instance.id}.{ext}"
+    if instance.id:
+        filename = f"{slugify(instance.case.title)}_{instance.id}.{ext}"
+    else:
+        filename = f"{slugify(instance.case.title)}_{uuid.uuid4().hex[:8]}.{ext}"
     return os.path.join('cases/images', filename)
 
 def client_avatar_path(instance, filename):
