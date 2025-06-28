@@ -6,120 +6,119 @@ import s from "@/styles/CostBlocks.module.scss";
 
 const siteTypes = [
   { label: "Landing page", key: "landing" },
-  { label: "Многостраничный сайт", key: "multi" },
-  { label: "Интернет-магазин", key: "ecommerce" },
-  { label: "SaaS-платформа", key: "saas" },
+  { label: "Multi-page website", key: "multi" },
+  { label: "E-commerce", key: "ecommerce" },
+  { label: "SaaS platform", key: "saas" },
 ];
 
-/** Вопросы для Landing */
+/** Questions for Landing */
 const landingQuestions = [
-  // прототип, блоки, адаптивка, дизайн, анимация, интеграции, i18n, CMS, SEO, хостинг
   {
     key: "prototype",
     multi: false,
-    question: "Есть ли у вас готовый прототип сайта?",
+    question: "Do you have a website prototype?",
     options: [
-      { label: "Да", price: 0 },
-      { label: "Нужен wireframe", price: 50 },
-      { label: "Хочу визуальный прототип", price: 100 },
+      { label: "Yes", price: 0 },
+      { label: "Need wireframe", price: 50 },
+      { label: "Want visual prototype", price: 100 },
     ],
   },
   {
     key: "blocks",
     multi: false,
-    question: "Сколько блоков на странице?",
+    question: "How many blocks on the page?",
     options: [
-      { label: "1–3 блока", price: 100 },
-      { label: "4–6 блоков", price: 200 },
-      { label: "7+ блоков", price: 300 },
+      { label: "1–3 blocks", price: 100 },
+      { label: "4–6 blocks", price: 200 },
+      { label: "7+ blocks", price: 300 },
     ],
   },
   {
     key: "responsive",
     multi: false,
-    question: "Нужна ли адаптивная верстка?",
+    question: "Do you need responsive design?",
     options: [
-      { label: "Только десктоп", price: 0 },
-      { label: "Десктоп + мобилка", price: 0 },
-      { label: "Все устройства", price: 100 },
+      { label: "Desktop only", price: 0 },
+      { label: "Desktop + mobile", price: 0 },
+      { label: "All devices", price: 100 },
     ],
   },
   {
     key: "design",
     multi: false,
-    question: "Выберите стиль дизайна",
+    question: "Choose design style",
     options: [
-      { label: "Шаблонный", price: 0 },
-      { label: "Индивидуальный UX/UI", price: 400 },
+      { label: "Template", price: 0 },
+      { label: "Custom UX/UI", price: 400 },
       { label: "Brand-UI kit", price: 800 },
     ],
   },
   {
     key: "animation",
     multi: false,
-    question: "Нужна ли анимация и интерактив?",
+    question: "Do you need animations and interactivity?",
     options: [
-      { label: "Нет", price: 0 },
-      { label: "CSS-анимации", price: 50 },
-      { label: "JS-анимации", price: 100 },
+      { label: "None", price: 0 },
+      { label: "CSS animations", price: 50 },
+      { label: "JS animations", price: 100 },
     ],
   },
   {
     key: "integrations",
     multi: true,
-    question: "Интеграции с внешними сервисами",
+    question: "External service integrations",
     options: [
-      { label: "Форма (заявки)", price: 100 },
-      { label: "Чаты (Telegram/WhatsApp)", price: 50 },
+      { label: "Contact form", price: 100 },
+      { label: "Chat (Telegram/WhatsApp)", price: 50 },
       { label: "CRM / API", price: 200 },
-      { label: "AI-ассистент", price: 200 },
-      { label: "Платежная система", price: 300 },
+      { label: "AI assistant", price: 200 },
+      { label: "Payment system", price: 300 },
     ],
   },
   {
     key: "i18n",
     multi: false,
-    question: "Многоязычность сайта",
+    question: "Multi-language support",
     options: [
-      { label: "Нет", price: 0 },
-      { label: "2 языка", price: 200 },
-      { label: "3+ языка", price: 300 },
-      { label: "5+ языков", price: 450 },
+      { label: "None", price: 0 },
+      { label: "2 languages", price: 200 },
+      { label: "3+ languages", price: 300 },
+      { label: "5+ languages", price: 450 },
     ],
   },
   {
     key: "cms",
     multi: false,
-    question: "Выбор CMS / админки",
+    question: "CMS / admin panel",
     options: [
-      { label: "Без CMS", price: 0 },
+      { label: "No CMS", price: 0 },
       { label: "WordPress / Tilda", price: 200 },
-      { label: "Кастомная CMS", price: 400 },
+      { label: "Custom CMS", price: 400 },
     ],
   },
   {
     key: "seo",
     multi: false,
-    question: "SEO-оптимизация",
+    question: "SEO optimization",
     options: [
-      { label: "Без SEO", price: 0 },
-      { label: "Базовое (метатеги)", price: 50 },
-      { label: "Продвинутое (ключи+тексты)", price: 300 },
+      { label: "No SEO", price: 0 },
+      { label: "Basic (meta tags)", price: 50 },
+      { label: "Advanced (keywords+content)", price: 300 },
     ],
   },
   {
     key: "hosting",
     multi: false,
-    question: "Домен и хостинг",
+    question: "Domain and hosting",
     options: [
-      { label: "Не нужен", price: 0 },
-      { label: "Помощь с выбором", price: 0 },
-      { label: "Подключение и настройка", price: 100 },
+      { label: "Not needed", price: 0 },
+      { label: "Help with selection", price: 0 },
+      { label: "Setup and configuration", price: 100 },
     ],
   },
 ];
 
-/** Вопросы для Многостраничного сайта */
+/** Questions for Multi-page website */
 const multiQuestions = [
   {
     key: "prototype",
@@ -130,18 +129,18 @@ const multiQuestions = [
   {
     key: "pages",
     multi: false,
-    question: "Сколько страниц в сайте?",
+    question: "How many pages on the website?",
     options: [
-      { label: "1–3 страницы", price: 0 },
-      { label: "4–7 страниц", price: 800 },
-      { label: "8+ страниц", price: 1500 },
+      { label: "1–3 pages", price: 0 },
+      { label: "4–7 pages", price: 800 },
+      { label: "8+ pages", price: 1500 },
     ],
   },
-  // далее переиспользуем адаптивку, дизайн и т.д. из landing
+  // reuse adaptiveness, design etc. from landing
   ...landingQuestions.slice(2),
 ];
 
-/** Вопросы для Интернет-магазина */
+/** Questions for E-commerce */
 const ecommerceQuestions = [
   {
     key: "prototype",
@@ -152,29 +151,29 @@ const ecommerceQuestions = [
   {
     key: "products",
     multi: false,
-    question: "Сколько товаров в каталоге?",
+    question: "How many products in catalog?",
     options: [
-      { label: "до 50", price: 0 },
+      { label: "up to 50", price: 0 },
       { label: "50–200", price: 500 },
       { label: "200+", price: 1000 },
     ],
   },
-  // адаптивка, дизайн, анимация и базовые интеграции берём из landing
+  // adaptiveness, design, animation and basic integrations from landing
   ...landingQuestions.slice(2),
   {
     key: "ecomIntegrations",
     multi: true,
-    question: "E-commerce интеграции",
+    question: "E-commerce integrations",
     options: [
-      { label: "Платежный шлюз", price: 300 },
-      { label: "Управление складом", price: 200 },
-      { label: "Отправка заказов (API)", price: 150 },
-      { label: "Отзывы и рейтинг", price: 100 },
+      { label: "Payment gateway", price: 300 },
+      { label: "Inventory management", price: 200 },
+      { label: "Order shipping (API)", price: 150 },
+      { label: "Reviews and ratings", price: 100 },
     ],
   },
 ];
 
-/** Вопросы для SaaS-платформы с увеличенными ценами */
+/** Questions for SaaS platform with increased prices */
 const saasQuestions = [
   {
     key: "prototype",
@@ -185,68 +184,68 @@ const saasQuestions = [
   {
     key: "modules",
     multi: false,
-    question: "Сколько модулей / разделов?",
+    question: "How many modules / sections?",
     options: [
-      { label: "1–3 модуля", price: 0 },
-      { label: "4–6 модулей", price: 600 },
-      { label: "7+ модулей", price: 1200 },
+      { label: "1–3 modules", price: 0 },
+      { label: "4–6 modules", price: 600 },
+      { label: "7+ modules", price: 1200 },
     ],
   },
   {
     key: "users",
     multi: false,
-    question: "Сложность ролей пользователей",
+    question: "User role complexity",
     options: [
-      { label: "1 уровень", price: 0 },
-      { label: "2–3 уровня", price: 300 },
-      { label: "3+ уровней", price: 600 },
+      { label: "1 level", price: 0 },
+      { label: "2–3 levels", price: 300 },
+      { label: "3+ levels", price: 600 },
     ],
   },
-  // переопределяем адаптивку: сто́имость выше
+  // redefine adaptiveness: higher cost
   {
     key: "responsive",
     multi: false,
-    question: "Нужна ли адаптивная верстка?",
+    question: "Do you need responsive design?",
     options: [
-      { label: "Только десктоп", price: 0 },
-      { label: "Десктоп + мобилка", price: 0 },
-      { label: "Все устройства", price: 200 }, // вместо 100
+      { label: "Desktop only", price: 0 },
+      { label: "Desktop + mobile", price: 0 },
+      { label: "All devices", price: 200 }, // instead of 100
     ],
   },
-  // переопределяем дизайн: сто́имость выше
+  // redefine design: higher cost
   {
     key: "design",
     multi: false,
-    question: "Выберите стиль дизайна",
+    question: "Choose design style",
     options: [
-      { label: "Шаблонный", price: 0 },
-      { label: "Индивидуальный UX/UI", price: 800 }, // вместо 400
-      { label: "Premium Brand-UI Kit", price: 1600 }, // вместо 800
+      { label: "Template", price: 0 },
+      { label: "Custom UX/UI", price: 800 }, // instead of 400
+      { label: "Premium Brand-UI Kit", price: 1600 }, // instead of 800
     ],
   },
-  // переопределяем анимацию: сто́имость выше
+  // redefine animation: higher cost
   {
     key: "animation",
     multi: false,
-    question: "Нужна ли анимация и интерактив?",
+    question: "Do you need animations and interactivity?",
     options: [
-      { label: "Нет", price: 0 },
-      { label: "CSS-анимации", price: 100 }, // вместо 50
-      { label: "JS-анимации", price: 200 }, // вместо 100
+      { label: "None", price: 0 },
+      { label: "CSS animations", price: 100 }, // instead of 50
+      { label: "JS animations", price: 200 }, // instead of 100
     ],
   },
   {
     key: "saasIntegrations",
     multi: true,
-    question: "Интеграции для SaaS",
+    question: "SaaS integrations",
     options: [
-      { label: "Платежи и биллинг", price: 300 },
-      { label: "Уведомления (email/Push)", price: 200 },
-      { label: "API для разработчиков", price: 400 },
+      { label: "Payments and billing", price: 300 },
+      { label: "Notifications (email/Push)", price: 200 },
+      { label: "Developer API", price: 400 },
       { label: "CRM / ERP", price: 250 },
     ],
   },
-  // остальные опции (i18n, хостинг) можно взять из landing или задать свои:
+  // other options (i18n, hosting) can be taken from landing or set custom ones:
   {
     key: "i18n",
     multi: false,
@@ -256,11 +255,11 @@ const saasQuestions = [
   {
     key: "hosting",
     multi: false,
-    question: "Выбор хостинга для SaaS",
+    question: "Hosting for SaaS",
     options: [
-      { label: "Простой shared-хостинг", price: 100 },
-      { label: "Облачное (AWS/GCP)", price: 300 },
-      { label: "Выделенный сервер", price: 500 },
+      { label: "Shared hosting", price: 100 },
+      { label: "Cloud (AWS/GCP)", price: 300 },
+      { label: "Dedicated server", price: 500 },
     ],
   },
 ];
@@ -339,9 +338,9 @@ export default function WebDevCalc() {
     const label = siteTypes.find((t) => t.key === siteType)?.label;
     return (
       <div className={s.summary}>
-        <h2>Сводка по услуге</h2>
+        <h2>Summary</h2>
         <p>
-          <strong>Услуга:</strong> {label}
+          <strong>Service:</strong> {label}
         </p>
         <ul>
           {questions.map((q) => {
@@ -356,7 +355,7 @@ export default function WebDevCalc() {
           })}
         </ul>
         <p>
-          <strong>Итоговая стоимость:</strong> ${total}
+          <strong>Total cost:</strong> ${total}
         </p>
       </div>
     );
@@ -374,7 +373,7 @@ export default function WebDevCalc() {
       <div className={s.body}>
         {step === 0 && (
           <div className={s.chooseType}>
-            <h2>Тип сайта</h2>
+            <h2>Website type</h2>
             <div className={s.types}>
               {siteTypes.map((t) => (
                 <button
@@ -422,7 +421,7 @@ export default function WebDevCalc() {
 
       <div className={s.controls}>
         <button onClick={handlePrev} disabled={step === 0}>
-          Назад
+          Back
         </button>
         <button
           onClick={handleNext}
@@ -433,7 +432,7 @@ export default function WebDevCalc() {
               !answers[questions[step - 1].key])
           }
         >
-          {step === totalSteps ? "Завершить" : "Далее"}
+          {step === totalSteps ? "Finish" : "Next"}
         </button>
       </div>
     </div>

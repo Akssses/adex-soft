@@ -3,15 +3,14 @@
 import React, { useState, useEffect } from "react";
 import s from "./HeroSection.module.scss";
 import Button from "@/components/shared/Button/Button";
-import StackBar from "../StackBar/StackBar";
 import { motion } from "framer-motion";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import Link from "next/link";
 
 const stats = [
-  { number: "50+", label: "Успешных проектов" },
-  { number: "100%", label: "Довольных клиентов" },
-  { number: "24/7", label: "Поддержка" },
+  { number: "50+", label: "Successful Projects" },
+  { number: "100%", label: "Satisfied Clients" },
+  { number: "24/7", label: "Support" },
 ];
 
 const TypeWriter = ({
@@ -95,24 +94,24 @@ export default function HeroSection() {
           >
             <span className={s.weare}>ADEX SOFT</span>
             <h1 className={s.title}>
-              Ваш партнёр по <TypeWriter words={words} />
+              Your Partner in <TypeWriter words={words} />
               <br />
-              от идеи до запуска
+              from Idea to Launch
             </h1>
             <p className={s.subtitle}>
-              Мы создаем инновационные решения в сфере Web3, помогая бизнесу
-              развиваться в децентрализованном пространстве
+              We create innovative Web3 solutions, helping businesses thrive in
+              the decentralized space
             </p>
 
             <div className={s.cta}>
               <Link href="https://t.me/adex_soft_manager" target="_blank">
                 <Button variant="primary" className={s.mainButton}>
-                  Связаться с нами
+                  Contact Us
                   <HiOutlineArrowNarrowRight className={s.arrow} />
                 </Button>
               </Link>
               <Link href="/about">
-                <Button variant="secondary">Узнать больше</Button>
+                <Button variant="secondary">Learn More</Button>
               </Link>
             </div>
           </motion.div>

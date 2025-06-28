@@ -15,49 +15,44 @@ import s from "./ServicesList.module.scss";
 
 const SERVICES = [
   {
-    title: "Разработка и интеграция",
+    title: "Development & Integration",
     icon: FaCode,
-    items: [
-      "Смарт-контракты",
-      "dApp",
-      "Интеграция кошельков",
-      "Платежные системы",
-    ],
+    items: ["Smart Contracts", "dApp", "Wallet Integration", "Payment Systems"],
   },
   {
-    title: "Токеномика",
+    title: "Tokenomics",
     icon: FaChartPie,
-    items: ["Проектирование токеномики", "Запуск токенов (ICO/IDO/IEO)"],
+    items: ["Tokenomics Design", "Token Launch (ICO/IDO/IEO)"],
   },
   {
     title: "Telegram Mini App",
     icon: FaTelegramPlane,
-    items: ["Разработка Mini App", "Блокчейн-интеграция"],
+    items: ["Mini App Development", "Blockchain Integration"],
   },
   {
-    title: "Веб-разработка",
+    title: "Web Development",
     icon: FaLaptopCode,
-    items: ["Frontend для dApp", "API смарт-контрактов", "Landing page"],
+    items: ["dApp Frontend", "Smart Contract API", "Landing Page"],
   },
   {
-    title: "UX/UI дизайн",
+    title: "UX/UI Design",
     icon: FaPaintBrush,
-    items: ["Web3-интерфейсы", "Креативные прототипы"],
+    items: ["Web3 Interfaces", "Creative Prototypes"],
   },
   {
-    title: "DeFi-решения",
+    title: "DeFi Solutions",
     icon: FaCoins,
-    items: ["DEX и AMM-протоколы", "Платформы для лендинга"],
+    items: ["DEX & AMM Protocols", "Lending Platforms"],
   },
   {
-    title: "Telegram-боты",
+    title: "Telegram Bots",
     icon: FaRobot,
-    items: ["Мобильные dApp", "Wallet SDK"],
+    items: ["Mobile dApp", "Wallet SDK"],
   },
   {
-    title: "NFT и мета",
+    title: "NFT & Metaverse",
     icon: FaCube,
-    items: ["NFT-платформы", "Интерактивные NFT"],
+    items: ["NFT Platforms", "Interactive NFTs"],
   },
 ];
 
@@ -148,9 +143,9 @@ export default function ServicesList() {
   return (
     <section className={`${s.servicesList} container`}>
       <header className={s.header}>
-        <span className={s.subtitle}>Наши услуги</span>
+        <span className={s.subtitle}>Our Services</span>
         <h1 className={s.title}>
-          Легко масштабируйте <br /> свой бизнес
+          Scale Your Business <br /> with Ease
         </h1>
       </header>
 

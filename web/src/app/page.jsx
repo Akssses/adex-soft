@@ -5,7 +5,6 @@ import CaseSLider from "@/components/partials/CaseSlider/CaseSLider";
 import HeroSection from "@/components/partials/Hero/HeroSection";
 import ServicesList from "@/components/partials/ServicesList/ServicesList";
 import TechBar from "@/components/partials/TechBar/TechBar";
-import Header from "@/components/layout/Header/Header";
 import s from "@/styles/HomePage.module.scss";
 
 export default function Home() {

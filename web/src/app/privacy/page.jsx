@@ -9,226 +9,204 @@ export default function PrivacyPolicy() {
       <main className={s.privacyPage}>
         <div className="container">
           <article className={s.content}>
-            <h1>Политика конфиденциальности — ADEX SOFT</h1>
+            <h1>Privacy Policy — ADEX SOFT</h1>
             <div className={s.dates}>
-              <p>Дата вступления в силу: 15/03/2024</p>
-              <p>Последнее обновление: 15/03/2024</p>
+              <p>Effective Date: 15/03/2024</p>
+              <p>Last Updated: 15/03/2024</p>
             </div>
 
             <p className={s.intro}>
-              Компания ADEX SOFT уважает вашу конфиденциальность и стремится
-              обеспечить защиту персональных данных, которые вы предоставляете
-              при использовании нашего сайта{" "}
-              <a href="https://adexsoft.co">https://adexsoft.co</a>, наших
-              сервисов или при любом взаимодействии с нашей командой.
+              ADEX SOFT respects your privacy and strives to protect the
+              personal data you provide when using our website{" "}
+              <a href="https://adexsoft.co">https://adexsoft.co</a>, our
+              services, or during any interaction with our team.
             </p>
 
             <section>
-              <h2>1. Кто мы</h2>
+              <h2>1. Who We Are</h2>
               <p>
-                ADEX SOFT — это digital-агентство, специализирующееся на
-                разработке веб-сайтов, Telegram Mini-приложений и Web3 решений.
-                В данной политике «мы», «нас», «наш» относятся к ADEX SOFT.
+                ADEX SOFT is a digital agency specializing in website
+                development, Telegram Mini-apps, and Web3 solutions. In this
+                policy, "we", "us", "our" refers to ADEX SOFT.
               </p>
             </section>
 
             <section>
-              <h2>2. Какие данные мы собираем</h2>
-              <h3>a) Персональные данные, предоставленные вами:</h3>
+              <h2>2. Data We Collect</h2>
+              <h3>a) Personal data provided by you:</h3>
               <ul>
-                <li>Имя и фамилия</li>
-                <li>Электронная почта</li>
-                <li>Номер телефона</li>
-                <li>Название компании</li>
-                <li>Содержимое обращений, заявок, сообщений</li>
-                <li>Загружаемые файлы (по желанию)</li>
+                <li>First and last name</li>
+                <li>Email address</li>
+                <li>Phone number</li>
+                <li>Company name</li>
+                <li>Content of inquiries, requests, messages</li>
+                <li>Uploaded files (optional)</li>
               </ul>
 
-              <h3>b) Данные, собираемые автоматически:</h3>
+              <h3>b) Automatically collected data:</h3>
               <ul>
-                <li>IP-адрес и примерное геолокационное положение</li>
-                <li>Тип и версия браузера</li>
-                <li>Устройство и операционная система</li>
-                <li>
-                  Поведение на сайте (страницы, клики, прокрутка,
-                  продолжительность)
-                </li>
-                <li>Источник перехода (реферальный URL)</li>
+                <li>IP address and approximate geolocation</li>
+                <li>Browser type and version</li>
+                <li>Device and operating system</li>
+                <li>Website behavior (pages, clicks, scrolling, duration)</li>
+                <li>Source of visit (referral URL)</li>
               </ul>
 
-              <h3>c) Cookies и трекинг:</h3>
-              <p>Мы используем cookies, пиксели и другие технологии:</p>
+              <h3>c) Cookies and tracking:</h3>
+              <p>We use cookies, pixels, and other technologies:</p>
               <ul>
-                <li>для улучшения работы сайта</li>
-                <li>для аналитики</li>
-                <li>для персонализированной рекламы</li>
+                <li>to improve website functionality</li>
+                <li>for analytics</li>
+                <li>for personalized advertising</li>
                 <li>
-                  для ретаргетинга (например, в Facebook/Instagram, Google Ads)
+                  for retargeting (e.g., in Facebook/Instagram, Google Ads)
                 </li>
               </ul>
             </section>
 
             <section>
-              <h2>3. Цели обработки данных</h2>
-              <p>Мы обрабатываем ваши данные, чтобы:</p>
+              <h2>3. Purpose of Data Processing</h2>
+              <p>We process your data to:</p>
               <ul>
                 <li>
-                  Ответить на ваши обращения и выполнять обязательства по
-                  услугам
+                  Respond to your inquiries and fulfill service obligations
                 </li>
-                <li>Улучшать наш продукт и интерфейс</li>
+                <li>Improve our product and interface</li>
                 <li>
-                  Отправлять уведомления, новости и спецпредложения (если дали
-                  согласие)
+                  Send notifications, news, and special offers (with your
+                  consent)
                 </li>
-                <li>Проводить маркетинговый анализ и рекламу</li>
-                <li>Соблюдать юридические требования</li>
+                <li>Conduct marketing analysis and advertising</li>
+                <li>Comply with legal requirements</li>
               </ul>
             </section>
 
             <section>
-              <h2>4. Правовые основания обработки (GDPR)</h2>
+              <h2>4. Legal Basis for Processing (GDPR)</h2>
+              <p>Depending on the situation, we process your data based on:</p>
+              <ul>
+                <li>Consent (e.g., for newsletters)</li>
+                <li>Contract (if you become our client)</li>
+                <li>Legitimate interest (e.g., for website improvement)</li>
+                <li>Legal obligations (e.g., accounting)</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>5. Who We May Share Data With</h2>
               <p>
-                В зависимости от ситуации, мы обрабатываем ваши данные на
-                основе:
+                Your data is not sold to third parties. However, we may share it
+                with:
               </p>
               <ul>
-                <li>Согласия (например, на рассылку)</li>
-                <li>Договора (если вы стали нашим клиентом)</li>
-                <li>Законного интереса (например, для улучшения сайта)</li>
-                <li>Юридических обязательств (например, бухгалтерия)</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2>5. Кому мы можем передавать данные</h2>
-              <p>
-                Ваши данные не продаются третьим лицам. Однако мы можем делиться
-                ими с:
-              </p>
-              <ul>
-                <li>Подрядчиками (разработчики, маркетологи, дизайнеры)</li>
+                <li>Contractors (developers, marketers, designers)</li>
                 <li>
-                  Сторонними сервисами (Google Analytics, Meta Ads, Telegram
+                  Third-party services (Google Analytics, Meta Ads, Telegram
                   WebApp)
                 </li>
-                <li>Платёжными системами (например, Stripe, ЮKassa)</li>
-                <li>
-                  Юридическими органами — при наличии официального запроса
-                </li>
+                <li>Payment systems (e.g., Stripe, YooKassa)</li>
+                <li>Legal authorities — upon official request</li>
               </ul>
               <p>
-                Все партнёры обязаны соблюдать конфиденциальность и меры защиты
-                данных.
+                All partners are required to maintain confidentiality and data
+                protection measures.
               </p>
             </section>
 
             <section>
-              <h2>6. Международная передача данных</h2>
+              <h2>6. International Data Transfer</h2>
               <p>
-                Если вы находитесь за пределами страны хостинга, ваша информация
-                может быть передана и обработана в других странах. Мы принимаем
-                меры по защите данных в рамках стандартных контрактных условий
-                (SCCs) и иных механизмов.
+                If you are outside the hosting country, your information may be
+                transferred and processed in other countries. We take measures
+                to protect data under standard contractual clauses (SCCs) and
+                other mechanisms.
               </p>
             </section>
 
             <section>
-              <h2>7. Срок хранения данных</h2>
-              <p>Мы храним данные:</p>
+              <h2>7. Data Retention Period</h2>
+              <p>We retain data:</p>
               <ul>
                 <li>
-                  столько, сколько необходимо для целей, ради которых они были
-                  собраны
+                  for as long as necessary for the purposes for which it was
+                  collected
                 </li>
                 <li>
-                  либо в рамках сроков, предусмотренных законом (например,
-                  налоговые данные)
+                  or within the timeframes required by law (e.g., tax data)
                 </li>
               </ul>
               <p>
-                По истечении срока хранения данные будут удалены или обезличены.
+                After the retention period, data will be deleted or anonymized.
               </p>
             </section>
 
             <section>
-              <h2>8. Ваши права</h2>
+              <h2>8. Your Rights</h2>
               <p>
-                В соответствии с применимыми законами (GDPR, Законы о
-                персональных данных РФ и КР), вы имеете право:
+                In accordance with applicable laws (GDPR, Personal Data Laws of
+                RF and KR), you have the right to:
               </p>
               <ul>
-                <li>Получить доступ к своим данным</li>
-                <li>Исправить или обновить данные</li>
-                <li>Удалить свои данные (право на "забвение")</li>
-                <li>Ограничить или возразить против обработки</li>
-                <li>Перенести свои данные в другой сервис</li>
-                <li>Отозвать согласие в любой момент</li>
-                <li>Подать жалобу в надзорный орган</li>
+                <li>Access your data</li>
+                <li>Correct or update data</li>
+                <li>Delete your data (right to be "forgotten")</li>
+                <li>Restrict or object to processing</li>
+                <li>Transfer your data to another service</li>
+                <li>Withdraw consent at any time</li>
+                <li>File a complaint with a supervisory authority</li>
               </ul>
               <p>
-                Для реализации прав — свяжитесь с нами:{" "}
+                To exercise your rights — contact us:{" "}
                 <a href="mailto:info@adexsoft.co">info@adexsoft.co</a>
               </p>
             </section>
 
             <section>
-              <h2>9. Безопасность данных</h2>
-              <p>Мы применяем технические и организационные меры защиты:</p>
+              <h2>9. Data Security</h2>
+              <p>
+                We implement technical and organizational security measures:
+              </p>
               <ul>
-                <li>Используем защищённое соединение (HTTPS, SSL/TLS)</li>
-                <li>Ограничиваем доступ сотрудников к данным</li>
-                <li>Проводим регулярные проверки безопасности</li>
-                <li>Храним данные на защищённых серверах</li>
+                <li>Use secure connection (HTTPS, SSL/TLS)</li>
+                <li>Limit employee access to data</li>
+                <li>Conduct regular security checks</li>
+                <li>Store data on secure servers</li>
               </ul>
               <p>
-                Однако, ни один способ передачи данных через интернет не может
-                быть абсолютно безопасным. Мы делаем всё возможное для
-                минимизации рисков.
+                However, no method of data transmission over the internet can be
+                absolutely secure. We do everything possible to minimize risks.
               </p>
             </section>
 
             <section>
-              <h2>10. Ссылки на сторонние ресурсы</h2>
+              <h2>10. Links to Third-Party Resources</h2>
               <p>
-                Наш сайт может содержать ссылки на другие сайты или сервисы. Мы
-                не несём ответственности за политику конфиденциальности этих
-                ресурсов. Рекомендуем ознакомиться с их условиями отдельно.
+                Our website may contain links to other websites or services. We
+                are not responsible for the privacy policies of these resources.
+                We recommend reviewing their terms separately.
               </p>
             </section>
 
             <section>
-              <h2>11. Конфиденциальность детей</h2>
+              <h2>11. Changes to Privacy Policy</h2>
               <p>
-                Мы не собираем сознательно данные у лиц младше 16 лет. Если вы —
-                родитель или опекун и узнали, что ребёнок предоставил нам
-                данные, свяжитесь с нами — мы удалим их незамедлительно.
+                We may update this privacy policy from time to time. We will
+                notify you of any significant changes by posting a notice on our
+                website or sending you an email.
               </p>
             </section>
 
             <section>
-              <h2>12. Обновления политики</h2>
+              <h2>12. Contact Us</h2>
               <p>
-                Мы можем время от времени вносить изменения в данную политику.
-                Обо всех существенных изменениях мы сообщим через сайт или по
-                почте (если вы подписаны). Актуальная версия всегда доступна на{" "}
-                <a href="https://adexsoft.co/privacy">
-                  https://adexsoft.co/privacy
-                </a>
-              </p>
-            </section>
-
-            <section>
-              <h2>13. Контакты</h2>
-              <p>
-                Если у вас возникли вопросы по поводу вашей конфиденциальности,
-                обращайтесь:
+                If you have any questions about this privacy policy or how we
+                handle your data, please contact us:
               </p>
               <address className={s.contacts}>
                 <p>
                   <strong>ADEX SOFT</strong>
                 </p>
-                <p>📍 г. Бишкек, Кыргызстан</p>
+                <p>📍 Bishkek, Kyrgyzstan</p>
                 <p>
                   📧 <a href="mailto:info@adexsoft.co">info@adexsoft.co</a>
                 </p>

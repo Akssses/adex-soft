@@ -28,7 +28,7 @@ import BannerCTA from "@/components/layout/BannerCTA/BannerCTA";
 
 const SERVICES = [
   {
-    name: "Веб-разработка",
+    name: "Web Development",
     icon: FaLaptopCode,
     color: "#ede7f6",
     component: WebDevCalc,
@@ -40,37 +40,37 @@ const SERVICES = [
     component: TelegramMiniAppCalc,
   },
   {
-    name: "UX/UI дизайн",
+    name: "UX/UI Design",
     icon: FaPaintBrush,
     color: "#fce4ec",
     component: UxUiCalc,
   },
   {
-    name: "Telegram-боты",
+    name: "Telegram Bots",
     icon: FaRobot,
     color: "#f1f8e9",
     component: TelegramBotsCalc,
   },
   {
-    name: "Токеномика",
+    name: "Tokenomics",
     icon: FaChartPie,
     color: "#fff3e0",
     component: TokenomicsCalc,
   },
   {
-    name: "Разработка и интеграция",
+    name: "Development & Integration",
     icon: FaCode,
     color: "#e0f7fa",
     component: DevIntegrationCalc,
   },
   {
-    name: "DeFi-решения",
+    name: "DeFi Solutions",
     icon: FaCoins,
     color: "#f3e5f5",
     component: DeFiCalc,
   },
   {
-    name: "NFT и метаверс",
+    name: "NFT & Metaverse",
     icon: FaCubes,
     color: "#f9fbe7",
     component: NFTMetaverseCalc,
@@ -103,7 +103,7 @@ export default function ProjectCalcPage() {
           <div className={s.calc_block}>
             {!selectedService ? (
               <>
-                <h2>Выберите направление:</h2>
+                <h2>Select a service:</h2>
                 <div className={s.services}>
                   {SERVICES.map((service, index) => (
                     <div
@@ -123,7 +123,7 @@ export default function ProjectCalcPage() {
             ) : (
               <>
                 <button className={s.backBtn} onClick={handleBack}>
-                  ← Назад к списку услуг
+                  ← Back to services
                 </button>
                 <selectedService.component />
               </>
@@ -131,7 +131,7 @@ export default function ProjectCalcPage() {
           </div>
           <div className={s.total}>
             <div className={s.summa}>
-              <h2>Итоговая стоимость:</h2>
+              <h2>Total Cost:</h2>
               <span>${total}</span>
             </div>
             <Link
@@ -141,14 +141,14 @@ export default function ProjectCalcPage() {
             >
               <button className={s.contact}>
                 <RiTelegram2Fill size={25} />
-                Связаться с нами
+                Contact Us
               </button>
             </Link>
             <div className={s.warning}>
               <RiErrorWarningLine color="red" size={30} />
               <p>
-                Реальная стоимость может отличаться от расчётной и зависит от
-                множества факторов.
+                The actual cost may vary from the calculated estimate and
+                depends on multiple factors.
               </p>
             </div>
           </div>

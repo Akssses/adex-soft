@@ -5,10 +5,10 @@ import React, { useState, useEffect } from "react";
 import s from "@/styles/CostBlocks.module.scss";
 
 const botTypes = [
-  { key: "command", label: "Командный бот" },
-  { key: "inline", label: "Inline-бот" },
-  { key: "webhook", label: "Webhook-бот" },
-  { key: "payment", label: "Платёжный бот" },
+  { key: "command", label: "Command Bot" },
+  { key: "inline", label: "Inline Bot" },
+  { key: "webhook", label: "Webhook Bot" },
+  { key: "payment", label: "Payment Bot" },
 ];
 
 const questionsMap = {
@@ -16,17 +16,17 @@ const questionsMap = {
     {
       key: "prototype",
       multi: false,
-      question: "Есть ли у вас прототип / дизайн?",
+      question: "Do you have a prototype / design?",
       options: [
-        { label: "Да", price: 0 },
-        { label: "Требуется wireframe", price: 100 },
-        { label: "Требуется визуальный макет", price: 200 },
+        { label: "Yes", price: 0 },
+        { label: "Need wireframe", price: 100 },
+        { label: "Need visual design", price: 200 },
       ],
     },
     {
       key: "commands",
       multi: false,
-      question: "Сколько команд?",
+      question: "How many commands?",
       options: [
         { label: "1–5", price: 0 },
         { label: "6–15", price: 200 },
@@ -37,38 +37,37 @@ const questionsMap = {
     {
       key: "callbacks",
       multi: false,
-      question: "Callback-кнопки",
+      question: "Callback buttons",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да", price: 200 },
+        { label: "No", price: 0 },
+        { label: "Yes", price: 200 },
       ],
     },
     {
       key: "keyboard",
       multi: false,
-      question: "Тип клавиатуры",
+      question: "Keyboard type",
       options: [
-        { label: "Стандартная", price: 0 },
+        { label: "Standard", price: 0 },
         { label: "Inline", price: 200 },
-        { label: "Кастомная", price: 400 },
+        { label: "Custom", price: 400 },
       ],
     },
     {
       key: "db",
       multi: false,
-      question: "Хранение данных",
+      question: "Data storage",
       options: [
-        { label: "Без БД", price: 0 },
-        { label: "Файл JSON", price: 100 },
+        { label: "No DB", price: 0 },
+        { label: "JSON file", price: 100 },
         { label: "SQL (Postgres/MySQL)", price: 300 },
       ],
     },
     {
       key: "logging",
       multi: false,
-      question: "Логирование",
+      question: "Logging",
       options: [
-        { label: "Нет", price: 0 },
         { label: "Basic", price: 100 },
         { label: "Advanced", price: 200 },
       ],
@@ -76,9 +75,9 @@ const questionsMap = {
     {
       key: "analytics",
       multi: false,
-      question: "Аналитика",
+      question: "Analytics",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "No", price: 0 },
         { label: "Basic (Google)", price: 100 },
         { label: "Custom", price: 200 },
       ],
@@ -86,7 +85,7 @@ const questionsMap = {
     {
       key: "hosting",
       multi: false,
-      question: "Хостинг",
+      question: "Hosting",
       options: [
         { label: "Shared", price: 100 },
         { label: "VPS", price: 300 },
@@ -99,26 +98,26 @@ const questionsMap = {
     {
       key: "prototype",
       multi: false,
-      question: "Есть ли у вас прототип / дизайн?",
+      question: "Do you have a prototype / design?",
       options: [
-        { label: "Да", price: 0 },
-        { label: "Требуется wireframe", price: 100 },
-        { label: "Требуется визуальный макет", price: 200 },
+        { label: "Yes", price: 0 },
+        { label: "Need wireframe", price: 100 },
+        { label: "Need visual design", price: 200 },
       ],
     },
     {
       key: "inlineQueries",
       multi: false,
-      question: "Inline-запросы",
+      question: "Inline queries",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да", price: 200 },
+        { label: "No", price: 0 },
+        { label: "Yes", price: 200 },
       ],
     },
     {
       key: "resultTypes",
       multi: true,
-      question: "Типы ответов",
+      question: "Response types",
       options: [
         { label: "Article", price: 0 },
         { label: "Photo", price: 100 },
@@ -129,7 +128,7 @@ const questionsMap = {
     {
       key: "handlers",
       multi: false,
-      question: "Кол-во обработчиков",
+      question: "Number of handlers",
       options: [
         { label: "1–3", price: 0 },
         { label: "4–7", price: 200 },
@@ -139,19 +138,19 @@ const questionsMap = {
     {
       key: "db",
       multi: false,
-      question: "Хранение данных",
+      question: "Data storage",
       options: [
-        { label: "Без БД", price: 0 },
-        { label: "Файл JSON", price: 100 },
+        { label: "No DB", price: 0 },
+        { label: "JSON file", price: 100 },
         { label: "SQL", price: 300 },
       ],
     },
     {
       key: "analytics",
       multi: false,
-      question: "Аналитика",
+      question: "Analytics",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 100 },
         { label: "Advanced", price: 200 },
       ],
@@ -159,7 +158,7 @@ const questionsMap = {
     {
       key: "hosting",
       multi: false,
-      question: "Хостинг",
+      question: "Hosting",
       options: [
         { label: "Shared", price: 100 },
         { label: "VPS", price: 300 },
@@ -172,9 +171,9 @@ const questionsMap = {
     {
       key: "prototype",
       multi: false,
-      question: "Есть ли дизайн / макет?",
+      question: "Do you have a design?",
       options: [
-        { label: "Да", price: 0 },
+        { label: "Yes", price: 0 },
         { label: "Wireframe", price: 100 },
         { label: "Mockup", price: 200 },
       ],
@@ -182,7 +181,7 @@ const questionsMap = {
     {
       key: "events",
       multi: true,
-      question: "Webhook-события",
+      question: "Webhook events",
       options: [
         { label: "message", price: 0 },
         { label: "edited_message", price: 0 },
@@ -193,9 +192,9 @@ const questionsMap = {
     {
       key: "retry",
       multi: false,
-      question: "Механизм retry",
+      question: "Retry mechanism",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 100 },
         { label: "Advanced", price: 200 },
       ],
@@ -203,9 +202,9 @@ const questionsMap = {
     {
       key: "security",
       multi: false,
-      question: "SSL-сертификат",
+      question: "SSL certificate",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Standard", price: 100 },
         { label: "Wildcard", price: 200 },
       ],
@@ -213,16 +212,16 @@ const questionsMap = {
     {
       key: "db",
       multi: false,
-      question: "База данных",
+      question: "Database",
       options: [
-        { label: "Без БД", price: 0 },
+        { label: "No DB", price: 0 },
         { label: "SQL", price: 300 },
       ],
     },
     {
       key: "logging",
       multi: false,
-      question: "Логирование",
+      question: "Logging",
       options: [
         { label: "Basic", price: 100 },
         { label: "Advanced", price: 200 },
@@ -231,7 +230,7 @@ const questionsMap = {
     {
       key: "hosting",
       multi: false,
-      question: "Хостинг",
+      question: "Hosting",
       options: [
         { label: "Shared", price: 100 },
         { label: "VPS", price: 300 },
@@ -244,17 +243,17 @@ const questionsMap = {
     {
       key: "prototype",
       multi: false,
-      question: "Есть ли макет?",
+      question: "Do you have a design?",
       options: [
-        { label: "Да", price: 0 },
-        { label: "Wireframe", price: 100 },
-        { label: "Mockup", price: 200 },
+        { label: "Yes", price: 0 },
+        { label: "Need wireframe", price: 100 },
+        { label: "Need mockup", price: 200 },
       ],
     },
     {
       key: "providers",
       multi: true,
-      question: "Платёжные провайдеры",
+      question: "Payment providers",
       options: [
         { label: "Stripe", price: 200 },
         { label: "Qiwi", price: 100 },
@@ -265,27 +264,27 @@ const questionsMap = {
     {
       key: "invoices",
       multi: false,
-      question: "Создание счетов",
+      question: "Invoice creation",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да", price: 200 },
+        { label: "No", price: 0 },
+        { label: "Yes", price: 200 },
       ],
     },
     {
       key: "payouts",
       multi: false,
-      question: "Выплаты",
+      question: "Payouts",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да", price: 300 },
+        { label: "No", price: 0 },
+        { label: "Yes", price: 300 },
       ],
     },
     {
       key: "audit",
       multi: false,
-      question: "Аудит платёжных контрактов",
+      question: "Payment contract audit",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "No", price: 0 },
         { label: "Basic", price: 200 },
         { label: "Full", price: 400 },
       ],
@@ -293,7 +292,7 @@ const questionsMap = {
     {
       key: "hosting",
       multi: false,
-      question: "Хостинг",
+      question: "Hosting",
       options: [
         { label: "Shared", price: 100 },
         { label: "VPS", price: 300 },
@@ -312,7 +311,7 @@ export default function TelegramBotsCalc() {
   const questions = botType ? questionsMap[botType] : [];
   const totalSteps = questions.length;
 
-  // вычисляем итог
+  // calculate total
   const total = questions.reduce((sum, q) => {
     const ans = answers[q.key];
     if (!ans) return sum;
@@ -363,11 +362,11 @@ export default function TelegramBotsCalc() {
     });
   };
 
-  // выбор типа бота
+  // bot type selection
   if (!botType) {
     return (
       <div className={s.chooseType}>
-        <h2>Выберите тип бота</h2>
+        <h2>Select bot type</h2>
         <div className={s.types}>
           {botTypes.map((t) => (
             <button
@@ -386,14 +385,14 @@ export default function TelegramBotsCalc() {
     );
   }
 
-  // итоговая сводка
+  // final summary
   if (isComplete) {
-    const label = botTypes.find((t) => t.key === botType)?.label;
+    const typeLabel = botTypes.find((t) => t.key === botType)?.label || botType;
     return (
       <div className={s.summary}>
-        <h2>Сводка по Telegram-боту</h2>
+        <h2>Bot Summary</h2>
         <p>
-          <strong>Тип бота:</strong> {label}
+          <strong>Type:</strong> {typeLabel}
         </p>
         <ul>
           {questions.map((q) => {
@@ -408,13 +407,13 @@ export default function TelegramBotsCalc() {
           })}
         </ul>
         <p>
-          <strong>Итоговая стоимость:</strong> ${total}
+          <strong>Total cost:</strong> ${total}
         </p>
       </div>
     );
   }
 
-  // шаги вопросов
+  // question steps
   return (
     <div className={s.calc}>
       <div className={s.header}>
@@ -458,7 +457,7 @@ export default function TelegramBotsCalc() {
 
       <div className={s.controls}>
         <button onClick={handlePrev}>
-          {step <= 1 ? "← Выбрать тип" : "Назад"}
+          {step <= 1 ? "← Select type" : "Back"}
         </button>
         <button
           onClick={handleNext}
@@ -470,7 +469,7 @@ export default function TelegramBotsCalc() {
             )
           }
         >
-          {step === totalSteps ? "Завершить" : "Далее"}
+          {step === totalSteps ? "Complete" : "Next"}
         </button>
       </div>
     </div>

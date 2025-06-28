@@ -20,7 +20,7 @@ export default function CaseCard({ id, title, description, tags, image }) {
         </div>
 
         <h3 className={s.title}>{title}</h3>
-        <p className={s.description}>{description}</p>
+        {/* <p className={s.description}>{description}</p> */}
 
         <Link
           href={`/cases/${id}`}
@@ -28,7 +28,7 @@ export default function CaseCard({ id, title, description, tags, image }) {
           rel="noopener noreferrer"
           className={s.link}
         >
-          <span>Смотреть проект</span>
+          <span>View Project</span>
           <IoIosArrowForward />
         </Link>
       </div>

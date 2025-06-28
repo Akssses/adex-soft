@@ -7,20 +7,19 @@ import s from "./Principles.module.scss";
 const principles = [
   {
     icon: FaBrain,
-    title: "Инновации",
+    title: "Innovation",
     description:
-      "Постоянно исследуем и внедряем передовые технологии в области Web3",
+      "Continuously exploring and implementing cutting-edge Web3 technologies",
   },
   {
     icon: FaShieldAlt,
-    title: "Безопасность",
-    description:
-      "Обеспечиваем максимальную защиту данных и активов наших клиентов",
+    title: "Security",
+    description: "Ensuring maximum protection of our clients' data and assets",
   },
   {
     icon: FaHeart,
-    title: "Качество",
-    description: "Следуем высочайшим стандартам разработки и тестирования",
+    title: "Quality",
+    description: "Following the highest standards of development and testing",
   },
 ];
 
@@ -35,7 +34,7 @@ export default function Principles() {
             viewport={{ once: true }}
             className={s.sectionTitle}
           >
-            Наши принципы
+            Our Principles
           </motion.h2>
         </div>
         <div className={s.principlesGrid}>

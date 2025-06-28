@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 import s from "@/styles/CostBlocks.module.scss";
 
 const designTypes = [
-  { key: "landing", label: "Дизайн лендинга" },
-  { key: "mobile", label: "Дизайн мобильного приложения" },
-  { key: "dashboard", label: "Дизайн дашборда" },
+  { key: "landing", label: "Landing Page Design" },
+  { key: "mobile", label: "Mobile App Design" },
+  { key: "dashboard", label: "Dashboard Design" },
   { key: "system", label: "Design System" },
 ];
 
@@ -15,51 +15,51 @@ const questionsMap = {
     {
       key: "fidelity",
       multi: false,
-      question: "Уровень детализации",
+      question: "Level of detail",
       options: [
         { label: "Wireframe", price: 0 },
-        { label: "Визуальный макет", price: 300 },
-        { label: "Интерактивный прототип", price: 600 },
+        { label: "Visual mockup", price: 300 },
+        { label: "Interactive prototype", price: 600 },
       ],
     },
     {
       key: "sections",
       multi: false,
-      question: "Количество секций",
+      question: "Number of sections",
       options: [
-        { label: "1–3 секции", price: 0 },
-        { label: "4–6 секций", price: 200 },
-        { label: "7+ секций", price: 400 },
+        { label: "1–3 sections", price: 0 },
+        { label: "4–6 sections", price: 200 },
+        { label: "7+ sections", price: 400 },
       ],
     },
     {
       key: "responsive",
       multi: false,
-      question: "Адаптивная верстка",
+      question: "Responsive design",
       options: [
-        { label: "Только десктоп", price: 0 },
-        { label: "Десктоп + планшет", price: 100 },
-        { label: "Все устройства", price: 300 },
+        { label: "Desktop only", price: 0 },
+        { label: "Desktop + tablet", price: 100 },
+        { label: "All devices", price: 300 },
       ],
     },
     {
       key: "interactive",
       multi: false,
-      question: "Интерактивный прототип",
+      question: "Interactive prototype",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Кликабельный", price: 200 },
-        { label: "С анимациями переходов", price: 400 },
+        { label: "None", price: 0 },
+        { label: "Clickable", price: 200 },
+        { label: "With transition animations", price: 400 },
       ],
     },
     {
       key: "animations",
       multi: false,
-      question: "Micro-анимации",
+      question: "Micro-animations",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Базовые", price: 100 },
-        { label: "Сложные", price: 300 },
+        { label: "None", price: 0 },
+        { label: "Basic", price: 100 },
+        { label: "Complex", price: 300 },
       ],
     },
     {
@@ -67,18 +67,18 @@ const questionsMap = {
       multi: false,
       question: "Brand identity",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Частичное", price: 200 },
-        { label: "Полное", price: 500 },
+        { label: "No", price: 0 },
+        { label: "Partial", price: 200 },
+        { label: "Full", price: 500 },
       ],
     },
     {
       key: "handoff",
       multi: false,
-      question: "Передача разработчикам",
+      question: "Developer Handoff",
       options: [
-        { label: "Figma-файл", price: 0 },
-        { label: "Figma + спецификации", price: 100 },
+        { label: "Figma file", price: 0 },
+        { label: "Figma + specifications", price: 100 },
         { label: "Figma + Dev Kit", price: 200 },
       ],
     },
@@ -87,7 +87,7 @@ const questionsMap = {
     {
       key: "screens",
       multi: false,
-      question: "Количество экранов",
+      question: "Number of screens",
       options: [
         { label: "1–5", price: 0 },
         { label: "6–15", price: 300 },
@@ -97,7 +97,7 @@ const questionsMap = {
     {
       key: "platforms",
       multi: false,
-      question: "Платформы",
+      question: "Platforms",
       options: [
         { label: "iOS", price: 0 },
         { label: "Android", price: 0 },
@@ -107,7 +107,7 @@ const questionsMap = {
     {
       key: "fidelity",
       multi: false,
-      question: "Уровень детализации",
+      question: "Level of detail",
       options: [
         { label: "Wireframe", price: 0 },
         { label: "Mockup", price: 400 },
@@ -117,11 +117,11 @@ const questionsMap = {
     {
       key: "interactive",
       multi: false,
-      question: "Интерактивность",
+      question: "Interactivity",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Кликабельный", price: 300 },
-        { label: "С анимациями", price: 600 },
+        { label: "None", price: 0 },
+        { label: "Clickable", price: 300 },
+        { label: "With animations", price: 600 },
       ],
     },
     {
@@ -129,17 +129,17 @@ const questionsMap = {
       multi: false,
       question: "Design System",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Базовый", price: 300 },
-        { label: "Полный", price: 600 },
+        { label: "None", price: 0 },
+        { label: "Basic", price: 300 },
+        { label: "Full", price: 600 },
       ],
     },
     {
       key: "animations",
       multi: false,
-      question: "Анимации",
+      question: "Animations",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 150 },
         { label: "Advanced", price: 400 },
       ],
@@ -147,7 +147,7 @@ const questionsMap = {
     {
       key: "handoff",
       multi: false,
-      question: "Передача",
+      question: "Handoff",
       options: [
         { label: "Figma", price: 0 },
         { label: "Zeplin", price: 100 },
@@ -159,7 +159,7 @@ const questionsMap = {
     {
       key: "pages",
       multi: false,
-      question: "Количество страниц",
+      question: "Number of pages",
       options: [
         { label: "1–3", price: 0 },
         { label: "4–7", price: 300 },
@@ -169,26 +169,26 @@ const questionsMap = {
     {
       key: "charts",
       multi: false,
-      question: "Data-визуализации",
+      question: "Data visualization",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Basic (графики)", price: 200 },
-        { label: "Advanced (панели)", price: 400 },
+        { label: "None", price: 0 },
+        { label: "Basic (charts)", price: 200 },
+        { label: "Advanced (dashboards)", price: 400 },
       ],
     },
     {
       key: "roles",
       multi: false,
-      question: "Роли пользователей",
+      question: "User roles",
       options: [
-        { label: "Одна", price: 0 },
-        { label: "Несколько", price: 300 },
+        { label: "Single", price: 0 },
+        { label: "Multiple", price: 300 },
       ],
     },
     {
       key: "fidelity",
       multi: false,
-      question: "Уровень детализации",
+      question: "Level of detail",
       options: [
         { label: "Mockup", price: 0 },
         { label: "Prototype", price: 500 },
@@ -197,10 +197,10 @@ const questionsMap = {
     {
       key: "interactive",
       multi: false,
-      question: "Интерактивность",
+      question: "Interactivity",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да", price: 300 },
+        { label: "No", price: 0 },
+        { label: "Yes", price: 300 },
       ],
     },
     {
@@ -208,15 +208,15 @@ const questionsMap = {
       multi: false,
       question: "Style Guide",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 200 },
-        { label: "Полный", price: 500 },
+        { label: "Full", price: 500 },
       ],
     },
     {
       key: "handoff",
       multi: false,
-      question: "Передача",
+      question: "Handoff",
       options: [
         { label: "Figma", price: 0 },
         { label: "Zeplin", price: 100 },
@@ -228,9 +228,9 @@ const questionsMap = {
     {
       key: "components",
       multi: false,
-      question: "Компонентов",
+      question: "Components",
       options: [
-        { label: "до 10", price: 0 },
+        { label: "up to 10", price: 0 },
         { label: "11–30", price: 500 },
         { label: "30+", price: 1000 },
       ],
@@ -238,9 +238,9 @@ const questionsMap = {
     {
       key: "variants",
       multi: false,
-      question: "Варианты темы",
+      question: "Theme variants",
       options: [
-        { label: "Только light", price: 0 },
+        { label: "Light only", price: 0 },
         { label: "Light + dark", price: 300 },
         { label: "Custom themes", price: 600 },
       ],
@@ -250,25 +250,25 @@ const questionsMap = {
       multi: false,
       question: "Design Tokens",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Стили", price: 200 },
-        { label: "Полный набор", price: 400 },
+        { label: "None", price: 0 },
+        { label: "Styles", price: 200 },
+        { label: "Full set", price: 400 },
       ],
     },
     {
       key: "documentation",
       multi: false,
-      question: "Документация",
+      question: "Documentation",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 200 },
-        { label: "Полная", price: 500 },
+        { label: "Full", price: 500 },
       ],
     },
     {
       key: "handoff",
       multi: false,
-      question: "Передача",
+      question: "Handoff",
       options: [
         { label: "Figma", price: 0 },
         { label: "Storybook", price: 200 },
@@ -344,7 +344,7 @@ export default function UxUiCalc() {
   if (!type) {
     return (
       <div className={s.chooseType}>
-        <h2>Выберите тип дизайна</h2>
+        <h2>Select Design Type</h2>
         <div className={s.types}>
           {designTypes.map((t) => (
             <button
@@ -433,7 +433,7 @@ export default function UxUiCalc() {
 
       <div className={s.controls}>
         <button onClick={handlePrev}>
-          {step <= 1 ? "← Выбрать тип" : "Назад"}
+          {step <= 1 ? "← Select type" : "Back"}
         </button>
         <button
           onClick={handleNext}
@@ -445,7 +445,7 @@ export default function UxUiCalc() {
             )
           }
         >
-          {step === totalSteps ? "Завершить" : "Далее"}
+          {step === totalSteps ? "Complete" : "Next"}
         </button>
       </div>
     </div>

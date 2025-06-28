@@ -5,11 +5,11 @@ import React, { useState, useEffect } from "react";
 import s from "@/styles/CostBlocks.module.scss";
 
 const tokenTypes = [
-  { key: "meme", label: "Мем-токен" },
-  { key: "nft", label: "NFT токен" },
-  { key: "utility", label: "Утилитарный токен" },
-  { key: "security", label: "Ценный (Security) токен" },
-  { key: "governance", label: "Governance токен" },
+  { key: "meme", label: "Meme Token" },
+  { key: "nft", label: "NFT Token" },
+  { key: "utility", label: "Utility Token" },
+  { key: "security", label: "Security Token" },
+  { key: "governance", label: "Governance Token" },
 ];
 
 const questionsMap = {
@@ -17,19 +17,19 @@ const questionsMap = {
     {
       key: "supplyModel",
       multi: false,
-      question: "Модель эмиссии токена",
+      question: "Token emission model",
       options: [
-        { label: "Фиксированный запас", price: 0 },
-        { label: "Инфляционный", price: 200 },
-        { label: "Дефляционный (сжигание)", price: 300 },
+        { label: "Fixed supply", price: 0 },
+        { label: "Inflationary", price: 200 },
+        { label: "Deflationary (burn)", price: 300 },
       ],
     },
     {
       key: "totalSupply",
       multi: false,
-      question: "Общий объём токенов",
+      question: "Total token supply",
       options: [
-        { label: "до 1 M", price: 0 },
+        { label: "up to 1M", price: 0 },
         { label: "1M–100M", price: 100 },
         { label: "100M+", price: 200 },
       ],
@@ -37,41 +37,41 @@ const questionsMap = {
     {
       key: "distribution",
       multi: true,
-      question: "Распределение токенов",
+      question: "Token distribution",
       options: [
-        { label: "Команда", price: 100 },
-        { label: "Инвесторы", price: 100 },
-        { label: "Экосистема", price: 100 },
-        { label: "Ликвидность", price: 100 },
-        { label: "Вознаграждения", price: 100 },
+        { label: "Team", price: 100 },
+        { label: "Investors", price: 100 },
+        { label: "Ecosystem", price: 100 },
+        { label: "Liquidity", price: 100 },
+        { label: "Rewards", price: 100 },
       ],
     },
     {
       key: "vesting",
       multi: false,
-      question: "Вестинг для команды",
+      question: "Team vesting",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "6 мес cliff + 1 год", price: 150 },
-        { label: "1 год cliff + 2 года", price: 300 },
+        { label: "None", price: 0 },
+        { label: "6 months cliff + 1 year", price: 150 },
+        { label: "1 year cliff + 2 years", price: 300 },
       ],
     },
     {
       key: "staking",
       multi: false,
-      question: "Стейкинг и начисления",
+      question: "Staking and rewards",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Ежедневные 0.1%", price: 200 },
-        { label: "Ежемесячные 3%", price: 150 },
+        { label: "None", price: 0 },
+        { label: "Daily 0.1%", price: 200 },
+        { label: "Monthly 3%", price: 150 },
       ],
     },
     {
       key: "referral",
       multi: false,
-      question: "Реферальная программа",
+      question: "Referral program",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic (5%)", price: 100 },
         { label: "Advanced (10%)", price: 200 },
       ],
@@ -79,9 +79,9 @@ const questionsMap = {
     {
       key: "audit",
       multi: false,
-      question: "Аудит смарт-контракта",
+      question: "Smart contract audit",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 200 },
         { label: "Full security audit", price: 500 },
       ],
@@ -89,9 +89,9 @@ const questionsMap = {
     {
       key: "listing",
       multi: false,
-      question: "Листинг на DEX/CEX",
+      question: "DEX/CEX listing",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "DEX (Uniswap, Pancake)", price: 200 },
         { label: "CEX (Binance, Coinbase)", price: 500 },
       ],
@@ -102,58 +102,58 @@ const questionsMap = {
     {
       key: "compliance",
       multi: false,
-      question: "KYC/AML верификация",
+      question: "KYC/AML verification",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Упрощённая", price: 200 },
-        { label: "Полная (VASP)", price: 500 },
+        { label: "None", price: 0 },
+        { label: "Basic", price: 200 },
+        { label: "Full (VASP)", price: 500 },
       ],
     },
     {
       key: "supplyModel",
       multi: false,
-      question: "Модель эмиссии",
+      question: "Emission model",
       options: [
-        { label: "Фиксированный запас", price: 0 },
-        { label: "Инфляционный", price: 200 },
+        { label: "Fixed supply", price: 0 },
+        { label: "Inflationary", price: 200 },
       ],
     },
     {
       key: "distribution",
       multi: true,
-      question: "Распределение токенов",
+      question: "Token distribution",
       options: [
-        { label: "Команда", price: 100 },
-        { label: "Инвесторы", price: 100 },
-        { label: "Регуляторы", price: 150 },
-        { label: "Резерв", price: 100 },
+        { label: "Team", price: 100 },
+        { label: "Investors", price: 100 },
+        { label: "Regulators", price: 150 },
+        { label: "Reserve", price: 100 },
       ],
     },
     {
       key: "audit",
       multi: false,
-      question: "Аудит и юридическая проверка",
+      question: "Audit and legal review",
       options: [
-        { label: "Только контракт", price: 200 },
-        { label: "Контракт + юридика", price: 700 },
+        { label: "Contract only", price: 200 },
+        { label: "Contract + legal", price: 700 },
       ],
     },
     {
       key: "kycIntegration",
       multi: false,
-      question: "Интеграция KYC-провайдера",
+      question: "KYC provider integration",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic API", price: 300 },
-        { label: "Полная интеграция", price: 600 },
+        { label: "Full integration", price: 600 },
       ],
     },
     {
       key: "listing",
       multi: false,
-      question: "Листинг",
+      question: "Listing",
       options: [
-        { label: "Только DEX", price: 300 },
+        { label: "DEX only", price: 300 },
         { label: "DEX + CEX", price: 800 },
       ],
     },
@@ -163,9 +163,9 @@ const questionsMap = {
     {
       key: "votingModel",
       multi: false,
-      question: "Модель голосования",
+      question: "Voting model",
       options: [
-        { label: "По доле токенов", price: 0 },
+        { label: "Token share based", price: 0 },
         { label: "Quadratic Voting", price: 200 },
         { label: "DAO Framework", price: 400 },
       ],
@@ -173,17 +173,17 @@ const questionsMap = {
     {
       key: "treasury",
       multi: false,
-      question: "Управление казной",
+      question: "Treasury management",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Мультисиг", price: 200 },
-        { label: "DAO казна", price: 400 },
+        { label: "None", price: 0 },
+        { label: "Multisig", price: 200 },
+        { label: "DAO treasury", price: 400 },
       ],
     },
     {
       key: "governanceToken",
       multi: false,
-      question: "Тип токена",
+      question: "Token type",
       options: [
         { label: "Utility + Governance", price: 0 },
         { label: "Pure Governance", price: 200 },
@@ -192,7 +192,7 @@ const questionsMap = {
     {
       key: "proposalSystem",
       multi: false,
-      question: "Система предложений",
+      question: "Proposal system",
       options: [
         { label: "Basic Issue Tracker", price: 100 },
         { label: "Full DAO Module", price: 300 },
@@ -201,10 +201,10 @@ const questionsMap = {
     {
       key: "audit",
       multi: false,
-      question: "Аудит DAO-смартконтрактов",
+      question: "DAO smart contract audit",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да, security audit", price: 500 },
+        { label: "None", price: 0 },
+        { label: "Yes, security audit", price: 500 },
       ],
     },
   ],
@@ -213,9 +213,9 @@ const questionsMap = {
     {
       key: "count",
       multi: false,
-      question: "Количество NFT в коллекции",
+      question: "Number of NFTs in collection",
       options: [
-        { label: "до 100", price: 0 },
+        { label: "up to 100", price: 0 },
         { label: "100–1000", price: 200 },
         { label: "1000+", price: 400 },
       ],
@@ -223,7 +223,7 @@ const questionsMap = {
     {
       key: "metadata",
       multi: false,
-      question: "Хостинг метаданных",
+      question: "Metadata hosting",
       options: [
         { label: "IPFS", price: 100 },
         { label: "Cloud Storage", price: 200 },
@@ -232,9 +232,9 @@ const questionsMap = {
     {
       key: "royalties",
       multi: false,
-      question: "Настройка роялти",
+      question: "Royalties setup",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "5%", price: 50 },
         { label: "10%", price: 100 },
       ],
@@ -242,7 +242,7 @@ const questionsMap = {
     {
       key: "marketplace",
       multi: true,
-      question: "Интеграции с маркетплейсами",
+      question: "Marketplace integrations",
       options: [
         { label: "OpenSea", price: 100 },
         { label: "Rarible", price: 100 },
@@ -252,19 +252,19 @@ const questionsMap = {
     {
       key: "minting",
       multi: false,
-      question: "Механизм чеканки",
+      question: "Minting mechanism",
       options: [
-        { label: "Клиентская mint", price: 0 },
-        { label: "Смарт-контракт mint", price: 200 },
+        { label: "Client mint", price: 0 },
+        { label: "Smart contract mint", price: 200 },
       ],
     },
     {
       key: "audit",
       multi: false,
-      question: "Аудит смарт-контрактов",
+      question: "Smart contract audit",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да", price: 500 },
+        { label: "None", price: 0 },
+        { label: "Yes", price: 500 },
       ],
     },
   ],
@@ -273,29 +273,29 @@ const questionsMap = {
     {
       key: "prototype",
       multi: false,
-      question: "Есть ли у вас прототип или дизайн?",
+      question: "Do you have a prototype or design?",
       options: [
-        { label: "Да", price: 0 },
-        { label: "Нужен wireframe", price: 100 },
-        { label: "Хочу визуальный прототип", price: 200 },
+        { label: "Yes", price: 0 },
+        { label: "Need wireframe", price: 100 },
+        { label: "Want visual prototype", price: 200 },
       ],
     },
     {
       key: "totalSupply",
       multi: false,
-      question: "Общий объём токенов",
+      question: "Total token supply",
       options: [
-        { label: "1 000 000 000 (1B)", price: 0 },
-        { label: "10 000 000 000 (10B)", price: 100 },
-        { label: "100 000 000 000 (100B)", price: 200 },
+        { label: "1,000,000,000 (1B)", price: 0 },
+        { label: "10,000,000,000 (10B)", price: 100 },
+        { label: "100,000,000,000 (100B)", price: 200 },
       ],
     },
     {
       key: "transferTax",
       multi: false,
-      question: "Налог при каждой транзакции",
+      question: "Tax on each transaction",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "1%", price: 100 },
         { label: "2%", price: 200 },
         { label: "5%", price: 500 },
@@ -304,50 +304,50 @@ const questionsMap = {
     {
       key: "autoLiquidity",
       multi: false,
-      question: "Авто-ликвидность",
+      question: "Auto-liquidity",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "1% кажд. транзакции", price: 150 },
-        { label: "2% кажд. транзакции", price: 300 },
+        { label: "None", price: 0 },
+        { label: "1% per transaction", price: 150 },
+        { label: "2% per transaction", price: 300 },
       ],
     },
     {
       key: "marketingWallet",
       multi: false,
-      question: "Маркетинговый кошелёк",
+      question: "Marketing wallet",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "1% каждой транзакции", price: 150 },
-        { label: "2% каждой транзакции", price: 300 },
+        { label: "None", price: 0 },
+        { label: "1% per transaction", price: 150 },
+        { label: "2% per transaction", price: 300 },
       ],
     },
     {
       key: "reflection",
       multi: false,
-      question: "Рефлективные вознаграждения",
+      question: "Reflection rewards",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "1% держателям", price: 100 },
-        { label: "2% держателям", price: 200 },
+        { label: "None", price: 0 },
+        { label: "1% holders", price: 100 },
+        { label: "2% holders", price: 200 },
       ],
     },
     {
       key: "antiWhale",
       multi: false,
-      question: "Anti-Whale механика (лимиты)",
+      question: "Anti-Whale mechanics (limits)",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Лимит 0.5% за транзакцию", price: 150 },
-        { label: "Лимит 1%", price: 300 },
-        { label: "Лимит 2%", price: 500 },
+        { label: "None", price: 0 },
+        { label: "0.5% limit per transaction", price: 150 },
+        { label: "1% limit", price: 300 },
+        { label: "2% limit", price: 500 },
       ],
     },
     {
       key: "audit",
       multi: false,
-      question: "Аудит смарт-контракта",
+      question: "Smart contract audit",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic security audit", price: 200 },
         { label: "Full security audit", price: 500 },
       ],
@@ -355,7 +355,7 @@ const questionsMap = {
     {
       key: "listing",
       multi: false,
-      question: "Листинг токена",
+      question: "Token listing",
       options: [
         { label: "DEX (Uniswap, Pancake)", price: 200 },
         { label: "DEX + CEX (Binance, Coinbase)", price: 500 },
@@ -438,7 +438,7 @@ export default function TokenomicsCalc() {
   if (!tokenType) {
     return (
       <div className={s.chooseType}>
-        <h2>Тип токена</h2>
+        <h2>Token type</h2>
         <div className={s.types}>
           {tokenTypes.map((t) => (
             <button
@@ -462,9 +462,9 @@ export default function TokenomicsCalc() {
     const label = tokenTypes.find((t) => t.key === tokenType)?.label;
     return (
       <div className={s.summary}>
-        <h2>Сводка по токеномике</h2>
+        <h2>Tokenomics summary</h2>
         <p>
-          <strong>Тип токена:</strong> {label}
+          <strong>Token type:</strong> {label}
         </p>
         <ul>
           {questions.map((q) => {
@@ -479,7 +479,7 @@ export default function TokenomicsCalc() {
           })}
         </ul>
         <p>
-          <strong>Итоговая стоимость:</strong> ${total}
+          <strong>Total cost:</strong> ${total}
         </p>
       </div>
     );
@@ -529,7 +529,7 @@ export default function TokenomicsCalc() {
 
       <div className={s.controls}>
         <button onClick={handlePrev}>
-          {step <= 1 ? "← Выбрать тип" : "Назад"}
+          {step <= 1 ? "← Choose type" : "Back"}
         </button>
         <button
           onClick={handleNext}
@@ -541,7 +541,7 @@ export default function TokenomicsCalc() {
             )
           }
         >
-          {step === totalSteps ? "Завершить" : "Далее"}
+          {step === totalSteps ? "Finish" : "Next"}
         </button>
       </div>
     </div>

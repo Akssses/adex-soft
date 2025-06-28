@@ -4,22 +4,22 @@
 import React, { useState, useEffect } from "react";
 import s from "@/styles/CostBlocks.module.scss";
 
-const nftMetaTypes = [
-  { key: "nftCollection", label: "NFT-коллекция" },
-  { key: "metaverseWorld", label: "Метаверс: виртуальный мир" },
-  { key: "metaverseAvatar", label: "Метаверс: аватар" },
-  { key: "economy", label: "Метаверс: экономика" },
-  { key: "arvr", label: "AR/VR-опыт" },
+const nftTypes = [
+  { key: "nftCollection", label: "NFT Collection" },
+  { key: "metaverseWorld", label: "Metaverse: Virtual World" },
+  { key: "metaverseAvatar", label: "Metaverse: Avatar" },
+  { key: "economy", label: "Metaverse: Economy" },
+  { key: "arvr", label: "AR/VR Experience" },
 ];
 
 const questionsMap = {
   nftCollection: [
     {
-      key: "count",
+      key: "size",
       multi: false,
-      question: "Размер коллекции",
+      question: "Collection size",
       options: [
-        { label: "до 100", price: 0 },
+        { label: "up to 100", price: 0 },
         { label: "100–1000", price: 200 },
         { label: "1000+", price: 400 },
       ],
@@ -27,46 +27,46 @@ const questionsMap = {
     {
       key: "traits",
       multi: false,
-      question: "Кол-во атрибутов (traits)",
+      question: "Number of traits",
       options: [
-        { label: "до 5", price: 0 },
+        { label: "up to 5", price: 0 },
         { label: "6–15", price: 150 },
         { label: "16+", price: 300 },
       ],
     },
     {
-      key: "traitDesign",
+      key: "generation",
       multi: false,
-      question: "Дизайн атрибутов",
+      question: "Generation algorithm",
       options: [
-        { label: "Стандартный", price: 0 },
-        { label: "Кастомный", price: 300 },
+        { label: "Standard", price: 0 },
+        { label: "Custom", price: 300 },
       ],
     },
     {
-      key: "metadata",
+      key: "storage",
       multi: false,
-      question: "Хостинг метаданных",
+      question: "Storage solution",
       options: [
         { label: "IPFS", price: 100 },
-        { label: "Архитектура Cloud", price: 200 },
+        { label: "Cloud Architecture", price: 200 },
       ],
     },
     {
       key: "minting",
       multi: false,
-      question: "Механизм minting",
+      question: "Minting type",
       options: [
-        { label: "Клиентский", price: 0 },
-        { label: "Смарт-контракт", price: 300 },
+        { label: "Client-side", price: 0 },
+        { label: "Smart contract", price: 300 },
       ],
     },
     {
       key: "royalties",
       multi: false,
-      question: "Роялти",
+      question: "Royalties",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "5%", price: 100 },
         { label: "10%", price: 200 },
       ],
@@ -74,7 +74,7 @@ const questionsMap = {
     {
       key: "marketplace",
       multi: true,
-      question: "Интеграции с маркетплейсами",
+      question: "Marketplace integration",
       options: [
         { label: "OpenSea", price: 100 },
         { label: "Rarible", price: 100 },
@@ -84,9 +84,9 @@ const questionsMap = {
     {
       key: "audit",
       multi: false,
-      question: "Аудит смарт-контрактов",
+      question: "Smart contract audit",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 200 },
         { label: "Full", price: 500 },
       ],
@@ -95,41 +95,41 @@ const questionsMap = {
 
   metaverseWorld: [
     {
-      key: "scale",
+      key: "size",
       multi: false,
-      question: "Масштаб мира",
+      question: "World size",
       options: [
-        { label: "Маленький", price: 0 },
-        { label: "Средний", price: 500 },
-        { label: "Большой", price: 1000 },
+        { label: "Small", price: 0 },
+        { label: "Medium", price: 500 },
+        { label: "Large", price: 1000 },
       ],
     },
     {
-      key: "interactivity",
+      key: "interaction",
       multi: false,
-      question: "Уровень интерактивности",
+      question: "Interaction level",
       options: [
-        { label: "Статичный", price: 0 },
-        { label: "Объекты и NPC", price: 600 },
-        { label: "Полный VR-интерактив", price: 1200 },
+        { label: "Static", price: 0 },
+        { label: "Objects and NPCs", price: 600 },
+        { label: "Full VR interaction", price: 1200 },
       ],
     },
     {
       key: "multiplayer",
       multi: false,
-      question: "Мультиплеер",
+      question: "Multiplayer",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Peer-to-peer", price: 400 },
-        { label: "Серверный", price: 800 },
+        { label: "Server-based", price: 800 },
       ],
     },
     {
       key: "physics",
       multi: false,
-      question: "Физический движок",
+      question: "Physics engine",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 300 },
         { label: "Advanced", price: 600 },
       ],
@@ -137,19 +137,19 @@ const questionsMap = {
     {
       key: "assets",
       multi: false,
-      question: "Импорт 3D-ассетов",
+      question: "3D assets",
       options: [
-        { label: "до 50", price: 0 },
+        { label: "up to 50", price: 0 },
         { label: "51–200", price: 400 },
         { label: "200+", price: 800 },
       ],
     },
     {
-      key: "vrSupport",
+      key: "customization",
       multi: false,
-      question: "Поддержка VR-устройств",
+      question: "World customization",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 500 },
       ],
     },
@@ -157,11 +157,11 @@ const questionsMap = {
 
   metaverseAvatar: [
     {
-      key: "avatarCount",
+      key: "models",
       multi: false,
-      question: "Кол-во аватаров",
+      question: "Number of models",
       options: [
-        { label: "до 10", price: 0 },
+        { label: "up to 10", price: 0 },
         { label: "11–50", price: 300 },
         { label: "51+", price: 600 },
       ],
@@ -169,39 +169,39 @@ const questionsMap = {
     {
       key: "customization",
       multi: false,
-      question: "Уровень кастомизации",
+      question: "Customization level",
       options: [
-        { label: "Простая", price: 0 },
-        { label: "Средняя", price: 400 },
-        { label: "Полная", price: 800 },
+        { label: "Simple", price: 0 },
+        { label: "Medium", price: 400 },
+        { label: "Full", price: 800 },
       ],
     },
     {
-      key: "rigging",
+      key: "animation",
       multi: false,
-      question: "Скелетная анимация",
+      question: "Animation",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 300 },
         { label: "Full Body", price: 600 },
       ],
     },
     {
-      key: "expressions",
+      key: "physics",
       multi: false,
-      question: "Морф-таргеты и эмоции",
+      question: "Physics",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 200 },
         { label: "Advanced", price: 400 },
       ],
     },
     {
-      key: "blockchainId",
+      key: "nft",
       multi: false,
-      question: "Blockchain ID",
+      question: "NFT integration",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Integrate NFT", price: 300 },
       ],
     },
@@ -209,11 +209,11 @@ const questionsMap = {
 
   economy: [
     {
-      key: "tokenIntegration",
+      key: "token",
       multi: false,
-      question: "Интеграция токена",
+      question: "Token type",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "ERC-20/BEP-20", price: 300 },
         { label: "Custom Token", price: 600 },
       ],
@@ -221,9 +221,9 @@ const questionsMap = {
     {
       key: "marketplace",
       multi: false,
-      question: "Встроенный маркетплейс",
+      question: "Marketplace",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 400 },
         { label: "Advanced", price: 800 },
       ],
@@ -231,9 +231,9 @@ const questionsMap = {
     {
       key: "governance",
       multi: false,
-      question: "DAO-управление",
+      question: "Governance",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic voting", price: 300 },
         { label: "Full DAO", price: 600 },
       ],
@@ -241,9 +241,9 @@ const questionsMap = {
     {
       key: "rewards",
       multi: false,
-      question: "Механизмы вознаграждений",
+      question: "Reward system",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Daily rewards", price: 200 },
         { label: "Staking rewards", price: 400 },
       ],
@@ -251,7 +251,7 @@ const questionsMap = {
     {
       key: "analytics",
       multi: false,
-      question: "Аналитика экономики",
+      question: "Analytics",
       options: [
         { label: "Basic", price: 0 },
         { label: "Advanced dashboard", price: 300 },
@@ -263,7 +263,7 @@ const questionsMap = {
     {
       key: "platform",
       multi: false,
-      question: "Платформа",
+      question: "Platform",
       options: [
         { label: "Web-AR", price: 0 },
         { label: "Mobile AR", price: 300 },
@@ -271,39 +271,39 @@ const questionsMap = {
       ],
     },
     {
-      key: "interaction",
+      key: "controls",
       multi: false,
-      question: "Уровень взаимодействия",
+      question: "Controls",
       options: [
         { label: "Touch only", price: 0 },
         { label: "Gesture controls", price: 400 },
       ],
     },
     {
-      key: "spatialAudio",
+      key: "tracking",
       multi: false,
-      question: "Пространственный звук",
+      question: "Object tracking",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 200 },
       ],
     },
     {
-      key: "tracking",
+      key: "environment",
       multi: false,
-      question: "Трекинг устройства",
+      question: "Environment mapping",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 300 },
         { label: "Advanced", price: 600 },
       ],
     },
     {
-      key: "analytics",
+      key: "sharing",
       multi: false,
-      question: "Аналитика опыта",
+      question: "Social sharing",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 200 },
         { label: "Full", price: 500 },
       ],
@@ -373,9 +373,9 @@ export default function NFTMetaverseCalc() {
   if (!type) {
     return (
       <div className={s.chooseType}>
-        <h2>NFT & Метаверс</h2>
+        <h2>NFT & Metaverse</h2>
         <div className={s.types}>
-          {nftMetaTypes.map((t) => (
+          {nftTypes.map((t) => (
             <button
               key={t.key}
               className={type === t.key ? s.active : ""}
@@ -393,12 +393,12 @@ export default function NFTMetaverseCalc() {
   }
 
   if (isComplete) {
-    const label = nftMetaTypes.find((t) => t.key === type)?.label;
+    const label = nftTypes.find((t) => t.key === type)?.label;
     return (
       <div className={s.summary}>
-        <h2>Сводка по NFT & Метаверс</h2>
+        <h2>Summary of NFT & Metaverse</h2>
         <p>
-          <strong>Поднаправление:</strong> {label}
+          <strong>Direction:</strong> {label}
         </p>
         <ul>
           {questions.map((q) => {
@@ -413,7 +413,7 @@ export default function NFTMetaverseCalc() {
           })}
         </ul>
         <p>
-          <strong>Итоговая стоимость:</strong> ${total}
+          <strong>Total cost:</strong> ${total}
         </p>
       </div>
     );
@@ -462,7 +462,7 @@ export default function NFTMetaverseCalc() {
 
       <div className={s.controls}>
         <button onClick={handlePrev}>
-          {step <= 1 ? "← Выбрать поднаправление" : "Назад"}
+          {step <= 1 ? "← Choose direction" : "Back"}
         </button>
         <button
           onClick={handleNext}
@@ -474,7 +474,7 @@ export default function NFTMetaverseCalc() {
             )
           }
         >
-          {step === totalSteps ? "Завершить" : "Далее"}
+          {step === totalSteps ? "Finish" : "Next"}
         </button>
       </div>
     </div>

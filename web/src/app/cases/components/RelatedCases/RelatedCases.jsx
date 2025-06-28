@@ -80,14 +80,14 @@ export default function RelatedCases() {
   const content = (
     <div className={s.case_section}>
       <header className={s.header}>
-        <h1 className={s.title}>Похожие проекты</h1>
+        <h1 className={s.title}>Other Cases</h1>
       </header>
 
       <div className={s.sliderWrapper}>
         {isLoading ? (
-          <div className={s.loading}>Загрузка проектов...</div>
+          <div className={s.loading}>Loading projects...</div>
         ) : cases.length === 0 ? (
-          <div className={s.empty}>Нет доступных проектов</div>
+          <div className={s.empty}>No available projects</div>
         ) : (
           <div className={s.case_slider_container}>
             {visibleCases.map((project) => (

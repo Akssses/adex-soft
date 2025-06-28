@@ -37,8 +37,8 @@ export default function BannerCTA() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className={s.title}
             >
-              У вас есть проект на примете? <br />
-              <span className={s.highlight}>Давайте приступим к работе</span>
+              Have a project in mind? <br />
+              <span className={s.highlight}>Let's get to work</span>
             </motion.h2>
             <motion.button
               initial={{ opacity: 0, scale: 0.9 }}
@@ -50,7 +50,7 @@ export default function BannerCTA() {
               className={s.button}
               onClick={handleOpenModal}
             >
-              <span>Начать проект</span>
+              <span>Start Project</span>
               <FaRocket className={s.icon} />
             </motion.button>
           </div>

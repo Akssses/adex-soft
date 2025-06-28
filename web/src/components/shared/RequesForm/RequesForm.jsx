@@ -13,24 +13,24 @@ import {
 } from "react-icons/fa";
 
 const SERVICES = [
-  "Веб-разработка",
+  "Web Development",
   "Telegram Mini App",
-  "UI/UX Дизайн",
-  "Токеномика",
-  "NFT и метаверс",
-  "Telegram боты",
-  "DeFi-решения",
-  "Разработка и интеграция",
-  "Другая услуга",
+  "UI/UX Design",
+  "Tokenomics",
+  "NFT & Metaverse",
+  "Telegram Bots",
+  "DeFi Solutions",
+  "Development & Integration",
+  "Other Service",
 ];
 
 const BUDGET_TAGS = [
-  "$500 - $1 000",
-  "$1 000 - $3 000",
-  "$3 000 - $5 000",
-  "$5 000 - $10 000",
-  "$10 000+",
-  "$50 000 - $100 000",
+  "$500 - $1,000",
+  "$1,000 - $3,000",
+  "$3,000 - $5,000",
+  "$5,000 - $10,000",
+  "$10,000+",
+  "$50,000 - $100,000",
 ];
 
 const CustomSelect = ({ value, onChange, disabled }) => {
@@ -56,7 +56,7 @@ const CustomSelect = ({ value, onChange, disabled }) => {
         }`}
         onClick={() => !disabled && setIsOpen(!isOpen)}
       >
-        <span>{value || "Выберите услугу"}</span>
+        <span>{value || "Select a service"}</span>
         <FaChevronDown className={s.arrow} />
       </div>
       <AnimatePresence>
@@ -203,28 +203,28 @@ export default function RequesForm({ onClose }) {
                 <div className={s.successIcon}>
                   <FaRocket />
                 </div>
-                <h2 className={s.title}>Спасибо за заявку!</h2>
+                <h2 className={s.title}>Thank you for your request!</h2>
                 <p className={s.successMessage}>
-                  Мы уже получили вашу заявку и свяжемся с вами в ближайшее
-                  время для обсуждения деталей проекта
+                  We have received your request and will contact you soon to
+                  discuss your project details
                 </p>
                 <div className={s.successDetails}>
                   <div className={s.detailItem}>
                     <FaCheck className={s.checkIcon} />
-                    <span>Заявка успешно отправлена</span>
+                    <span>Request successfully sent</span>
                   </div>
                   <div className={s.detailItem}>
                     <FaTelegram className={s.telegramIcon} />
-                    <span>Ожидайте сообщение в Telegram / Email</span>
+                    <span>Expect a message via Telegram / Email</span>
                   </div>
                 </div>
               </div>
             ) : (
               <>
-                <h2 className={s.title}>Начать проект</h2>
+                <h2 className={s.title}>Start Project</h2>
                 <p className={s.subtitle}>
-                  Расскажите немного о своей идее, и мы свяжемся с вами в
-                  ближайшее время
+                  Tell us a bit about your idea, and we'll get back to you
+                  shortly
                 </p>
                 <form onSubmit={handleSubmit} className={s.form}>
                   <div className={s.inputGroup}>
@@ -233,7 +233,7 @@ export default function RequesForm({ onClose }) {
                       name="name"
                       value={formState.name}
                       onChange={handleChange}
-                      placeholder="Ваше имя"
+                      placeholder="Your name"
                       required
                       disabled={isSubmitting}
                     />
@@ -246,7 +246,7 @@ export default function RequesForm({ onClose }) {
                       name="email"
                       value={formState.email}
                       onChange={handleChange}
-                      placeholder="Ваш e-mail"
+                      placeholder="Your email"
                       required
                       disabled={isSubmitting}
                     />
@@ -261,7 +261,7 @@ export default function RequesForm({ onClose }) {
                         name="telegram"
                         value={formState.telegram}
                         onChange={handleChange}
-                        placeholder="Ваш Telegram (опционально)"
+                        placeholder="Your Telegram (optional)"
                         disabled={isSubmitting}
                       />
                     </div>
@@ -277,7 +277,7 @@ export default function RequesForm({ onClose }) {
                   </div>
 
                   <div className={s.budgetTags}>
-                    <p className={s.budgetTitle}>Выберите бюджет проекта:</p>
+                    <p className={s.budgetTitle}>Select project budget:</p>
                     <div className={s.tags}>
                       {BUDGET_TAGS.map((budget) => (
                         <button
@@ -300,7 +300,7 @@ export default function RequesForm({ onClose }) {
                       name="message"
                       value={formState.message}
                       onChange={handleChange}
-                      placeholder="Опишите ваш проект..."
+                      placeholder="Describe your project..."
                       required
                       disabled={isSubmitting}
                     />
@@ -315,7 +315,7 @@ export default function RequesForm({ onClose }) {
                     disabled={isSubmitting}
                   >
                     <span className={s.buttonText}>
-                      {isSubmitting ? "Отправка..." : "Отправить заявку"}
+                      {isSubmitting ? "Sending..." : "Submit Request"}
                     </span>
                     {isSubmitting ? (
                       <div className={s.loadingSpinner} />

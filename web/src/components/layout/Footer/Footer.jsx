@@ -6,26 +6,25 @@ import { FaInstagram, FaTelegram, FaYoutube } from "react-icons/fa";
 import Link from "next/link";
 
 const SERVICES = [
-  "Разработка и интеграция",
-  "Токеномика",
+  "Development & Integration",
+  "Tokenomics",
   "Telegram Mini Apps",
-  "Веб-разработка",
-  "UX/UI дизайн",
-  "DeFi-решения",
-  "Telegram боты",
-  "NFT и метаверс",
+  "Web Development",
+  "UX/UI Design",
+  "DeFi Solutions",
+  "Telegram Bots",
+  "NFT & Metaverse",
 ];
 
 const COMPANY = [
-  { label: "О нас", href: "/about" },
-  { label: "Калькулятор", href: "/calc" },
-  // { label: "Блог", href: "/blog" },
-  { label: "Контакты", href: "/contact" },
+  { label: "About Us", href: "/about" },
+  { label: "Calculator", href: "/calc" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const LEGAL = [
-  { label: "Политика конфиденциальности", href: "/privacy" },
-  { label: "Условия использования", href: "/terms" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Use", href: "/terms" },
 ];
 
 export default function Footer() {
@@ -38,12 +37,12 @@ export default function Footer() {
           <Link href="/" className={s.logoLink}>
             <img
               src="/assets/images/logo.png"
-              alt="ADEX Логотип"
+              alt="ADEX Logo"
               className={s.logo}
             />
           </Link>
           <p className={s.tagline}>
-            Ваш партнер в развитии web3-приложений полного цикла
+            Your partner in full-cycle web3 application development
           </p>
           <div className={s.social}>
             <Link
@@ -74,7 +73,7 @@ export default function Footer() {
         </div>
 
         <div className={s.column}>
-          <h3>Услуги</h3>
+          <h3>Services</h3>
           <ul>
             {SERVICES.map((service, index) => (
               <li key={index}>
@@ -91,7 +90,7 @@ export default function Footer() {
         </div>
 
         <div className={s.column}>
-          <h3>Компания</h3>
+          <h3>Company</h3>
           <ul>
             {COMPANY.map((item, index) => (
               <li key={index}>
@@ -102,7 +101,7 @@ export default function Footer() {
         </div>
 
         <div className={s.column}>
-          <h3>Документы</h3>
+          <h3>Legal</h3>
           <ul>
             {LEGAL.map((item, index) => (
               <li key={index}>
@@ -114,7 +113,7 @@ export default function Footer() {
       </div>
 
       <div className={`${s.bottom} container`}>
-        <p>© {new Date().getFullYear()} ADEX. Все права защищены.</p>
+        <p>© {new Date().getFullYear()} ADEX. All rights reserved.</p>
         <div className={s.bottomLinks}>
           <Link href="/contact">support@adex.soft</Link>
         </div>

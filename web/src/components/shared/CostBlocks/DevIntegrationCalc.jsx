@@ -5,14 +5,14 @@ import React, { useState, useEffect } from "react";
 import s from "@/styles/CostBlocks.module.scss";
 
 const integrationTypes = [
-  { key: "backend", label: "Backend-сервисы" },
-  { key: "frontend", label: "Frontend-разработка" },
-  { key: "fullstack", label: "Fullstack-решение" },
-  { key: "api", label: "API-интеграции" },
+  { key: "backend", label: "Backend-services" },
+  { key: "frontend", label: "Frontend-development" },
+  { key: "fullstack", label: "Fullstack-solution" },
+  { key: "api", label: "API-integrations" },
   { key: "devops", label: "DevOps & CI/CD" },
-  { key: "microservices", label: "Микросервисы" },
-  { key: "admin", label: "Админ-панель" },
-  { key: "support", label: "Поддержка & SLA" },
+  { key: "microservices", label: "Microservices" },
+  { key: "admin", label: "Admin-panel" },
+  { key: "support", label: "Support & SLA" },
 ];
 
 const questionsMap = {
@@ -20,7 +20,7 @@ const questionsMap = {
     {
       key: "servicesCount",
       multi: false,
-      question: "Сколько сервисов нужно разработать?",
+      question: "How many services need to be developed?",
       options: [
         { label: "1–3", price: 0 },
         { label: "4–7", price: 500 },
@@ -30,52 +30,52 @@ const questionsMap = {
     {
       key: "complexity",
       multi: false,
-      question: "Сложность логики",
+      question: "Logic complexity",
       options: [
-        { label: "Простая CRUD", price: 0 },
-        { label: "Бизнес-логика", price: 400 },
-        { label: "Высоконагруженные", price: 800 },
+        { label: "Simple CRUD", price: 0 },
+        { label: "Business logic", price: 400 },
+        { label: "Highly loaded", price: 800 },
       ],
     },
     {
       key: "database",
       multi: false,
-      question: "Проектирование БД",
+      question: "Database design",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Реляционная", price: 300 },
-        { label: "NoSQL/микс", price: 400 },
+        { label: "None", price: 0 },
+        { label: "Relational", price: 300 },
+        { label: "NoSQL/mix", price: 400 },
       ],
     },
     {
       key: "integrations",
       multi: true,
-      question: "Интеграции",
+      question: "Integrations",
       options: [
         { label: "REST API", price: 200 },
         { label: "GraphQL", price: 300 },
         { label: "Message Queue", price: 250 },
-        { label: "Платёжный шлюз", price: 300 },
+        { label: "Payment gateway", price: 300 },
       ],
     },
     {
       key: "testing",
       multi: false,
-      question: "Тестирование",
+      question: "Testing",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Unit-тесты", price: 200 },
-        { label: "Integration-тесты", price: 400 },
+        { label: "None", price: 0 },
+        { label: "Unit tests", price: 200 },
+        { label: "Integration tests", price: 400 },
       ],
     },
     {
       key: "docs",
       multi: false,
-      question: "Документация API",
+      question: "API Documentation",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic (Swagger)", price: 200 },
-        { label: "Full (OpenAPI + примеры)", price: 400 },
+        { label: "Full (OpenAPI + examples)", price: 400 },
       ],
     },
   ],
@@ -84,7 +84,7 @@ const questionsMap = {
     {
       key: "screensCount",
       multi: false,
-      question: "Сколько экранов/страниц?",
+      question: "How many screens/pages?",
       options: [
         { label: "1–3", price: 0 },
         { label: "4–7", price: 300 },
@@ -94,7 +94,7 @@ const questionsMap = {
     {
       key: "framework",
       multi: false,
-      question: "Выберите фреймворк",
+      question: "Choose framework",
       options: [
         { label: "React/Vue", price: 0 },
         { label: "Angular", price: 200 },
@@ -104,40 +104,40 @@ const questionsMap = {
     {
       key: "responsive",
       multi: false,
-      question: "Адаптивная верстка",
+      question: "Responsive design",
       options: [
-        { label: "Только desktop", price: 0 },
-        { label: "Desktop+tablet", price: 200 },
-        { label: "Все устройства", price: 400 },
+        { label: "Desktop only", price: 0 },
+        { label: "Desktop + tablet", price: 200 },
+        { label: "All devices", price: 400 },
       ],
     },
     {
       key: "interactive",
       multi: false,
-      question: "Интерактивность & анимации",
+      question: "Interactivity & animations",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic CSS", price: 150 },
-        { label: "JS-анимации", price: 300 },
+        { label: "JS animations", price: 300 },
       ],
     },
     {
       key: "stateMgmt",
       multi: false,
-      question: "Управление состоянием",
+      question: "State management",
       options: [
-        { label: "Локально", price: 0 },
+        { label: "Local", price: 0 },
         { label: "Redux/MobX", price: 200 },
       ],
     },
     {
       key: "testing",
       multi: false,
-      question: "Тестирование UI",
+      question: "Testing UI",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Unit+Snapshot", price: 200 },
-        { label: "E2E-тесты", price: 400 },
+        { label: "E2E-tests", price: 400 },
       ],
     },
   ],
@@ -146,7 +146,7 @@ const questionsMap = {
     {
       key: "modules",
       multi: false,
-      question: "Сколько модулей полный стэк",
+      question: "How many full stack modules",
       options: [
         { label: "1–3", price: 0 },
         { label: "4–6", price: 600 },
@@ -156,7 +156,7 @@ const questionsMap = {
     {
       key: "backendStack",
       multi: false,
-      question: "Backend-стек",
+      question: "Backend-stack",
       options: [
         { label: "Node.js/Python", price: 0 },
         { label: "Java/.NET", price: 200 },
@@ -165,7 +165,7 @@ const questionsMap = {
     {
       key: "frontendStack",
       multi: false,
-      question: "Frontend-стек",
+      question: "Frontend-stack",
       options: [
         { label: "React/Vue", price: 0 },
         { label: "Angular", price: 200 },
@@ -174,7 +174,7 @@ const questionsMap = {
     {
       key: "integrations",
       multi: true,
-      question: "Интеграции",
+      question: "Integrations",
       options: [
         { label: "REST API", price: 200 },
         { label: "GraphQL", price: 300 },
@@ -184,7 +184,7 @@ const questionsMap = {
     {
       key: "deployment",
       multi: false,
-      question: "Деплоймент",
+      question: "Deployment",
       options: [
         { label: "Manual", price: 0 },
         { label: "CI/CD pipeline", price: 300 },
@@ -193,7 +193,7 @@ const questionsMap = {
     {
       key: "testing",
       multi: false,
-      question: "Тесты",
+      question: "Tests",
       options: [
         { label: "Unit", price: 200 },
         { label: "Integration", price: 400 },
@@ -206,7 +206,7 @@ const questionsMap = {
     {
       key: "endpoints",
       multi: false,
-      question: "Сколько API-эндпоинтов?",
+      question: "How many API-endpoints?",
       options: [
         { label: "1–10", price: 0 },
         { label: "11–30", price: 300 },
@@ -216,7 +216,7 @@ const questionsMap = {
     {
       key: "auth",
       multi: false,
-      question: "Методы аутентификации",
+      question: "Authentication methods",
       options: [
         { label: "None", price: 0 },
         { label: "Token (JWT)", price: 200 },
@@ -228,7 +228,7 @@ const questionsMap = {
       multi: false,
       question: "Rate-limiting",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 150 },
         { label: "Advanced", price: 300 },
       ],
@@ -236,18 +236,18 @@ const questionsMap = {
     {
       key: "docs",
       multi: false,
-      question: "Документация",
+      question: "Documentation",
       options: [
         { label: "Swagger", price: 200 },
-        { label: "OpenAPI + примеры", price: 400 },
+        { label: "OpenAPI + examples", price: 400 },
       ],
     },
     {
       key: "testing",
       multi: false,
-      question: "Тесты API",
+      question: "API tests",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Unit", price: 200 },
         { label: "Integration", price: 400 },
       ],
@@ -258,9 +258,9 @@ const questionsMap = {
     {
       key: "pipelines",
       multi: false,
-      question: "CI/CD-конвейеры",
+      question: "CI/CD pipelines",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic (GitHub Actions)", price: 300 },
         { label: "Advanced (Jenkins/GitLab)", price: 600 },
       ],
@@ -268,7 +268,7 @@ const questionsMap = {
     {
       key: "infra",
       multi: false,
-      question: "Инфраструктура",
+      question: "Infrastructure",
       options: [
         { label: "Shared", price: 0 },
         { label: "VPS/Cloud", price: 400 },
@@ -278,9 +278,9 @@ const questionsMap = {
     {
       key: "monitoring",
       multi: false,
-      question: "Мониторинг",
+      question: "Monitoring",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic (Prometheus)", price: 300 },
         { label: "Full (Grafana+Alerts)", price: 600 },
       ],
@@ -290,7 +290,7 @@ const questionsMap = {
       multi: false,
       question: "DevSecOps",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic scans", price: 200 },
         { label: "Full pipeline", price: 500 },
       ],
@@ -301,7 +301,7 @@ const questionsMap = {
     {
       key: "count",
       multi: false,
-      question: "Сколько микросервисов?",
+      question: "How many microservices?",
       options: [
         { label: "1–3", price: 0 },
         { label: "4–7", price: 500 },
@@ -311,9 +311,9 @@ const questionsMap = {
     {
       key: "orchestration",
       multi: false,
-      question: "Оркестрация",
+      question: "Orchestration",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Docker Compose", price: 200 },
         { label: "Kubernetes", price: 600 },
       ],
@@ -321,7 +321,7 @@ const questionsMap = {
     {
       key: "communication",
       multi: false,
-      question: "Взаимодействие сервисов",
+      question: "Service communication",
       options: [
         { label: "REST", price: 0 },
         { label: "gRPC", price: 300 },
@@ -331,9 +331,9 @@ const questionsMap = {
     {
       key: "monitoring",
       multi: false,
-      question: "Мониторинг",
+      question: "Monitoring",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 300 },
         { label: "Advanced", price: 600 },
       ],
@@ -344,7 +344,7 @@ const questionsMap = {
     {
       key: "pages",
       multi: false,
-      question: "Сколько страниц админ-панели?",
+      question: "How many admin panel pages?",
       options: [
         { label: "1–5", price: 0 },
         { label: "6–10", price: 300 },
@@ -354,7 +354,7 @@ const questionsMap = {
     {
       key: "roles",
       multi: false,
-      question: "Роли пользователей",
+      question: "User roles",
       options: [
         { label: "1", price: 0 },
         { label: "2–3", price: 200 },
@@ -364,9 +364,9 @@ const questionsMap = {
     {
       key: "analytics",
       multi: false,
-      question: "Визуализация данных",
+      question: "Data visualization",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic (charts)", price: 300 },
         { label: "Advanced (dashboards)", price: 600 },
       ],
@@ -374,7 +374,7 @@ const questionsMap = {
     {
       key: "security",
       multi: false,
-      question: "Уровень безопасности",
+      question: "Security level",
       options: [
         { label: "Basic", price: 0 },
         { label: "2FA", price: 200 },
@@ -387,7 +387,7 @@ const questionsMap = {
     {
       key: "sla",
       multi: false,
-      question: "Уровень SLA",
+      question: "SLA level",
       options: [
         { label: "24/7", price: 0 },
         { label: "8x5", price: 200 },
@@ -397,19 +397,19 @@ const questionsMap = {
     {
       key: "response",
       multi: false,
-      question: "Время реакции",
+      question: "Response time",
       options: [
-        { label: "1 час", price: 0 },
-        { label: "4 часа", price: 100 },
-        { label: "24 часа", price: 200 },
+        { label: "1 hour", price: 0 },
+        { label: "4 hours", price: 100 },
+        { label: "24 hours", price: 200 },
       ],
     },
     {
       key: "bugFixes",
       multi: false,
-      question: "Исправление багов",
+      question: "Bug fixes",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 200 },
         { label: "Priority", price: 400 },
       ],
@@ -417,7 +417,7 @@ const questionsMap = {
     {
       key: "updates",
       multi: false,
-      question: "Обновления и патчи",
+      question: "Updates and patches",
       options: [
         { label: "Monthly", price: 0 },
         { label: "Weekly", price: 200 },
@@ -436,7 +436,7 @@ export default function DevIntegrationCalc() {
   const questions = type ? questionsMap[type] : [];
   const totalSteps = questions.length;
 
-  // Итоговая сумма
+  // Total sum
   const total = questions.reduce((sum, q) => {
     const ans = answers[q.key];
     if (!ans) return sum;
@@ -445,7 +445,7 @@ export default function DevIntegrationCalc() {
 
   const percent = type ? Math.round((step / totalSteps) * 100) : 0;
 
-  // Оповещаем родителя о сумме
+  // Notify parent about sum
   useEffect(() => {
     window.dispatchEvent(new CustomEvent("calc:update", { detail: total }));
   }, [total]);
@@ -488,11 +488,11 @@ export default function DevIntegrationCalc() {
     });
   };
 
-  // Выбор поднаправления
+  // Select subdirection
   if (!type) {
     return (
       <div className={s.chooseType}>
-        <h2>Разработка & интеграции</h2>
+        <h2>Development & Integration</h2>
         <div className={s.types}>
           {integrationTypes.map((t) => (
             <button
@@ -511,14 +511,14 @@ export default function DevIntegrationCalc() {
     );
   }
 
-  // Итоговая сводка
+  // Final summary
   if (isComplete) {
     const label = integrationTypes.find((t) => t.key === type)?.label;
     return (
       <div className={s.summary}>
-        <h2>Сводка по разработке & интеграции</h2>
+        <h2>Summary of Development & Integration</h2>
         <p>
-          <strong>Направление:</strong> {label}
+          <strong>Direction:</strong> {label}
         </p>
         <ul>
           {questions.map((q) => {
@@ -533,13 +533,13 @@ export default function DevIntegrationCalc() {
           })}
         </ul>
         <p>
-          <strong>Итоговая стоимость:</strong> ${total}
+          <strong>Total cost:</strong> ${total}
         </p>
       </div>
     );
   }
 
-  // Шаги вопросов
+  // Question steps
   return (
     <div className={s.calc}>
       <div className={s.header}>
@@ -583,7 +583,7 @@ export default function DevIntegrationCalc() {
 
       <div className={s.controls}>
         <button onClick={handlePrev}>
-          {step <= 1 ? "← Выбрать поднаправление" : "Назад"}
+          {step <= 1 ? "← Select type" : "Back"}
         </button>
         <button
           onClick={handleNext}
@@ -595,7 +595,7 @@ export default function DevIntegrationCalc() {
             )
           }
         >
-          {step === totalSteps ? "Завершить" : "Далее"}
+          {step === totalSteps ? "Complete" : "Next"}
         </button>
       </div>
     </div>

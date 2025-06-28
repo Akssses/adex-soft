@@ -5,41 +5,41 @@ import React, { useState, useEffect } from "react";
 import s from "@/styles/CostBlocks.module.scss";
 
 const appTypes = [
-  { key: "game", label: "Игра" },
-  { key: "basic", label: "Обычный Telegram App" },
-  { key: "clicker", label: "Кликер" },
-  { key: "smart", label: "Telegram App + смарт-контракт" },
+  { key: "game", label: "Game" },
+  { key: "basic", label: "Basic Telegram App" },
+  { key: "clicker", label: "Clicker" },
+  { key: "smart", label: "Telegram App + Smart Contract" },
 ];
 
 const questionsMap = {
-  // === Игра ===
+  // === Game ===
   game: [
     {
       key: "prototype",
       multi: false,
-      question: "Есть ли у вас готовый прототип?",
+      question: "Do you have a prototype?",
       options: [
-        { label: "Да", price: 0 },
-        { label: "Нужен wireframe", price: 150 },
-        { label: "Хочу визуальный прототип", price: 300 },
+        { label: "Yes", price: 0 },
+        { label: "Need wireframe", price: 150 },
+        { label: "Want visual prototype", price: 300 },
       ],
     },
     {
       key: "genre",
       multi: false,
-      question: "Жанр игры",
+      question: "Game genre",
       options: [
-        { label: "Аркада", price: 200 },
-        { label: "Пазл", price: 200 },
-        { label: "Стратегия", price: 400 },
-        { label: "Казуальная", price: 150 },
-        { label: "Другой", price: 300 },
+        { label: "Arcade", price: 200 },
+        { label: "Puzzle", price: 200 },
+        { label: "Strategy", price: 400 },
+        { label: "Casual", price: 150 },
+        { label: "Other", price: 300 },
       ],
     },
     {
       key: "levels",
       multi: false,
-      question: "Количество уровней / экранов",
+      question: "Number of levels / screens",
       options: [
         { label: "1–5", price: 0 },
         { label: "6–10", price: 300 },
@@ -49,7 +49,7 @@ const questionsMap = {
     {
       key: "graphics",
       multi: false,
-      question: "Стиль графики",
+      question: "Graphics style",
       options: [
         { label: "Pixel-art", price: 200 },
         { label: "Cartoon/Vector", price: 400 },
@@ -60,20 +60,20 @@ const questionsMap = {
     {
       key: "animations",
       multi: false,
-      question: "Анимации",
+      question: "Animations",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Sprite-анимации", price: 200 },
-        { label: "Tween/JS-анимации", price: 400 },
-        { label: "WebGL-анимации", price: 800 },
+        { label: "None", price: 0 },
+        { label: "Sprite animations", price: 200 },
+        { label: "Tween/JS animations", price: 400 },
+        { label: "WebGL animations", price: 800 },
       ],
     },
     {
       key: "multiplayer",
       multi: false,
-      question: "Мультиплеер",
+      question: "Multiplayer",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Turn-based", price: 300 },
         { label: "Real-time", price: 600 },
       ],
@@ -81,40 +81,40 @@ const questionsMap = {
     {
       key: "inApp",
       multi: false,
-      question: "Встроенные покупки",
+      question: "In-app purchases",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Внутренняя валюта", price: 300 },
-        { label: "Покупка токенов", price: 500 },
+        { label: "None", price: 0 },
+        { label: "Internal currency", price: 300 },
+        { label: "Token purchases", price: 500 },
       ],
     },
     {
       key: "leaderboard",
       multi: false,
-      question: "Таблица лидеров",
+      question: "Leaderboard",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Локальная", price: 200 },
-        { label: "Глобальная", price: 400 },
+        { label: "None", price: 0 },
+        { label: "Local", price: 200 },
+        { label: "Global", price: 400 },
       ],
     },
     {
       key: "integrations",
       multi: true,
-      question: "Интеграции",
+      question: "Integrations",
       options: [
         { label: "Telegram Bot API", price: 150 },
-        { label: "Webhooks и сервер", price: 200 },
-        { label: "Платежная система", price: 250 },
-        { label: "Push-уведомления", price: 100 },
+        { label: "Webhooks and server", price: 200 },
+        { label: "Payment system", price: 250 },
+        { label: "Push notifications", price: 100 },
       ],
     },
     {
       key: "analytics",
       multi: false,
-      question: "Аналитика и отчёты",
+      question: "Analytics and reports",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic (Google)", price: 100 },
         { label: "Advanced (Custom)", price: 200 },
       ],
@@ -122,17 +122,17 @@ const questionsMap = {
     {
       key: "testing",
       multi: false,
-      question: "Тестирование",
+      question: "Testing",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 100 },
-        { label: "Полное (авто+ручное)", price: 300 },
+        { label: "Full (auto+manual)", price: 300 },
       ],
     },
     {
       key: "hosting",
       multi: false,
-      question: "Хостинг",
+      question: "Hosting",
       options: [
         { label: "Shared", price: 100 },
         { label: "VPS", price: 300 },
@@ -142,31 +142,31 @@ const questionsMap = {
     {
       key: "design",
       multi: false,
-      question: "UI/UX дизайн",
+      question: "UI/UX design",
       options: [
-        { label: "Шаблонный", price: 0 },
-        { label: "Кастомный UI", price: 500 },
-        { label: "Брендовый дизайн", price: 1000 },
+        { label: "Template", price: 0 },
+        { label: "Custom UI", price: 500 },
+        { label: "Brand design", price: 1000 },
       ],
     },
   ],
 
-  // === Обычный Telegram App (Bot) ===
+  // === Basic Telegram App (Bot) ===
   basic: [
     {
       key: "prototype",
       multi: false,
-      question: "Есть ли у вас прототип?",
+      question: "Do you have a prototype?",
       options: [
-        { label: "Да", price: 0 },
-        { label: "Нужен wireframe", price: 100 },
-        { label: "Нужен UI-дизайн", price: 200 },
+        { label: "Yes", price: 0 },
+        { label: "Need wireframe", price: 100 },
+        { label: "Need UI design", price: 200 },
       ],
     },
     {
       key: "commands",
       multi: false,
-      question: "Сколько команд бота?",
+      question: "Number of bot commands",
       options: [
         { label: "1–5", price: 0 },
         { label: "6–15", price: 200 },
@@ -177,57 +177,57 @@ const questionsMap = {
     {
       key: "inlineMode",
       multi: false,
-      question: "Inline режим",
+      question: "Inline mode",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да", price: 200 },
+        { label: "No", price: 0 },
+        { label: "Yes", price: 200 },
       ],
     },
     {
       key: "callback",
       multi: false,
-      question: "Callback-кнопки",
+      question: "Callback buttons",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да", price: 200 },
+        { label: "No", price: 0 },
+        { label: "Yes", price: 200 },
       ],
     },
     {
       key: "db",
       multi: false,
-      question: "Хранение данных",
+      question: "Data storage",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "JSON-файл", price: 100 },
+        { label: "None", price: 0 },
+        { label: "JSON file", price: 100 },
         { label: "PostgreSQL/MySQL", price: 300 },
       ],
     },
     {
       key: "integrations",
       multi: true,
-      question: "Интеграции",
+      question: "Integrations",
       options: [
         { label: "Webhook", price: 150 },
-        { label: "Платежи", price: 250 },
-        { label: "Авторизация (OAuth)", price: 150 },
+        { label: "Payments", price: 250 },
+        { label: "Authorization (OAuth)", price: 150 },
       ],
     },
     {
       key: "design",
       multi: false,
-      question: "Кнопки и UI-дизайн",
+      question: "Buttons and UI design",
       options: [
-        { label: "Стандартные", price: 0 },
-        { label: "Простые стили", price: 100 },
-        { label: "Фирменные кнопки", price: 300 },
+        { label: "Standard", price: 0 },
+        { label: "Simple styles", price: 100 },
+        { label: "Custom buttons", price: 300 },
       ],
     },
     {
       key: "analytics",
       multi: false,
-      question: "Аналитика",
+      question: "Analytics",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 100 },
         { label: "Advanced", price: 200 },
       ],
@@ -235,17 +235,17 @@ const questionsMap = {
     {
       key: "testing",
       multi: false,
-      question: "Тестирование",
+      question: "Testing",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 100 },
-        { label: "Автоматизированное", price: 200 },
+        { label: "Automated", price: 200 },
       ],
     },
     {
       key: "hosting",
       multi: false,
-      question: "Хостинг",
+      question: "Hosting",
       options: [
         { label: "Shared", price: 100 },
         { label: "VPS", price: 300 },
@@ -254,32 +254,32 @@ const questionsMap = {
     },
   ],
 
-  // === Кликер ===
+  // === Clicker ===
   clicker: [
     {
       key: "prototype",
       multi: false,
-      question: "Есть ли у вас прототип?",
+      question: "Do you have a prototype / design?",
       options: [
-        { label: "Да", price: 0 },
-        { label: "Нужен wireframe", price: 100 },
-        { label: "Нужен UI-дизайн", price: 200 },
+        { label: "Yes", price: 0 },
+        { label: "Need wireframe", price: 100 },
+        { label: "Need visual design", price: 200 },
       ],
     },
     {
       key: "mechanics",
       multi: false,
-      question: "Количество интерактивных элементов",
+      question: "Number of interactive elements",
       options: [
-        { label: "1 кнопка", price: 0 },
-        { label: "2–3 кнопки", price: 100 },
-        { label: "4+ кнопок", price: 200 },
+        { label: "1 button", price: 0 },
+        { label: "2–3 buttons", price: 100 },
+        { label: "4+ buttons", price: 200 },
       ],
     },
     {
       key: "graphics",
       multi: false,
-      question: "Стиль графики",
+      question: "Graphics style",
       options: [
         { label: "Flat", price: 100 },
         { label: "Cartoon", price: 300 },
@@ -289,9 +289,9 @@ const questionsMap = {
     {
       key: "animations",
       multi: false,
-      question: "Анимации",
+      question: "Animations",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic sprite", price: 200 },
         { label: "Advanced tween", price: 400 },
       ],
@@ -299,48 +299,48 @@ const questionsMap = {
     {
       key: "rewards",
       multi: false,
-      question: "Система наград",
+      question: "Reward system",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Очки", price: 100 },
-        { label: "Токены", price: 300 },
+        { label: "None", price: 0 },
+        { label: "Points", price: 100 },
+        { label: "Tokens", price: 300 },
       ],
     },
     {
       key: "ads",
       multi: false,
-      question: "Реклама",
+      question: "Advertising",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Баннеры", price: 200 },
-        { label: "Rewarded видео", price: 400 },
+        { label: "None", price: 0 },
+        { label: "Banners", price: 200 },
+        { label: "Rewarded video", price: 400 },
       ],
     },
     {
       key: "integrations",
       multi: true,
-      question: "Интеграции",
+      question: "Integrations",
       options: [
         { label: "Telegram Bot API", price: 150 },
-        { label: "Платежи", price: 250 },
+        { label: "Payments", price: 250 },
         { label: "Webhooks", price: 200 },
       ],
     },
     {
       key: "design",
       multi: false,
-      question: "UI-дизайн",
+      question: "UI design",
       options: [
-        { label: "Шаблонный", price: 0 },
-        { label: "Кастомный", price: 300 },
+        { label: "Template", price: 0 },
+        { label: "Custom", price: 300 },
       ],
     },
     {
       key: "analytics",
       multi: false,
-      question: "Аналитика",
+      question: "Analytics",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 100 },
         { label: "Advanced", price: 200 },
       ],
@@ -348,9 +348,9 @@ const questionsMap = {
     {
       key: "testing",
       multi: false,
-      question: "Тестирование",
+      question: "Testing",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 100 },
         { label: "Automated", price: 200 },
       ],
@@ -358,7 +358,7 @@ const questionsMap = {
     {
       key: "hosting",
       multi: false,
-      question: "Хостинг",
+      question: "Hosting",
       options: [
         { label: "Shared", price: 100 },
         { label: "VPS", price: 300 },
@@ -367,22 +367,22 @@ const questionsMap = {
     },
   ],
 
-  // === Telegram App + смарт-контракт ===
+  // === Telegram App + Smart Contract ===
   smart: [
     {
       key: "prototype",
       multi: false,
-      question: "Есть ли у вас прототип?",
+      question: "Do you have a prototype?",
       options: [
-        { label: "Да", price: 0 },
-        { label: "Нужен wireframe", price: 150 },
-        { label: "Нужен UI-дизайн", price: 300 },
+        { label: "Yes", price: 0 },
+        { label: "Need wireframe", price: 150 },
+        { label: "Need UI design", price: 300 },
       ],
     },
     {
       key: "blockchain",
       multi: false,
-      question: "Выберите блокчейн",
+      question: "Choose blockchain",
       options: [
         { label: "TON", price: 200 },
         { label: "Ethereum", price: 300 },
@@ -393,10 +393,10 @@ const questionsMap = {
     {
       key: "smartContract",
       multi: false,
-      question: "Сложность смарт-контрактов",
+      question: "Smart contract complexity",
       options: [
-        { label: "Платежи", price: 200 },
-        { label: "Стейкинг", price: 400 },
+        { label: "Payments", price: 200 },
+        { label: "Staking", price: 400 },
         { label: "NFT", price: 600 },
         { label: "DAO", price: 800 },
       ],
@@ -404,9 +404,9 @@ const questionsMap = {
     {
       key: "walletIntegration",
       multi: false,
-      question: "Интеграция кошельков",
+      question: "Wallet integration",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "TON Connect", price: 200 },
         { label: "WalletConnect", price: 200 },
         { label: "MetaMask", price: 200 },
@@ -415,7 +415,7 @@ const questionsMap = {
     {
       key: "screens",
       multi: false,
-      question: "Количество экранов Mini App",
+      question: "Number of Mini App screens",
       options: [
         { label: "1–3", price: 0 },
         { label: "4–6", price: 300 },
@@ -425,17 +425,17 @@ const questionsMap = {
     {
       key: "design",
       multi: false,
-      question: "UI/UX дизайн",
+      question: "UI/UX design",
       options: [
-        { label: "Шаблонный", price: 0 },
-        { label: "Кастомный UI", price: 500 },
-        { label: "Брендовый дизайн", price: 1000 },
+        { label: "Template", price: 0 },
+        { label: "Custom UI", price: 500 },
+        { label: "Brand design", price: 1000 },
       ],
     },
     {
       key: "integrations",
       multi: true,
-      question: "Интеграции",
+      question: "Integrations",
       options: [
         { label: "Telegram Bot API", price: 150 },
         { label: "Blockchain API", price: 300 },
@@ -444,9 +444,9 @@ const questionsMap = {
     {
       key: "testing",
       multi: false,
-      question: "Тестирование",
+      question: "Testing",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 100 },
         { label: "Automated", price: 200 },
       ],
@@ -456,14 +456,14 @@ const questionsMap = {
       multi: false,
       question: "Security Audit",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да", price: 500 },
+        { label: "None", price: 0 },
+        { label: "Yes", price: 500 },
       ],
     },
     {
       key: "hosting",
       multi: false,
-      question: "Хостинг",
+      question: "Hosting",
       options: [
         { label: "Shared", price: 100 },
         { label: "Cloud", price: 300 },
@@ -548,7 +548,7 @@ export default function TelegramMiniAppCalc() {
   if (!appType) {
     return (
       <div className={s.chooseType}>
-        <h2>Тип Telegram Mini App</h2>
+        <h2>Type Telegram Mini App</h2>
         <div className={s.types}>
           {appTypes.map((t) => (
             <button
@@ -572,9 +572,9 @@ export default function TelegramMiniAppCalc() {
     const typeLabel = appTypes.find((t) => t.key === appType)?.label || appType;
     return (
       <div className={s.summary}>
-        <h2>Сводка по Mini App</h2>
+        <h2>Summary of Mini App</h2>
         <p>
-          <strong>Тип:</strong> {typeLabel}
+          <strong>Type:</strong> {typeLabel}
         </p>
         <ul>
           {questions.map((q) => {
@@ -589,7 +589,7 @@ export default function TelegramMiniAppCalc() {
           })}
         </ul>
         <p>
-          <strong>Итоговая стоимость:</strong> ${total}
+          <strong>Total cost:</strong> ${total}
         </p>
       </div>
     );
@@ -639,7 +639,7 @@ export default function TelegramMiniAppCalc() {
 
       <div className={s.controls}>
         <button onClick={handlePrev}>
-          {step <= 1 ? "← Выбрать тип" : "Назад"}
+          {step <= 1 ? "← Select type" : "Back"}
         </button>
         <button
           onClick={handleNext}
@@ -651,7 +651,7 @@ export default function TelegramMiniAppCalc() {
             )
           }
         >
-          {step === totalSteps ? "Завершить" : "Далее"}
+          {step === totalSteps ? "Complete" : "Next"}
         </button>
       </div>
     </div>

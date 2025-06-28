@@ -34,8 +34,8 @@ export default function AboutHero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className={s.title}
         >
-          Создаем будущее <br />
-          <span className={s.highlight}>Web3 технологий</span>
+          Creating the Future <br />
+          <span className={s.highlight}>of Web3 Technology</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -43,9 +43,9 @@ export default function AboutHero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className={s.subtitle}
         >
-          Мы - команда экспертов в области блокчейн-технологий и Web3
-          разработки. Создаем инновационные решения, которые меняют будущее
-          цифрового мира.
+          We are a team of experts in blockchain technology and Web3
+          development. We create innovative solutions that shape the future of
+          the digital world.
         </motion.p>
         <motion.div
           className={s.heroCta}
@@ -53,7 +53,7 @@ export default function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <button className={s.primaryButton}>Начать проект</button>
+          <button className={s.primaryButton}>Start Project</button>
         </motion.div>
       </div>
       <div className={s.heroBackground} ref={parallaxRef}>

@@ -6,26 +6,26 @@ import s from "./Achievements.module.scss";
 const achievements = [
   {
     number: "50+",
-    label: "Успешных проектов",
-    description: "Реализованных проектов в сфере Web3 и блокчейн",
+    label: "Successful Projects",
+    description: "Completed projects in Web3 and blockchain",
     endValue: 50,
   },
   {
     number: "30+",
-    label: "Экспертов в команде",
-    description: "Профессионалов с опытом в криптоиндустрии",
+    label: "Team Experts",
+    description: "Professionals with crypto industry experience",
     endValue: 30,
   },
   {
     number: "5+",
-    label: "Лет опыта",
-    description: "Работы с блокчейн-технологиями и Web3",
+    label: "Years of Experience",
+    description: "Working with blockchain technologies and Web3",
     endValue: 5,
   },
   {
     number: "15+",
-    label: "Стран присутствия",
-    description: "География наших клиентов и партнеров",
+    label: "Countries Present",
+    description: "Geography of our clients and partners",
     endValue: 15,
   },
 ];
@@ -75,8 +75,8 @@ export default function Achievements() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2>Наши достижения</h2>
-          <p>Результаты нашей работы в цифрах</p>
+          <h2>Our Achievements</h2>
+          <p>Our work in numbers</p>
         </motion.div>
 
         <div className={s.grid}>

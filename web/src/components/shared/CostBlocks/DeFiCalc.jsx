@@ -17,7 +17,7 @@ const questionsMap = {
     {
       key: "collateral",
       multi: false,
-      question: "Тип залога",
+      question: "Collateral type",
       options: [
         { label: "Single-asset", price: 0 },
         { label: "Multi-asset", price: 300 },
@@ -26,7 +26,7 @@ const questionsMap = {
     {
       key: "interestModel",
       multi: false,
-      question: "Модель ставки",
+      question: "Interest rate model",
       options: [
         { label: "Fixed", price: 0 },
         { label: "Variable", price: 200 },
@@ -36,7 +36,7 @@ const questionsMap = {
     {
       key: "oracle",
       multi: false,
-      question: "Оракулы цен",
+      question: "Price oracles",
       options: [
         { label: "Chainlink", price: 200 },
         { label: "Band Protocol", price: 200 },
@@ -46,7 +46,7 @@ const questionsMap = {
     {
       key: "liquidation",
       multi: false,
-      question: "Механизм ликвидации",
+      question: "Liquidation mechanism",
       options: [
         { label: "Simple", price: 0 },
         { label: "Dutch auction", price: 300 },
@@ -55,9 +55,9 @@ const questionsMap = {
     {
       key: "fees",
       multi: false,
-      question: "Комиссии",
+      question: "Fees",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic (0.1%)", price: 100 },
         { label: "Custom", price: 200 },
       ],
@@ -65,9 +65,9 @@ const questionsMap = {
     {
       key: "audit",
       multi: false,
-      question: "Аудит смарт-контрактов",
+      question: "Smart contract audit",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 300 },
         { label: "Full", price: 600 },
       ],
@@ -78,7 +78,7 @@ const questionsMap = {
     {
       key: "pairs",
       multi: false,
-      question: "Количество торговых пар",
+      question: "Number of trading pairs",
       options: [
         { label: "1–5", price: 0 },
         { label: "6–20", price: 400 },
@@ -88,7 +88,7 @@ const questionsMap = {
     {
       key: "amm",
       multi: false,
-      question: "Тип AMM",
+      question: "AMM type",
       options: [
         { label: "Constant product", price: 0 },
         { label: "Stable swap", price: 300 },
@@ -98,7 +98,7 @@ const questionsMap = {
     {
       key: "ui",
       multi: false,
-      question: "UI/UX дизайн обмена",
+      question: "Exchange UI/UX design",
       options: [
         { label: "Basic", price: 0 },
         { label: "Advanced", price: 300 },
@@ -108,9 +108,9 @@ const questionsMap = {
     {
       key: "slippage",
       multi: false,
-      question: "Настройка слиппейдж",
+      question: "Slippage settings",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Manual", price: 100 },
         { label: "Auto-adjust", price: 300 },
       ],
@@ -118,9 +118,9 @@ const questionsMap = {
     {
       key: "analytics",
       multi: false,
-      question: "Встроенная аналитика",
+      question: "Built-in analytics",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic charts", price: 200 },
         { label: "Full dashboard", price: 500 },
       ],
@@ -128,7 +128,7 @@ const questionsMap = {
     {
       key: "audit",
       multi: false,
-      question: "Аудит и тестирование",
+      question: "Audit and testing",
       options: [
         { label: "Basic", price: 300 },
         { label: "Security audit", price: 700 },
@@ -140,7 +140,7 @@ const questionsMap = {
     {
       key: "strategies",
       multi: false,
-      question: "Количество стратегий",
+      question: "Number of strategies",
       options: [
         { label: "1–3", price: 0 },
         { label: "4–7", price: 500 },
@@ -150,16 +150,16 @@ const questionsMap = {
     {
       key: "compounding",
       multi: false,
-      question: "Авто-компаундинг",
+      question: "Auto-compounding",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "Да", price: 300 },
+        { label: "No", price: 0 },
+        { label: "Yes", price: 300 },
       ],
     },
     {
       key: "rewardToken",
       multi: false,
-      question: "Наградной токен",
+      question: "Reward token",
       options: [
         { label: "Use existing", price: 0 },
         { label: "Create new", price: 400 },
@@ -168,7 +168,7 @@ const questionsMap = {
     {
       key: "feeModel",
       multi: false,
-      question: "Модель комиссий",
+      question: "Fee model",
       options: [
         { label: "No fees", price: 0 },
         { label: "Performance fee", price: 200 },
@@ -187,7 +187,7 @@ const questionsMap = {
     {
       key: "audit",
       multi: false,
-      question: "Аудит смарт-контрактов",
+      question: "Smart contract audit",
       options: [
         { label: "Basic", price: 300 },
         { label: "Full", price: 600 },
@@ -199,7 +199,7 @@ const questionsMap = {
     {
       key: "tokenType",
       multi: false,
-      question: "Тип токена для стейкинга",
+      question: "Staking token type",
       options: [
         { label: "Existing", price: 0 },
         { label: "New token", price: 300 },
@@ -208,7 +208,7 @@ const questionsMap = {
     {
       key: "rewardSchedule",
       multi: false,
-      question: "График наград",
+      question: "Reward schedule",
       options: [
         { label: "Fixed APR", price: 0 },
         { label: "Variable APY", price: 200 },
@@ -218,19 +218,19 @@ const questionsMap = {
     {
       key: "lockup",
       multi: false,
-      question: "Lock-up период",
+      question: "Lock-up period",
       options: [
-        { label: "Нет", price: 0 },
-        { label: "30 дней", price: 100 },
-        { label: "90 дней", price: 200 },
+        { label: "None", price: 0 },
+        { label: "30 days", price: 100 },
+        { label: "90 days", price: 200 },
       ],
     },
     {
       key: "slashing",
       multi: false,
-      question: "Slashing механика",
+      question: "Slashing mechanism",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 200 },
         { label: "Advanced", price: 400 },
       ],
@@ -238,7 +238,7 @@ const questionsMap = {
     {
       key: "ui",
       multi: false,
-      question: "UI для стейкинга",
+      question: "Staking UI",
       options: [
         { label: "Basic", price: 0 },
         { label: "Detailed dashboard", price: 300 },
@@ -247,7 +247,7 @@ const questionsMap = {
     {
       key: "audit",
       multi: false,
-      question: "Аудит",
+      question: "Audit",
       options: [
         { label: "Basic", price: 300 },
         { label: "Security audit", price: 600 },
@@ -259,7 +259,7 @@ const questionsMap = {
     {
       key: "sources",
       multi: false,
-      question: "Количество DEX-источников",
+      question: "Number of DEX sources",
       options: [
         { label: "1–3", price: 0 },
         { label: "4–7", price: 500 },
@@ -269,7 +269,7 @@ const questionsMap = {
     {
       key: "routingAlgo",
       multi: false,
-      question: "Алгоритм маршрутизации",
+      question: "Routing algorithm",
       options: [
         { label: "Simple", price: 0 },
         { label: "Best price", price: 300 },
@@ -279,9 +279,9 @@ const questionsMap = {
     {
       key: "slippageControl",
       multi: false,
-      question: "Контроль слиппейджа",
+      question: "Slippage control",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Manual", price: 100 },
         { label: "Auto-adjust", price: 300 },
       ],
@@ -289,9 +289,9 @@ const questionsMap = {
     {
       key: "gasOptimization",
       multi: false,
-      question: "Оптимизация газа",
+      question: "Gas optimization",
       options: [
-        { label: "Нет", price: 0 },
+        { label: "None", price: 0 },
         { label: "Basic", price: 200 },
         { label: "Advanced", price: 400 },
       ],
@@ -299,7 +299,7 @@ const questionsMap = {
     {
       key: "ui",
       multi: false,
-      question: "UI интерфейс",
+      question: "UI interface",
       options: [
         { label: "Basic", price: 0 },
         { label: "Advanced", price: 300 },
@@ -308,7 +308,7 @@ const questionsMap = {
     {
       key: "audit",
       multi: false,
-      question: "Аудит",
+      question: "Audit",
       options: [
         { label: "Basic", price: 300 },
         { label: "Security audit", price: 700 },
@@ -379,7 +379,7 @@ export default function DeFiCalc() {
   if (!type) {
     return (
       <div className={s.chooseType}>
-        <h2>DeFi: выберите поднаправление</h2>
+        <h2>DeFi: select subdirection</h2>
         <div className={s.types}>
           {defiTypes.map((t) => (
             <button
@@ -402,9 +402,9 @@ export default function DeFiCalc() {
     const label = defiTypes.find((t) => t.key === type)?.label;
     return (
       <div className={s.summary}>
-        <h2>Сводка по DeFi</h2>
+        <h2>Summary of DeFi</h2>
         <p>
-          <strong>Поднаправление:</strong> {label}
+          <strong>Subdirection:</strong> {label}
         </p>
         <ul>
           {questions.map((q) => {
@@ -419,7 +419,7 @@ export default function DeFiCalc() {
           })}
         </ul>
         <p>
-          <strong>Итоговая стоимость:</strong> ${total}
+          <strong>Total cost:</strong> ${total}
         </p>
       </div>
     );
@@ -466,7 +466,7 @@ export default function DeFiCalc() {
       </div>
       <div className={s.controls}>
         <button onClick={handlePrev}>
-          {step <= 1 ? "← Выбрать поднаправление" : "Назад"}
+          {step <= 1 ? "← Select type" : "Back"}
         </button>
         <button
           onClick={handleNext}
@@ -478,7 +478,7 @@ export default function DeFiCalc() {
             )
           }
         >
-          {step === totalSteps ? "Завершить" : "Далее"}
+          {step === totalSteps ? "Complete" : "Next"}
         </button>
       </div>
     </div>

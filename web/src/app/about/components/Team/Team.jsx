@@ -65,8 +65,8 @@ export default function Team() {
           className={s.header}
         >
           <div className={s.headerContent}>
-            <h2>Наша команда</h2>
-            <p>Профессионалы, создающие будущее технологий</p>
+            <h2>Our Team</h2>
+            <p>Professionals Shaping the Future of Technology</p>
           </div>
         </motion.div>
 

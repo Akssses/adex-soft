@@ -19,44 +19,44 @@ import Link from "next/link";
 
 const SERVICES = [
   {
-    title: "Разработка и интеграция",
+    title: "Development & Integration",
     icon: FaCode,
-    items: ["Смарт-контракты", "dApp", "Интеграция кошельков"],
+    items: ["Smart Contracts", "dApp", "Wallet Integration"],
   },
   {
-    title: "Токеномика",
+    title: "Tokenomics",
     icon: FaChartPie,
-    items: ["Проектирование токеномики", "Запуск токенов (ICO/IDO/IEO)"],
+    items: ["Tokenomics Design", "Token Launch (ICO/IDO/IEO)"],
   },
   {
     title: "Telegram Mini Apps",
     icon: FaTelegramPlane,
-    items: ["Mini App разработка", "Blockchain-интеграция"],
+    items: ["Mini App Development", "Blockchain Integration"],
   },
   {
-    title: "Веб-разработка",
+    title: "Web Development",
     icon: FaLaptopCode,
-    items: ["dApp frontend", "Smart-contract API"],
+    items: ["dApp Frontend", "Smart Contract API"],
   },
   {
-    title: "UX/UI дизайн",
+    title: "UX/UI Design",
     icon: FaPaintBrush,
-    items: ["Web3 интерфейсы", "Креативные прототипы"],
+    items: ["Web3 Interfaces", "Creative Prototypes"],
   },
   {
-    title: "DeFi-решения",
+    title: "DeFi Solutions",
     icon: FaCoins,
-    items: ["DEX и AMM-протоколы", "Лендинговые платформы"],
+    items: ["DEX & AMM Protocols", "Lending Platforms"],
   },
   {
-    title: "Тегеграм боты",
+    title: "Telegram Bots",
     icon: FaRobot,
     items: ["Mobile dApp", "Wallet SDK"],
   },
   {
-    title: "NFT и метаверс",
+    title: "NFT & Metaverse",
     icon: FaCube,
-    items: ["Платформы для NFT", "Интерактивные NFT"],
+    items: ["NFT Platforms", "Interactive NFTs"],
   },
 ];
 
@@ -66,7 +66,7 @@ export default function Header() {
   const [hoveredIndex, setHoveredIndex] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [currentLang, setCurrentLang] = useState("RU");
+  const [currentLang, setCurrentLang] = useState("EN");
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
   const wrapperRef = useRef(null);
@@ -109,7 +109,7 @@ export default function Header() {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               ref={wrapperRef}
             >
-              Что мы делаем?
+              What We Do?
               {dropdownOpen && (
                 <div className={s.dropdownMenu}>
                   {SERVICES.map((service, i) => {
@@ -130,7 +130,7 @@ export default function Header() {
                           </div>
                           <span>{service.title}</span>
                         </div>
-                        {i === hoveredIndex && (
+                        {/* {i === hoveredIndex && (
                           <div className={s.menuRight}>
                             {service.items.map((item, j) => (
                               <a key={j} href="#">
@@ -138,7 +138,7 @@ export default function Header() {
                               </a>
                             ))}
                           </div>
-                        )}
+                        )} */}
                       </div>
                     );
                   })}
@@ -146,7 +146,7 @@ export default function Header() {
               )}
             </li>
             <li>
-              <Link href={"/calc"}>Калькулятор</Link>
+              <Link href={"/calc"}>Calculator</Link>
             </li>
           </ul>
 
@@ -158,11 +158,8 @@ export default function Header() {
 
           <div className={s.nav_right}>
             <ul className={s.nav}>
-              {/* <li>
-                <Link href="/blog">Блог</Link>
-              </li> */}
               <li>
-                <Link href="/about">О нас</Link>
+                <Link href="/about">About Us</Link>
               </li>
             </ul>
 
@@ -175,38 +172,8 @@ export default function Header() {
               <FaTelegram size={24} />
             </a>
 
-            {/* <div className={s.langSwitcher} ref={langRef}>
-              <button
-                className={s.langButton}
-                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              >
-                <FaGlobe className={s.globeIcon} />
-                <span>{currentLang}</span>
-              </button>
-              {langDropdownOpen && (
-                <div className={s.langDropdown}>
-                  <button
-                    className={`${s.langOption} ${
-                      currentLang === "RU" ? s.active : ""
-                    }`}
-                    onClick={() => switchLanguage("RU")}
-                  >
-                    RU
-                  </button>
-                  <button
-                    className={`${s.langOption} ${
-                      currentLang === "EN" ? s.active : ""
-                    }`}
-                    onClick={() => switchLanguage("EN")}
-                  >
-                    EN
-                  </button>
-                </div>
-              )}
-            </div> */}
-
             <button className={s.ctaButton} onClick={() => setShowModal(true)}>
-              <span>Начать проект</span>
+              <span>Start Project</span>
               <div className={s.ctaGlow}></div>
             </button>
 
@@ -219,9 +186,8 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className={s.mobileMenu}>
             <nav>
-              <Link href="/calc">Калькулятор</Link>
-              {/* <Link href="/blog">Блог</Link> */}
-              <Link href="/about">О нас</Link>
+              <Link href="/calc">Calculator</Link>
+              <Link href="/about">About Us</Link>
             </nav>
           </div>
         )}

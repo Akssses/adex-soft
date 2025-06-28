@@ -66,15 +66,15 @@ export default function CaseSlider() {
     <div className={s.case_section}>
       <header className={s.header}>
         <h1 className={s.title}>
-          Наши кейсы <br /> говорят сами за себя
+          Our Cases <br /> Speak for Themselves
         </h1>
       </header>
 
       <div className={s.sliderWrapper}>
         {isLoading ? (
-          <div className={s.loading}>Загрузка кейсов...</div>
+          <div className={s.loading}>Loading cases...</div>
         ) : cases.length === 0 ? (
-          <div className={s.empty}>Нет доступных кейсов</div>
+          <div className={s.empty}>No cases available</div>
         ) : (
           <div className={s.case_slider_container}>
             {visibleProjects.map((project) => (
