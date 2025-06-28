@@ -24,7 +24,7 @@ export default function CaseTechStack({ stacks = [] }) {
   return (
     <section className={s.techStack}>
       <div className={s.content}>
-        <h2 className={s.title}>Технологии</h2>
+        <h2 className={s.title}>Technologies</h2>
 
         <div className={s.grid}>
           {caseTechStack.map((tech, index) => (

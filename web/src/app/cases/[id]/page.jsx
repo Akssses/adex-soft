@@ -9,6 +9,7 @@ import CaseTestimonial from "@/app/cases/components/Testimonial/Testimonial";
 import RelatedCases from "@/app/cases/components/RelatedCases/RelatedCases";
 import { casesService } from "@/services/casesService";
 import s from "@/styles/CaseDetail.module.scss";
+import CaseSlider from "@/components/partials/CaseSlider/CaseSLider";
 
 export default function CaseDetailPage({ params }) {
   const resolvedParams = use(params);
@@ -73,7 +74,8 @@ export default function CaseDetailPage({ params }) {
               avatar={caseData.client_avatar}
             />
           )}
-          <RelatedCases currentCaseId={resolvedParams.id} />
+          {/* <RelatedCases currentCaseId={resolvedParams.id} /> */}
+          <CaseSlider />
         </div>
         <BannerCTA />
       </main>
