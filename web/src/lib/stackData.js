@@ -1,7 +1,7 @@
 const stackData = [
   {
     name: "React.js",
-    logo: "https://cdn.worldvectorlogo.com/logos/react-1.svg",
+    logo: "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-1024.png",
   },
   {
     name: "Next.js",
@@ -35,7 +35,6 @@ const stackData = [
     name: "Bootstrap",
     logo: "https://cdn.worldvectorlogo.com/logos/bootstrap-5-1.svg",
   },
-  { name: "Vite", logo: "https://cdn.worldvectorlogo.com/logos/vitejs.svg" },
   {
     name: "Webpack",
     logo: "https://cdn.worldvectorlogo.com/logos/webpack-icon.svg",
@@ -43,10 +42,6 @@ const stackData = [
   {
     name: "Framer Motion",
     logo: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg",
-  },
-  {
-    name: "Storybook",
-    logo: "https://www.svgrepo.com/show/354397/storybook-icon.svg",
   },
   {
     name: "React Query",
@@ -157,9 +152,75 @@ const stackData = [
     name: "Metamask",
     logo: "https://cdn.worldvectorlogo.com/logos/metamask.svg",
   },
+
+  // Python Ecosystem
   {
-    name: "Telegram Bots",
-    logo: "https://cdn.worldvectorlogo.com/logos/telegram-1.svg",
+    name: "Python",
+    logo: "https://cdn.worldvectorlogo.com/logos/python-5.svg",
+  },
+  {
+    name: "Django",
+    logo: "https://cdn.worldvectorlogo.com/logos/django.svg",
+  },
+  {
+    name: "Flask",
+    logo: "https://cdn.worldvectorlogo.com/logos/flask.svg",
+  },
+  {
+    name: "Celery",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/1/19/Celery_logo.png",
+  },
+  {
+    name: "SQLAlchemy",
+    logo: "https://cdn.worldvectorlogo.com/logos/sqlalchemy.svg",
+  },
+  {
+    name: "Pandas",
+    logo: "https://cdn.worldvectorlogo.com/logos/pandas.svg",
+  },
+
+  // Design Tools
+  {
+    name: "Figma",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1667px-Figma-logo.svg.png",
+  },
+  {
+    name: "Adobe Photoshop",
+    logo: "https://cdn.worldvectorlogo.com/logos/adobe-photoshop-2.svg",
+  },
+  {
+    name: "Adobe After Effects",
+    logo: "https://static.vecteezy.com/system/resources/previews/055/138/449/non_2x/adobe-after-effect-logo-square-rounded-adobe-after-effect-logo-adobe-after-effect-logo-free-download-free-png.png",
+  },
+
+  // Additional Web Technologies
+  {
+    name: "WebSocket",
+    logo: "https://cdn.worldvectorlogo.com/logos/websocket.svg",
+  },
+  {
+    name: "Socket.io",
+    logo: "https://cdn.worldvectorlogo.com/logos/socket-io.svg",
+  },
+  {
+    name: "WebRTC",
+    logo: "https://cdn.worldvectorlogo.com/logos/webrtc.svg",
+  },
+  {
+    name: "Apache",
+    logo: "https://cdn.worldvectorlogo.com/logos/apache-13.svg",
+  },
+  {
+    name: "Ansible",
+    logo: "https://cdn.worldvectorlogo.com/logos/ansible.svg",
+  },
+  {
+    name: "Jenkins",
+    logo: "https://cdn.worldvectorlogo.com/logos/jenkins-1.svg",
+  },
+  {
+    name: "Kubernetes",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/1200px-Kubernetes_logo_without_workmark.svg.png",
   },
 ];
 export default stackData;

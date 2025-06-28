@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import stackData from "./stackData";
+import stackData from "@/lib/stackData";
 import s from "./TechBar.module.scss";
 
 export default function TechBar() {
