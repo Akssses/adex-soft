@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import React from "react";
 import s from "./CaseHero.module.scss";
 
 export default function CaseHero({
@@ -13,83 +12,18 @@ export default function CaseHero({
   images = [],
   stages = [],
 }) {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [cardsPerPage, setCardsPerPage] = useState(3);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-
-      if (width <= 768) {
-        setCardsPerPage(1);
-      } else if (width <= 1200) {
-        setCardsPerPage(2);
-      } else {
-        setCardsPerPage(3);
-      }
-
-      // Reset to first page when layout changes
-      setCurrentPage(0);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const totalPages = Math.ceil(images.length / cardsPerPage);
-  const startIndex = currentPage * cardsPerPage;
-  const visibleImages = images.slice(startIndex, startIndex + cardsPerPage);
-
-  const handlePrev = () => {
-    setCurrentPage((prev) => Math.max(0, prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1));
-  };
-
   return (
     <section className={s.hero}>
-      {images.length > 0 && (
-        <div className={s.slider}>
-          <div className={s.sliderWrapper}>
-            <div className={s.sliderTrack}>
-              {visibleImages.map((image, idx) => (
-                <div key={`${currentPage}-${idx}`} className={s.card}>
-                  <div className={s.cardImage}>
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className={s.slideImage}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          {images.length > cardsPerPage && (
-            <div className={s.sliderControls}>
-              <button
-                onClick={handlePrev}
-                className={s.sliderButton}
-                disabled={currentPage === 0}
-              >
-                <IoIosArrowBack />
-              </button>
-              <button
-                onClick={handleNext}
-                className={s.sliderButton}
-                disabled={currentPage === totalPages - 1}
-              >
-                <IoIosArrowForward />
-              </button>
-            </div>
-          )}
-        </div>
-      )}
-
       <div className="container">
+        {images.length > 0 && (
+          <div className={s.heroImage}>
+            <img
+              src={images[0].src}
+              alt={images[0].alt}
+              className={s.mainImage}
+            />
+          </div>
+        )}
         <div className={s.content}>
           <div className={s.mainInfo}>
             <div className={s.tags}>

@@ -5,114 +5,32 @@
   margin-bottom: 100px;
 }
 
-/* Slider */
-
-.slider {
+.heroImage {
+  width: 70%;
   position: relative;
-  width: 100%;
-}
-
-.sliderWrapper {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  max-width: 1300px;
+  overflow: hidden;
+  border-radius: 20px;
   margin: 0 auto;
-  padding: 20px;
-}
-
-.sliderTrack {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  padding: 20px;
-}
-
-.card {
-  flex: 1;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-  transition: 0.3s;
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-8px);
-  }
-}
-
-.cardImage {
-  position: relative;
-  width: 100%;
-  padding-bottom: 66.67%;
-  overflow: hidden;
-  background: #f5f5f5;
-}
-
-.slideImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.sliderControls {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
-  display: flex;
-  gap: 16px;
-  z-index: 10;
-}
-
-.sliderButton {
+  margin-bottom: 100px;
+  margin-top: 50px;
+  aspect-ratio: 16/9;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 50%;
-  background: #fff;
-  color: #000;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+}
 
-  &:hover {
-    background: #000;
-    color: #fff;
-    border-color: #000;
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    &:hover {
-      background: #fff;
-      color: #000;
-      border-color: rgba(0, 0, 0, 0.08);
-      transform: none;
-    }
-  }
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .content {
   padding: 40px 0;
   text-align: center;
+  position: relative;
+  margin-top: -100px;
 }
 
 .mainInfo {
@@ -380,23 +298,6 @@
   background: white;
 }
 
-.content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  margin-top: 100px;
-}
-
-.title {
-  font-size: 48px;
-  font-weight: 800;
-  margin-bottom: 20px;
-  text-align: center;
-  background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .timeline {
   display: flex;
   flex-direction: column;
@@ -587,32 +488,15 @@
     margin-bottom: 40px;
   }
 
+  .heroImage {
+    width: 100%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+
   .meta {
     flex-direction: column;
     gap: 20px;
-  }
-
-  .sliderWrapper {
-    padding: 12px;
-    margin-top: 50px;
-  }
-
-  .sliderTrack {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 16px;
-    padding: 12px;
-  }
-
-  .sliderControls {
-    bottom: 24px;
-    right: 24px;
-    gap: 12px;
-  }
-
-  .sliderButton {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
   }
 }
 
@@ -623,7 +507,7 @@
   }
 
   .content {
-    margin-top: 50px;
+    margin-top: 0px;
   }
 
   .subtitle {
