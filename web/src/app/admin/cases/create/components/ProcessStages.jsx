@@ -8,7 +8,6 @@ export default function ProcessStages({
   handleAddStage,
   handleRemoveStage,
 }) {
-  // Use stages directly without filtering
   const stages = formData.stages || [];
 
   return (

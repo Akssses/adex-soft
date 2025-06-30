@@ -43,7 +43,7 @@ export default function CaseHero({
               {services?.length > 0 && (
                 <div className={s.metaGroup}>
                   <div className={s.metaItem}>
-                    <span className={s.label}>Услуги</span>
+                    <span className={s.label}>Services</span>
                     <div className={s.services}>
                       {services.map((service, index) => (
                         <span key={index} className={s.service}>

@@ -70,7 +70,7 @@ export default function CasesAdminPage() {
   });
 
   if (loading) {
-    return <div className={s.loading}>Загрузка...</div>;
+    return <div className={s.loading}>Loading...</div>;
   }
 
   return (

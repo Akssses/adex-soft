@@ -103,28 +103,292 @@
   }
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(79, 123, 255, 0.15);
-    border-color: rgba(79, 123, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 
-    &::before {
-      opacity: 1;
+    .icon {
+      transform: rotate(-5deg);
     }
+  }
+
+  // Development & Integration - Light Blue
+  &:nth-child(1) {
+    background: linear-gradient(
+      135deg,
+      rgba(51, 181, 255, 0.2),
+      rgba(51, 181, 255, 0.1)
+    );
 
     .iconWrapper {
-      transform: scale(1.1) rotate(5deg);
-      background: linear-gradient(120deg, #4f7bff, #00ccff);
-
-      .icon {
-        color: white;
-        transform: rotate(-5deg);
+      background: rgba(51, 181, 255, 0.1);
+      &::before {
+        background: linear-gradient(120deg, #33b5ff, #60c3ff);
       }
     }
+    .icon {
+      color: #33b5ff;
+    }
+    &:hover {
+      .iconWrapper {
+        background: rgba(51, 181, 255, 0.2);
+        &::before {
+          opacity: 1;
+        }
+      }
+      .icon {
+        color: #33b5ff;
+      }
+      .cardTitle {
+        background: linear-gradient(90deg, #33b5ff, #60c3ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
 
-    .cardTitle {
-      background: linear-gradient(90deg, #4f7bff, #00ccff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+  // Tokenomics - Blue
+  &:nth-child(2) {
+    background: linear-gradient(
+      135deg,
+      rgba(25, 95, 255, 0.2),
+      rgba(25, 95, 255, 0.1)
+    );
+
+    .iconWrapper {
+      background: rgba(25, 95, 255, 0.1);
+      &::before {
+        background: linear-gradient(120deg, #195fff, #4680ff);
+      }
+    }
+    .icon {
+      color: #195fff;
+    }
+    &:hover {
+      .iconWrapper {
+        background: rgba(25, 95, 255, 0.2);
+        &::before {
+          opacity: 1;
+        }
+      }
+      .icon {
+        color: #195fff;
+      }
+      .cardTitle {
+        background: linear-gradient(90deg, #195fff, #4680ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  // Telegram Mini App - Purple
+  &:nth-child(3) {
+    background: linear-gradient(
+      135deg,
+      rgba(138, 43, 226, 0.2),
+      rgba(138, 43, 226, 0.1)
+    );
+
+    .iconWrapper {
+      background: rgba(138, 43, 226, 0.1);
+      &::before {
+        background: linear-gradient(120deg, #8a2be2, #9d4ced);
+      }
+    }
+    .icon {
+      color: #8a2be2;
+    }
+    &:hover {
+      .iconWrapper {
+        background: rgba(138, 43, 226, 0.2);
+        &::before {
+          opacity: 1;
+        }
+      }
+      .icon {
+        color: #8a2be2;
+      }
+      .cardTitle {
+        background: linear-gradient(90deg, #8a2be2, #9d4ced);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  // Web Development - Green
+  &:nth-child(4) {
+    background: linear-gradient(
+      135deg,
+      rgba(46, 204, 113, 0.2),
+      rgba(46, 204, 113, 0.1)
+    );
+
+    .iconWrapper {
+      background: rgba(46, 204, 113, 0.1);
+      &::before {
+        background: linear-gradient(120deg, #2ecc71, #27ae60);
+      }
+    }
+    .icon {
+      color: #2ecc71;
+    }
+    &:hover {
+      .iconWrapper {
+        background: rgba(46, 204, 113, 0.2);
+        &::before {
+          opacity: 1;
+        }
+      }
+      .icon {
+        color: #2ecc71;
+      }
+      .cardTitle {
+        background: linear-gradient(90deg, #2ecc71, #27ae60);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  // UX/UI Design - Orange
+  &:nth-child(5) {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 128, 0, 0.2),
+      rgba(255, 128, 0, 0.1)
+    );
+
+    .iconWrapper {
+      background: rgba(255, 128, 0, 0.1);
+      &::before {
+        background: linear-gradient(120deg, #ff8000, #ff9933);
+      }
+    }
+    .icon {
+      color: #ff8000;
+    }
+    &:hover {
+      .iconWrapper {
+        background: rgba(255, 128, 0, 0.2);
+        &::before {
+          opacity: 1;
+        }
+      }
+      .icon {
+        color: #ff8000;
+      }
+      .cardTitle {
+        background: linear-gradient(90deg, #ff8000, #ff9933);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  // DeFi Solutions - Pink
+  &:nth-child(6) {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 64, 129, 0.2),
+      rgba(255, 64, 129, 0.1)
+    );
+
+    .iconWrapper {
+      background: rgba(255, 64, 129, 0.1);
+      &::before {
+        background: linear-gradient(120deg, #ff4081, #ff679d);
+      }
+    }
+    .icon {
+      color: #ff4081;
+    }
+    &:hover {
+      .iconWrapper {
+        background: rgba(255, 64, 129, 0.2);
+        &::before {
+          opacity: 1;
+        }
+      }
+      .icon {
+        color: #ff4081;
+      }
+      .cardTitle {
+        background: linear-gradient(90deg, #ff4081, #ff679d);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  // Telegram Bots - Turquoise
+  &:nth-child(7) {
+    background: linear-gradient(
+      135deg,
+      rgba(64, 224, 208, 0.2),
+      rgba(64, 224, 208, 0.1)
+    );
+
+    .iconWrapper {
+      background: rgba(64, 224, 208, 0.1);
+      &::before {
+        background: linear-gradient(120deg, #40e0d0, #48ffe0);
+      }
+    }
+    .icon {
+      color: #40e0d0;
+    }
+    &:hover {
+      .iconWrapper {
+        background: rgba(64, 224, 208, 0.2);
+        &::before {
+          opacity: 1;
+        }
+      }
+      .icon {
+        color: #40e0d0;
+      }
+      .cardTitle {
+        background: linear-gradient(90deg, #40e0d0, #48ffe0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  // NFT & Metaverse - Yellow
+  &:nth-child(8) {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 196, 0, 0.2),
+      rgba(255, 196, 0, 0.1)
+    );
+
+    .iconWrapper {
+      background: rgba(255, 196, 0, 0.1);
+      &::before {
+        background: linear-gradient(120deg, #ffc400, #ffcd33);
+      }
+    }
+    .icon {
+      color: #ffc400;
+    }
+    &:hover {
+      .iconWrapper {
+        background: rgba(255, 196, 0, 0.2);
+        &::before {
+          opacity: 1;
+        }
+      }
+      .icon {
+        color: #ffc400;
+      }
+      .cardTitle {
+        background: linear-gradient(90deg, #ffc400, #ffcd33);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
     }
   }
 }

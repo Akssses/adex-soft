@@ -4,29 +4,73 @@ import StackSelect from "./StackSelect";
 import s from "../page.module.scss";
 
 const AVAILABLE_SERVICES = [
-  "Разработка и интеграция",
-  "Токеномика",
+  "Development & Integration",
+  "Tokenomics",
   "Telegram Mini Apps",
-  "Веб-разработка",
-  "UX/UI дизайн",
-  "DeFi-решения",
-  "Тегеграм боты",
-  "NFT и метаверс",
+  "Web Development",
+  "UX/UI Design",
+  "DeFi Solutions",
+  "Telegram Bots",
+  "Telegram Mini App",
+  "NFT & Metaverse",
 ];
 
 const AVAILABLE_TAGS = [
-  "NFT",
-  "DeFi",
-  "GameFi",
+  // Development & Integration
+  "API Integration",
+  "Backend",
+  "Frontend",
+  "Full Stack",
+  "Microservices",
+
+  // Tokenomics
+  "Token Design",
+  "Token Economy",
+  "Token Distribution",
+  "Token Metrics",
+  "Token Utility",
+
+  // Telegram & Web
+  "Telegram Mini Apps",
+  "Telegram Bots",
   "Web3",
-  "Blockchain",
-  "Crypto",
-  "Telegram",
+  "Web App",
+  "Progressive Web App",
+
+  // Design
+  "UI Design",
+  "UX Design",
+  "Mobile Design",
+  "Web Design",
+  "Design System",
+
+  // DeFi
+  "DeFi",
+  "DEX",
+  "Yield Farming",
+  "Liquidity Pool",
   "Smart Contract",
-  "Токены",
-  "Метавселенная",
-  "Кошелек",
+
+  // NFT & Metaverse
+  "NFT",
+  "NFT Marketplace",
+  "Metaverse",
+  "GameFi",
+  "Play-to-Earn",
+
+  // Blockchain
+  "Blockchain",
+  "Ethereum",
+  "Solana",
+  "Polygon",
+  "BSC",
+
+  // Additional
+  "Crypto",
   "dApp",
+  "Cross-chain",
+  "DAO",
+  "Wallet Integration",
 ];
 
 export default function BasicInfo({

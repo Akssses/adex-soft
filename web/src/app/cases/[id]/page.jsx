@@ -34,15 +34,15 @@ export default function CaseDetailPage({ params }) {
   }, [resolvedParams.id]);
 
   if (isLoading) {
-    return <div className={`${s.loading} container`}>Загрузка...</div>;
+    return <div className={`${s.loading} container`}>Loading...</div>;
   }
 
   if (error) {
-    return <div className={`${s.error} container`}>Ошибка: {error}</div>;
+    return <div className={`${s.error} container`}>Error: {error}</div>;
   }
 
   if (!caseData) {
-    return <div className={`${s.notFound} container`}>Кейс не найден</div>;
+    return <div className={`${s.notFound} container`}>Case not found</div>;
   }
 
   const heroData = {

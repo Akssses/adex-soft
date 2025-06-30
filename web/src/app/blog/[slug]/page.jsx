@@ -54,7 +54,7 @@ export default function BlogPostPage({ params }) {
         <Header />
         <main className={s.blogPost}>
           <div className={s.container}>
-            <div className={s.loading}>Загрузка статьи...</div>
+            <div className={s.loading}>Loading...</div>
           </div>
         </main>
       </>
