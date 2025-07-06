@@ -50,8 +50,8 @@ export default function BannerCTA() {
               className={s.button}
               onClick={handleOpenModal}
             >
-              <span>Start Project</span>
-              <FaRocket className={s.icon} />
+              <span>Start a Project</span>
+              <FaRocket className={s.icons} />
             </motion.button>
           </div>
         </motion.section>

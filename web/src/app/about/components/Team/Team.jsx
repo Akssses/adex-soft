@@ -35,7 +35,7 @@ const teamMembers = [
     role: "Marketing",
   },
   {
-    name: "Mirbek D.",
+    name: "Nurbek D.",
     position: "Backend Developer",
     image: "/assets/images/team/mirba.jpeg",
     role: "Backend",
